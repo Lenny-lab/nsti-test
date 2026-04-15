@@ -26,6 +26,7 @@ body {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   color: var(--ink);
   font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background:
@@ -55,8 +56,8 @@ a:hover {
 }
 
 .app {
-  width: min(1140px, calc(100% - 48px));
-  margin: 36px auto 52px;
+  width: min(1140px, calc(100% - 32px));
+  margin: clamp(18px, 3vw, 36px) auto 52px;
 }
 
 .screen {
@@ -122,6 +123,7 @@ a:hover {
   line-height: 1.18;
   font-weight: 600;
   letter-spacing: -0.02em;
+  text-wrap: pretty;
 }
 
 .hero__title {
@@ -451,6 +453,7 @@ a:hover {
   font-size: clamp(28px, 3.2vw, 40px);
   line-height: 1.48;
   letter-spacing: -0.01em;
+  text-wrap: pretty;
 }
 
 .scale {
@@ -522,6 +525,7 @@ a:hover {
   font-size: clamp(34px, 5vw, 56px);
   line-height: 1.16;
   letter-spacing: 0.02em;
+  text-wrap: pretty;
 }
 
 .resultTitle {
@@ -714,10 +718,13 @@ a:hover {
   opacity: 0.5;
 }
 
-@media (max-width: 960px) {
-  .guideRow,
-  .summaryGrid,
-  .resultGrid {
+@media (max-width: 1040px) {
+  .summaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resultGrid,
+  .guideRow {
     grid-template-columns: 1fr;
   }
 
@@ -727,60 +734,127 @@ a:hover {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .app {
-    width: min(100% - 20px, 1140px);
-    margin-top: 20px;
+    width: min(100% - 24px, 1140px);
   }
 
   .header {
-    align-items: start;
-    flex-direction: column;
+    margin-bottom: 18px;
   }
 
   .card {
-    padding: 24px 20px;
-    border-radius: 20px;
+    padding: 28px 22px;
+    border-radius: 22px;
   }
 
   .hero__title,
   .sectionHead__title {
-    font-size: 34px;
+    font-size: clamp(30px, 6vw, 42px);
   }
 
   .hero__subtitle {
-    font-size: 16px;
+    font-size: 17px;
     white-space: normal;
   }
 
   .hero__text,
-  .hero__callout,
+  .hero__calloutText,
   .choice__value {
     font-size: 15px;
+    line-height: 1.75;
   }
 
   .guideItem span {
     font-size: 15px;
   }
 
-  .question__stem {
-    font-size: 28px;
-  }
-
+  .summaryGrid,
+  .axisGrid,
   .scale {
     grid-template-columns: 1fr;
   }
 
-  .actions--intro {
+  .topbar {
+    flex-direction: column;
     align-items: stretch;
   }
 
-  .actions--intro .btn {
+  .progress__text {
+    text-align: right;
+  }
+
+  .questionShell {
+    padding: 22px 18px;
+  }
+
+  .question__stem {
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.55;
+  }
+
+  .resultHero,
+  .axisCard__head,
+  .axisCard__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: min(100% - 20px, 1140px);
+  }
+
+  .header {
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .brand__title {
+    font-size: 34px;
+  }
+
+  .card,
+  .panel,
+  .questionShell,
+  .summaryCard,
+  .axisCard,
+  .box {
+    border-radius: 18px;
+  }
+
+  .card {
+    padding: 24px 18px;
+  }
+
+  .guideItem {
+    padding: 14px 16px;
+  }
+
+  .choice {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .actions--intro,
+  .actions--spread {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions--intro .btn,
+  .actions--spread .btn {
     width: 100%;
   }
 
   .actions--spread {
-    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .resultType {
+    font-size: clamp(30px, 10vw, 42px);
   }
 }
 
