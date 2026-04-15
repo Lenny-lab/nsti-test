@@ -127,8 +127,11 @@ a:hover {
 }
 
 .hero__title {
-  max-width: 13em;
-  word-break: keep-all;
+  max-width: min(13em, 100%);
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
+  white-space: normal;
 }
 
 .hero__subtitle {
@@ -753,6 +756,10 @@ a:hover {
     font-size: clamp(30px, 6vw, 42px);
   }
 
+  .hero__title {
+    max-width: 10em;
+  }
+
   .hero__subtitle {
     font-size: 17px;
     white-space: normal;
@@ -827,6 +834,12 @@ a:hover {
 
   .card {
     padding: 24px 18px;
+  }
+
+  .hero__title {
+    max-width: 8.5em;
+    line-height: 1.24;
+    letter-spacing: -0.03em;
   }
 
   .guideItem {

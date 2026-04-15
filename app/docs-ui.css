@@ -269,24 +269,7 @@ a:hover {
 }
 
 .typeCard__top {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.typeCard__code {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--accent);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  display: block;
 }
 
 .typeCard__title {

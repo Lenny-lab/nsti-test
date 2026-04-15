@@ -15,7 +15,7 @@ NSTI 当前是一个纯静态网站：
 
 ### 直接打开
 
-直接打开根目录的 [index.html](../index.html) 即可，它会跳转到 [app/index.html](../app/index.html)
+直接打开根目录的 [index.html](../index.html) 即可，它就是网站正式首页
 
 ### 本地静态服务器
 
@@ -48,8 +48,7 @@ python -m http.server 5173
 
 ## 4. 当前代码结构
 
-- [index.html](../index.html)：根目录跳转入口，便于本地预览和 Vercel 根路径访问
-- [app/index.html](../app/index.html)：首页、测评页、结果页主入口
+- [index.html](../index.html)：首页、测评页、结果页主入口
 - [app/question-bank.html](../app/question-bank.html)：题库说明页
 - [app/evaluation-system.html](../app/evaluation-system.html)：评价体系页
 - [app/privacy.html](../app/privacy.html)：隐私与免责声明页
