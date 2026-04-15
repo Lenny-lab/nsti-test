@@ -1,0 +1,11 @@
+.edge-tmp
+__generated_*
+data/raw
+data/seeds
+docs
+scripts
+临时数据存储
+*.py
+*.csv
+!index.html
+!app/**

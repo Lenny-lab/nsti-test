@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--
+    荣格八维 MBTI 深度测试 - 单页面应用
+    纯前端实现，所有计算均在本地浏览器完成，不上传任何数据。
+  -->
+  <meta charset="UTF-8" />
+  <title>荣格八维 MBTI 深度测试 - 探索你的真实人格 (纯前端安全版)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="基于荣格八维认知功能的 MBTI 深度测试，纯前端运行，无需登录，保护隐私。通过主导功能与辅助功能推导最匹配的 MBTI 类型，并展示八维雷达图。">
+  <meta name="keywords" content="MBTI, 荣格八维, 人格测试, 认知功能, 性格分析, 纯前端, 隐私保护">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="荣格八维 MBTI 测试工具">
+
+  <style>
+    /**
+     * 全局样式：深色沉浸背景 + 现代排版 + 玻璃拟物卡片
+     */
+
+    :root {
+      color-scheme: dark;
+      --bg-gradient-start: #020617;
+      --bg-gradient-end: #0f172a;
+      --card-bg: rgba(15, 23, 42, 0.82);
+      --card-border: rgba(148, 163, 184, 0.45);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --danger: #f97373;
+      --success: #34d399;
+      --shadow-strong: 0 24px 80px rgba(15, 23, 42, 0.95);
+      --radius-lg: 1.25rem;
+      --radius-md: 0.75rem;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, var(--bg-gradient-start), #020617 40%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 960px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .app-header {
+      text-align: center;
+      padding: 4px 8px 0;
+    }
+
+    .app-title {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f9fafb;
+      margin: 0 0 4px;
+    }
+
+    .app-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 118, 110, 0.15);
+      color: #6ee7b7;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.7rem;
+      margin-bottom: 8px;
+      border: 1px solid rgba(110, 231, 183, 0.35);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #6ee7b7;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-strong);
+      padding: 18px 20px 20px;
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .screen {
+      display: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity var(--transition-normal), transform var(--transition-normal);
+    }
+
+    .screen.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .intro-main-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .intro-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .intro-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag-pill {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #cbd5f5;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .intro-side {
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(59, 130, 246, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: #e0f2fe;
+    }
+
+    .intro-side-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      opacity: 0.9;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .divider {
+      margin: 14px 0 10px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.4), transparent);
+    }
+
+    .start-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .hint-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      color: #0b1120;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      box-shadow: 0 14px 30px rgba(8, 47, 73, 0.7);
+      white-space: nowrap;
+    }
+
+    .btn span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.75);
+      filter: saturate(1.1);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 8px 22px rgba(8, 47, 73, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.8);
+      box-shadow: none;
+    }
+
+    .btn-ghost::after {
+      display: none;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.8);
+    }
+
+    .btn-ghost:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .btn-sm {
+      padding: 6px 14px;
+      font-size: 0.82rem;
+    }
+
+    .btn-disabled,
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .quiz-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .progress-bar-outer {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      overflow: hidden;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #38bdf8, #4ade80);
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+
+    .progress-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .question-shell {
+      border-radius: var(--radius-md);
+      padding: 12px 12px 14px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(75, 85, 99, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-shell::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 65%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .question-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .question-dimension {
+      font-size: 0.76rem;
+      padding: 2px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.92);
+      color: #bfdbfe;
+      white-space: nowrap;
+    }
+
+    .question-dimension strong {
+      color: #7dd3fc;
+      font-weight: 600;
+    }
+
+    .question-index {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .question-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity var(--transition-normal), transform var(--transition-normal);
+    }
+
+    .fade-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-exit-active {
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity var(--transition-normal), transform var(--transition-normal);
+    }
+
+    .likert-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .likert-options {
+      display: flex;
+      gap: 6px;
+      justify-content: space-between;
+    }
+
+    .likert-option {
+      flex: 1 1 0;
+      min-width: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      padding: 7px 0;
+      cursor: pointer;
+      text-align: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .likert-option span {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      display: block;
+    }
+
+    .likert-option-selected {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.5));
+      border-color: #38bdf8;
+      color: #f9fafb;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6), 0 10px 26px rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .likert-option:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(129, 140, 248, 0.9);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
+    }
+
+    .likert-option:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .likert-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 0 2px;
+    }
+
+    .likert-labels span:first-child {
+      text-align: left;
+    }
+
+    .likert-labels span:last-child {
+      text-align: right;
+    }
+
+    .quiz-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .status-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .status-text.error {
+      color: var(--danger);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .result-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .result-main-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .type-highlight {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+
+    .type-name {
+      font-size: 0.95rem;
+      color: #bfdbfe;
+      margin-bottom: 6px;
+    }
+
+    .type-summary {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .pill {
+      font-size: 0.76rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: #cbd5f5;
+      white-space: nowrap;
+    }
+
+    .function-block {
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      margin-top: 4px;
+    }
+
+    .function-block + .function-block {
+      margin-top: 6px;
+    }
+
+    .function-title {
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .function-title span {
+      color: #7dd3fc;
+    }
+
+    .function-text {
+      color: var(--text-muted);
+    }
+
+    .result-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .result-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .chart-card {
+      border-radius: var(--radius-md);
+      padding: 8px 10px 10px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(75, 85, 99, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .chart-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .chart-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 220px;
+    }
+
+    .chart-wrapper canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .score-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .score-label {
+      color: #e5e7eb;
+    }
+
+    .score-value {
+      color: #a5b4fc;
+    }
+
+    .app-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 2px 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 14px 14px 16px;
+      }
+
+      .intro-grid,
+      .result-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .quiz-top-row {
+        align-items: flex-start;
+      }
+
+      .likert-options {
+        gap: 4px;
+      }
+
+      .likert-option {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+
+      .chart-wrapper {
+        min-height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .app-title {
+        font-size: 1.4rem;
+      }
+
+      .btn {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .btn-row {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>纯前端 · 本地计算 · 隐私友好</span>
+      </div>
+      <h1 class="app-title">Jung 8-Function MBTI Profiler</h1>
+      <p class="app-subtitle">
+        基于荣格八维认知功能的 MBTI 深度测试，从主导 / 辅助功能视角解析你的真实人格结构，
+        并用雷达图直观呈现八维强弱分布。
+      </p>
+    </header>
+
+    <main>
+      <section id="intro-screen" class="card screen active">
+        <div class="card-inner">
+          <div class="intro-grid">
+            <div>
+              <h2 class="intro-main-title">探索你的认知功能堆栈</h2>
+              <p class="intro-text">
+                从传统的四字母 MBTI，深入到更细致的
+                <strong>八大认知功能（Se / Si / Ne / Ni / Te / Ti / Fe / Fi）</strong>。
+                本工具通过 <strong>40 道精心设计的李克特量表题目</strong>（包含部分更具意境的描述），
+                勾勒出你的功能强弱轮廓，并依据<strong>主导功能 + 辅助功能</strong>的组合，推导最匹配的 MBTI 类型。
+              </p>
+              <div class="intro-tags">
+                <span class="tag-pill">荣格八维模型</span>
+                <span class="tag-pill">主导 / 辅助功能判定</span>
+                <span class="tag-pill">雷达图可视化</span>
+                <span class="tag-pill">纯前端 · 不上传数据</span>
+              </div>
+            </div>
+            <aside class="intro-side">
+              <div class="intro-side-title">HOW IT WORKS</div>
+              <p>
+                · 共 40 题，5 级李克特量表（从“完全不符合”到“完全符合”）。<br />
+                · 每 5 题聚焦一个认知功能，计算八维总分。<br />
+                · 按分数排序优先级，匹配最贴近的主导 / 辅助功能组合。<br />
+                · 自动生成 MBTI 类型、中文称号与功能解析，并用雷达图展示八维画像。
+              </p>
+            </aside>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="start-actions">
+            <div class="hint-text">
+              建议在安静环境下完成，<strong>直觉作答</strong>即可，整套题约需 8–12 分钟。
+            </div>
+            <button id="start-btn" type="button" class="btn">
+              <span>开始测试</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="card screen">
+        <div class="card-inner">
+          <div class="quiz-header">
+            <div class="quiz-top-row">
+              <div class="quiz-title">答题区 · 请根据你<span style="color:#7dd3fc;">平时最自然的状态</span>直觉选择</div>
+              <button id="back-to-intro" type="button" class="btn btn-ghost btn-sm">
+                返回引导
+              </button>
+            </div>
+            <div class="progress-wrapper">
+              <div class="progress-bar-outer">
+                <div id="progress-bar" class="progress-bar-inner"></div>
+              </div>
+              <div id="progress-text" class="progress-text">
+                <span>进度：第 1 / 40 题</span>
+                <span>已回答 0 题</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="question-container" class="question-shell">
+            <div class="question-inner">
+              <div class="question-meta">
+                <div id="question-dimension" class="question-dimension"></div>
+                <div id="question-index" class="question-index"></div>
+              </div>
+              <div id="question-text" class="question-text"></div>
+
+              <div class="likert-group">
+                <div id="likert-options" class="likert-options"></div>
+                <div class="likert-labels">
+                  <span>1：完全不符合</span>
+                  <span>5：完全符合</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-footer">
+            <div id="status-text" class="status-text">
+              请根据直觉作答，无对错之分。
+            </div>
+            <div class="btn-row">
+              <button id="prev-btn" type="button" class="btn btn-ghost btn-sm">
+                上一题
+              </button>
+              <button id="next-btn" type="button" class="btn btn-sm">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result-screen" class="card screen">
+        <div class="card-inner">
+          <div class="result-layout">
+            <div>
+              <h2 class="result-main-title">测试完成 · 你的 MBTI 功能画像</h2>
+              <p class="type-summary" id="result-intro">
+                正在根据你的八维得分，匹配最贴近的主导 / 辅助功能组合……
+              </p>
+              <div>
+                <div class="type-highlight" id="result-type-code">INTJ</div>
+                <div class="type-name" id="result-type-name">建筑师 · 战略规划者</div>
+                <div class="pill-row" id="result-pill-row"></div>
+              </div>
+
+              <div id="functions-detail">
+                <div class="function-block">
+                  <div class="function-title">
+                    主导功能：
+                    <span id="dominant-label">Ni 内倾直觉</span>
+                  </div>
+                  <div class="function-text" id="dominant-text">
+                    从宏观与长远视角整合信息，形成对未来的清晰蓝图。
+                  </div>
+                </div>
+                <div class="function-block">
+                  <div class="function-title">
+                    辅助功能：
+                    <span id="auxiliary-label">Te 外倾思维</span>
+                  </div>
+                  <div class="function-text" id="auxiliary-text">
+                    以效率与结构推动现实执行，让抽象洞见落地成形。
+                  </div>
+                </div>
+                <div class="function-block">
+                  <div class="function-title">
+                    盲点功能（易忽视）：
+                    <span id="inferior-label">Se 外倾感觉</span>
+                  </div>
+                  <div class="function-text" id="inferior-text">
+                    对当下感官体验与即刻享受的关注度相对较低，容易沉浸于头脑世界。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="chart-card">
+                <div>
+                  <div class="chart-title">八维认知功能雷达图</div>
+                  <div class="chart-subtitle">
+                    每一条轴代表一个认知功能，数值越高表示该功能在你的人格结构中越活跃。
+                  </div>
+                </div>
+                <div class="chart-wrapper">
+                  <canvas id="function-chart" aria-label="八维认知功能雷达图"></canvas>
+                </div>
+                <div class="score-grid" id="score-grid"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-footer">
+            <div class="result-note">
+              提示：本工具仅作为<strong>自我探索与反思</strong>的参考，不应被用作对自我或他人的标签与限制。
+            </div>
+            <div class="btn-row">
+              <button id="retake-btn" type="button" class="btn btn-ghost btn-sm">
+                重新开始
+              </button>
+              <button id="scroll-top-btn" type="button" class="btn btn-sm btn-ghost">
+                回到顶部
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      本工具不采集、不上传任何数据；所有答案与计算仅存在于当前浏览器会话中。
+    </footer>
+  </div>
+
+  <!-- Chart.js CDN（仅用于绘制雷达图） -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    /**
+     * 单页面荣格八维 MBTI 测试工具（纯前端实现）。
+     * - 管理题库与作答流程
+     * - 计算八个认知功能得分
+     * - 基于主导 + 辅助功能的距离匹配算法推断 MBTI 类型
+     * - 使用 Chart.js 渲染八维雷达图
+     */
+
+    /**
+     * 题库定义：40 题，八个认知功能各 5 题。
+     * 每题采用 1–5 级李克特量表。
+     */
+    const questions = [
+      // Se 外倾感觉
+      { id: 1, dimension: "Se", text: "我很享受当下的感官刺激，比如美食、音乐或运动带来的快感。" },
+      { id: 2, dimension: "Se", text: "面对突发情况时，我能够迅速做出本能反应并采取行动。" },
+      { id: 3, dimension: "Se", text: "我常常凭现场的感觉做决定，而不是提前做大量规划。" },
+      { id: 4, dimension: "Se", text: "当我沉浸在现场氛围中时，会有一种“活在当下、世界在眼前展开”的感觉。" },
+      { id: 5, dimension: "Se", text: "对我来说，身体的节奏（如呼吸、步伐、音乐节拍）常常会自然引导我的行动。" },
+
+      // Si 内倾感觉
+      { id: 6, dimension: "Si", text: "我非常依赖以往的经验来判断现在的情况是否可靠。" },
+      { id: 7, dimension: "Si", text: "我习惯按照固定的日常流程和习惯来安排生活。" },
+      { id: 8, dimension: "Si", text: "我对细节、规程和历史记录有很强的记忆与重视。" },
+      { id: 9, dimension: "Si", text: "熟悉的路线、味道或气味，会让我产生一种被记忆包裹的安全感。" },
+      { id: 10, dimension: "Si", text: "面对重要决定时，我会本能地回想过去类似场景，像翻看一部自己的历史纪录片。" },
+
+      // Ne 外倾直觉
+      { id: 11, dimension: "Ne", text: "我会不停联想各种可能性，一件小事也能引发很多新点子。" },
+      { id: 12, dimension: "Ne", text: "我喜欢和别人一起脑暴，不断尝试新方向和新方案。" },
+      { id: 13, dimension: "Ne", text: "我更在意“还有哪些其他做法”，而不是只按现有步骤来。" },
+      { id: 14, dimension: "Ne", text: "和人聊天时，我的大脑会像放烟花一样不断蹦出新想法。" },
+      { id: 15, dimension: "Ne", text: "我经常因为一个小细节，就联想到一整套全新的可能剧情。" },
+
+      // Ni 内倾直觉
+      { id: 16, dimension: "Ni", text: "我常常凭一种模糊却坚定的“预感”来判断事情走向。" },
+      { id: 17, dimension: "Ni", text: "我更关注事情背后的隐含意义，而不仅仅是表面现象。" },
+      { id: 18, dimension: "Ni", text: "我喜欢从宏观和长远的角度，构建清晰的整体图景。" },
+      { id: 19, dimension: "Ni", text: "有时我会突然“看见”某件事未来的发展画面，好像提前看过结局。" },
+      { id: 20, dimension: "Ni", text: "面对复杂局面时，我更像是在拼一幅意义的拼图，而不是只看眼前的碎片。" },
+
+      // Te 外倾思维
+      { id: 21, dimension: "Te", text: "做决定时，我更看重效率和客观结果，而不是个人感受。" },
+      { id: 22, dimension: "Te", text: "我擅长制定清晰的目标、流程并推动他人按计划执行。" },
+      { id: 23, dimension: "Te", text: "面对分歧时，我倾向于用数据和逻辑来说明“最有效的方案”。" },
+      { id: 24, dimension: "Te", text: "在混乱的局面中，我会自然想把事情条理化，像整理一个凌乱的工作台。" },
+      { id: 25, dimension: "Te", text: "当看到低效的流程时，我会忍不住想重构它，让一切像机器齿轮一样顺畅运转。" },
+
+      // Ti 内倾思维
+      { id: 26, dimension: "Ti", text: "我喜欢拆解问题，弄清背后的原理和逻辑结构。" },
+      { id: 27, dimension: "Ti", text: "如果一个观点在逻辑上不严谨，我会感到很难受。" },
+      { id: 28, dimension: "Ti", text: "我经常在内心推演各种逻辑可能性，只为找到最合理的解释。" },
+      { id: 29, dimension: "Ti", text: "我习惯在心里为事物建模，好像在搭建一套看不见的逻辑积木。" },
+      { id: 30, dimension: "Ti", text: "当我思考时，更像是在调试一段代码，不断找出漏洞并优化结构。" },
+
+      // Fe 外倾情感
+      { id: 31, dimension: "Fe", text: "我很在意他人的情绪，并会主动调整自己以维护和谐气氛。" },
+      { id: 32, dimension: "Fe", text: "做决定时，我会优先考虑对身边人关系的影响。" },
+      { id: 33, dimension: "Fe", text: "在群体中，我常自然承担起协调气氛、照顾大家感受的角色。" },
+      { id: 34, dimension: "Fe", text: "当房间里气氛微妙变化时，我往往第一时间就能察觉到那股“空气中的情绪”。" },
+      { id: 35, dimension: "Fe", text: "在很多场合，我会下意识地充当润滑剂，让每个人都感觉被看见、被接住。" },
+
+      // Fi 内倾情感
+      { id: 36, dimension: "Fi", text: "我非常重视自己内在的价值观，很难违背内心做事。" },
+      { id: 37, dimension: "Fi", text: "即使别人都觉得没问题，只要与我信念冲突，我也会坚持拒绝。" },
+      { id: 38, dimension: "Fi", text: "我常常独自消化情绪，更关注“对我来说是否真实而有意义”。" },
+      { id: 39, dimension: "Fi", text: "有些价值观对我来说像内心的“底线坐标”，触碰到时我会本能地退后。" },
+      { id: 40, dimension: "Fi", text: "做选择时，我常会问自己：这件事是否真的与我内心深处的自己对话。" }
+    ];
+
+    /**
+     * 功能代码到中文名称的映射。
+     */
+    const functionLabels = {
+      Se: "Se 外倾感觉",
+      Si: "Si 内倾感觉",
+      Ne: "Ne 外倾直觉",
+      Ni: "Ni 内倾直觉",
+      Te: "Te 外倾思维",
+      Ti: "Ti 内倾思维",
+      Fe: "Fe 外倾情感",
+      Fi: "Fi 内倾情感"
+    };
+
+    /**
+     * 每个认知功能的简短说明，用于结果解析。
+     */
+    const functionDescriptions = {
+      Se: "聚焦当下的感官信息与即时体验，偏好实时行动与现场适应。",
+      Si: "依托过往经验与细节记忆，倾向稳定、有序与可预期的环境。",
+      Ne: "联想多种可能性，善于发散思维与探索新点子与新路径。",
+      Ni: "凝聚少数重要线索，在内心形成对趋势与本质的抽象洞见。",
+      Te: "关注客观结果与效率，以结构化方式组织资源与推动执行。",
+      Ti: "追求内在逻辑的自洽，倾向独立思考与拆解问题的底层原理。",
+      Fe: "敏锐感知群体情绪，通过协调关系与氛围维护外在和谐。",
+      Fi: "重视个人内在价值与真实感受，强调“对自己是否真诚”与“是否合乎良知”。"
+    };
+
+    /**
+     * 16 种 MBTI 类型的功能堆栈与基本介绍。
+     * 注意：盲点功能取第 4 功能（inferior）。
+     */
+    const mbtiTypes = [
+      {
+        code: "INTJ",
+        chineseName: "建筑师",
+        dominant: "Ni",
+        auxiliary: "Te",
+        tertiary: "Fi",
+        inferior: "Se",
+        summary: "擅长从宏观与长远视角规划路径的战略型思考者，追求系统化与高效实现愿景。"
+      },
+      {
+        code: "INFJ",
+        chineseName: "提倡者",
+        dominant: "Ni",
+        auxiliary: "Fe",
+        tertiary: "Ti",
+        inferior: "Se",
+        summary: "专注于洞察人性与未来趋势的理想主义者，渴望以温和而坚定的方式推动意义改变。"
+      },
+      {
+        code: "ISTJ",
+        chineseName: "物流师",
+        dominant: "Si",
+        auxiliary: "Te",
+        tertiary: "Fi",
+        inferior: "Ne",
+        summary: "重视责任与秩序的务实执行者，以经验和规则为基础，保证系统长期而稳定地运转。"
+      },
+      {
+        code: "ISFJ",
+        chineseName: "守卫者",
+        dominant: "Si",
+        auxiliary: "Fe",
+        tertiary: "Ti",
+        inferior: "Ne",
+        summary: "安静而可靠的照顾者，以细腻的观察和周到的关怀，守护自己重视的人与传统。"
+      },
+      {
+        code: "ENTJ",
+        chineseName: "指挥官",
+        dominant: "Te",
+        auxiliary: "Ni",
+        tertiary: "Se",
+        inferior: "Fi",
+        summary: "目标导向极强的组织者，擅长制定宏观战略并统筹资源，高效推进复杂项目。"
+      },
+      {
+        code: "ESTJ",
+        chineseName: "总经理",
+        dominant: "Te",
+        auxiliary: "Si",
+        tertiary: "Ne",
+        inferior: "Fi",
+        summary: "直截了当的现实主义管理者，强调规则、效率与结果，擅长维持体系的日常运作。"
+      },
+      {
+        code: "ENFJ",
+        chineseName: "主人公",
+        dominant: "Fe",
+        auxiliary: "Ni",
+        tertiary: "Se",
+        inferior: "Ti",
+        summary: "具有号召力与洞察力的引导者，善于激发他人潜力，并为群体创造更有意义的愿景。"
+      },
+      {
+        code: "ESFJ",
+        chineseName: "执政官",
+        dominant: "Fe",
+        auxiliary: "Si",
+        tertiary: "Ne",
+        inferior: "Ti",
+        summary: "重视人际关系与社会责任的组织者，擅长在既定框架中协调人群与资源。"
+      },
+      {
+        code: "INTP",
+        chineseName: "逻辑学家",
+        dominant: "Ti",
+        auxiliary: "Ne",
+        tertiary: "Si",
+        inferior: "Fe",
+        summary: "乐于在脑海中拆解世界运作机制的分析者，追求理论上的严谨一致与优雅解释。"
+      },
+      {
+        code: "ISTP",
+        chineseName: "鉴赏家",
+        dominant: "Ti",
+        auxiliary: "Se",
+        tertiary: "Ni",
+        inferior: "Fe",
+        summary: "冷静且动手能力强的实践者，善于在真实情境中以最少动作解决问题。"
+      },
+      {
+        code: "ENTP",
+        chineseName: "辩论家",
+        dominant: "Ne",
+        auxiliary: "Ti",
+        tertiary: "Fe",
+        inferior: "Si",
+        summary: "富有好奇心与反叛精神的点子玩家，乐于挑战既有观点，探索多种可能路径。"
+      },
+      {
+        code: "ENFP",
+        chineseName: "竞选者",
+        dominant: "Ne",
+        auxiliary: "Fi",
+        tertiary: "Te",
+        inferior: "Si",
+        summary: "热情奔放的探索者，追寻让自己与他人都更自由、更真实的生活方式。"
+      },
+      {
+        code: "INFP",
+        chineseName: "调停者",
+        dominant: "Fi",
+        auxiliary: "Ne",
+        tertiary: "Si",
+        inferior: "Te",
+        summary: "深具同理心与理想主义色彩的内向梦想家，致力于活出内心价值所指的模样。"
+      },
+      {
+        code: "ISFP",
+        chineseName: "冒险家",
+        dominant: "Fi",
+        auxiliary: "Se",
+        tertiary: "Ni",
+        inferior: "Te",
+        summary: "安静而感性的审美实践者，喜欢用亲身体验和创作来表达真实自我。"
+      },
+      {
+        code: "ESTP",
+        chineseName: "企业家",
+        dominant: "Se",
+        auxiliary: "Ti",
+        tertiary: "Fe",
+        inferior: "Ni",
+        summary: "行动力极强的现实玩家，在变动环境中捕捉机会并快速做出精准决策。"
+      },
+      {
+        code: "ESFP",
+        chineseName: "表演者",
+        dominant: "Se",
+        auxiliary: "Fi",
+        tertiary: "Te",
+        inferior: "Ni",
+        summary: "享受当下与互动氛围的体验者，擅长在现场制造欢乐和真实的情感连接。"
+      }
+    ];
+
+    /**
+     * 存储作答结果的数组，与 questions 一一对应。
+     * 值域为 1–5，未作答则为 null。
+     */
+    const answers = Array(questions.length).fill(null);
+
+    let currentIndex = 0;
+    let radarChart = null;
+
+    // DOM 元素获取
+    const introScreen = document.getElementById("intro-screen");
+    const quizScreen = document.getElementById("quiz-screen");
+    const resultScreen = document.getElementById("result-screen");
+
+    const startBtn = document.getElementById("start-btn");
+    const backToIntroBtn = document.getElementById("back-to-intro");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+    const statusText = document.getElementById("status-text");
+
+    const questionContainer = document.getElementById("question-container");
+    const questionDimensionEl = document.getElementById("question-dimension");
+    const questionIndexEl = document.getElementById("question-index");
+    const questionTextEl = document.getElementById("question-text");
+    const likertOptionsEl = document.getElementById("likert-options");
+
+    const resultTypeCodeEl = document.getElementById("result-type-code");
+    const resultTypeNameEl = document.getElementById("result-type-name");
+    const resultIntroEl = document.getElementById("result-intro");
+    const resultPillRowEl = document.getElementById("result-pill-row");
+    const dominantLabelEl = document.getElementById("dominant-label");
+    const dominantTextEl = document.getElementById("dominant-text");
+    const auxiliaryLabelEl = document.getElementById("auxiliary-label");
+    const auxiliaryTextEl = document.getElementById("auxiliary-text");
+    const inferiorLabelEl = document.getElementById("inferior-label");
+    const inferiorTextEl = document.getElementById("inferior-text");
+    const scoreGridEl = document.getElementById("score-grid");
+
+    const retakeBtn = document.getElementById("retake-btn");
+    const scrollTopBtn = document.getElementById("scroll-top-btn");
+
+    /**
+     * 切换显示的屏幕（引导 / 测试 / 结果）。
+     * @param {"intro"|"quiz"|"result"} screenId 要显示的屏幕 ID 标识
+     */
+    function showScreen(screenId) {
+      introScreen.classList.remove("active");
+      quizScreen.classList.remove("active");
+      resultScreen.classList.remove("active");
+
+      if (screenId === "intro") {
+        introScreen.classList.add("active");
+      } else if (screenId === "quiz") {
+        quizScreen.classList.add("active");
+      } else if (screenId === "result") {
+        resultScreen.classList.add("active");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /**
+     * 渲染当前题目与选项，并附加淡入动画。
+     */
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const existingValue = answers[currentIndex];
+
+      questionDimensionEl.textContent = functionLabels[q.dimension] || q.dimension;
+      questionIndexEl.textContent = `题目 ${currentIndex + 1} / ${questions.length}`;
+      questionTextEl.textContent = q.text;
+
+      likertOptionsEl.innerHTML = "";
+
+      for (let value = 1; value <= 5; value++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "likert-option";
+        btn.dataset.value = String(value);
+        btn.innerHTML = `
+          <div>${value}</div>
+          <span>${value === 1 ? "不符合" : value === 5 ? "符合" : "一般"}</span>
+        `;
+        if (existingValue === value) {
+          btn.classList.add("likert-option-selected");
+        }
+        btn.addEventListener("click", () => handleLikertSelection(value));
+        likertOptionsEl.appendChild(btn);
+      }
+
+      questionContainer.classList.remove("fade-enter-active");
+      // 触发重排以启用动画
+      void questionContainer.offsetWidth;
+      questionContainer.classList.add("fade-enter", "fade-enter-active");
+      setTimeout(() => {
+        questionContainer.classList.remove("fade-enter", "fade-enter-active");
+      }, 280);
+
+      updateProgress();
+      updateNavigationButtons();
+      updateStatusText();
+    }
+
+    /**
+     * 处理某个李克特数值被选择时的逻辑。
+     * @param {number} value 选中的分值（1-5）
+     */
+    function handleLikertSelection(value) {
+      answers[currentIndex] = value;
+
+      Array.from(likertOptionsEl.children).forEach((el) => {
+        el.classList.remove("likert-option-selected");
+        if (Number(el.dataset.value) === value) {
+          el.classList.add("likert-option-selected");
+        }
+      });
+
+      updateProgress();
+      updateStatusText();
+
+      if (currentIndex < questions.length - 1) {
+        setTimeout(() => {
+          goToNext();
+        }, 220);
+      }
+    }
+
+    /**
+     * 更新顶部进度条与文案。
+     */
+    function updateProgress() {
+      const answeredCount = answers.filter((v) => v !== null).length;
+      const percent = ((currentIndex + 1) / questions.length) * 100;
+      progressBar.style.width = `${percent}%`;
+      progressText.innerHTML = `
+        <span>进度：第 ${currentIndex + 1} / ${questions.length} 题</span>
+        <span>已回答 ${answeredCount} 题</span>
+      `;
+    }
+
+    /**
+     * 更新上一题 / 下一题按钮状态与文案。
+     */
+    function updateNavigationButtons() {
+      prevBtn.disabled = currentIndex === 0;
+      if (currentIndex === questions.length - 1) {
+        nextBtn.textContent = "查看结果";
+      } else {
+        nextBtn.textContent = "下一题";
+      }
+    }
+
+    /**
+     * 更新底部状态提示信息。
+     */
+    function updateStatusText() {
+      const answered = answers[currentIndex] !== null;
+      statusText.classList.remove("error");
+      if (!answered) {
+        statusText.textContent = "请选择一个选项再继续（没有标准答案，遵循你的第一反应即可）。";
+      } else {
+        statusText.textContent = "已记录当前题目作答，如有需要可返回修改。";
+      }
+    }
+
+    /**
+     * 跳转到上一题。
+     */
+    function goToPrev() {
+      if (currentIndex === 0) return;
+      currentIndex -= 1;
+      renderQuestion();
+    }
+
+    /**
+     * 跳转到下一题或进入结果页。
+     */
+    function goToNext() {
+      if (answers[currentIndex] === null) {
+        statusText.classList.add("error");
+        statusText.textContent = "请先选择一个选项，再进入下一题。";
+        return;
+      }
+      if (currentIndex < questions.length - 1) {
+        currentIndex += 1;
+        renderQuestion();
+      } else {
+        const incompleteIndex = answers.findIndex((v) => v === null);
+        if (incompleteIndex !== -1) {
+          currentIndex = incompleteIndex;
+          renderQuestion();
+          statusText.classList.add("error");
+          statusText.textContent = "还有题目未作答，请补全所有题目后再查看结果。";
+          return;
+        }
+        showResults();
+      }
+    }
+
+    /**
+     * 计算八个认知功能的总分。
+     * @returns {{Se:number,Si:number,Ne:number,Ni:number,Te:number,Ti:number,Fe:number,Fi:number}}
+     */
+    function calculateFunctionScores() {
+      const scores = {
+        Se: 0,
+        Si: 0,
+        Ne: 0,
+        Ni: 0,
+        Te: 0,
+        Ti: 0,
+        Fe: 0,
+        Fi: 0
+      };
+
+      questions.forEach((q, idx) => {
+        let value = answers[idx];
+        if (value == null) {
+          // 理论上不会走到这里，因为结果页前会强制作答完整
+          value = 3;
+        }
+        scores[q.dimension] += value;
+      });
+
+      return scores;
+    }
+
+    /**
+     * 基于主导 + 辅助功能堆栈的距离匹配算法，推断最接近的 MBTI 类型。
+     * @param {{[key:string]:number}} scores 各认知功能得分
+     * @returns {typeof mbtiTypes[number]} 最匹配的 MBTI 类型对象
+     */
+    function inferMbtiType(scores) {
+      const functions = Object.keys(scores);
+      const sortedFunctions = functions.sort((a, b) => {
+        const diff = scores[b] - scores[a];
+        if (diff !== 0) return diff;
+        return a.localeCompare(b);
+      });
+
+      let bestType = null;
+      let bestDistance = Infinity;
+      let bestStrength = -Infinity;
+
+      mbtiTypes.forEach((type) => {
+        const domRank = sortedFunctions.indexOf(type.dominant);
+        const auxRank = sortedFunctions.indexOf(type.auxiliary);
+
+        // 主导功能偏离第一名的惩罚更大
+        const distance = Math.abs(domRank - 0) * 2 + Math.abs(auxRank - 1);
+        const strength = (scores[type.dominant] || 0) + (scores[type.auxiliary] || 0);
+
+        if (
+          distance < bestDistance ||
+          (distance === bestDistance && strength > bestStrength)
+        ) {
+          bestDistance = distance;
+          bestStrength = strength;
+          bestType = type;
+        }
+      });
+
+      return bestType;
+    }
+
+    /**
+     * 在结果页展示类型、功能解析与雷达图。
+     */
+    function showResults() {
+      const scores = calculateFunctionScores();
+      const type = inferMbtiType(scores);
+
+      if (!type) {
+        alert("无法识别类型，请稍后重试或刷新页面。");
+        return;
+      }
+
+      resultTypeCodeEl.textContent = type.code;
+      resultTypeNameEl.textContent = `${type.chineseName} · ${type.summary ? "" : "MBTI 类型"}`;
+      resultIntroEl.textContent =
+        "以下结果基于你在八个认知功能上的相对强弱，按照主导 / 辅助功能的排列推导得出，仅供自我探索参考。";
+
+      resultTypeNameEl.textContent = `${type.chineseName} · ${type.summary ? type.summary : "MBTI 类型"}`;
+
+      resultPillRowEl.innerHTML = "";
+      const domPill = document.createElement("span");
+      domPill.className = "pill";
+      domPill.textContent = `主导：${functionLabels[type.dominant]}`;
+      const auxPill = document.createElement("span");
+      auxPill.className = "pill";
+      auxPill.textContent = `辅助：${functionLabels[type.auxiliary]}`;
+      const infPill = document.createElement("span");
+      infPill.className = "pill";
+      infPill.textContent = `盲点：${functionLabels[type.inferior]}`;
+      resultPillRowEl.appendChild(domPill);
+      resultPillRowEl.appendChild(auxPill);
+      resultPillRowEl.appendChild(infPill);
+
+      dominantLabelEl.textContent = functionLabels[type.dominant];
+      auxiliaryLabelEl.textContent = functionLabels[type.auxiliary];
+      inferiorLabelEl.textContent = functionLabels[type.inferior];
+
+      dominantTextEl.textContent = functionDescriptions[type.dominant] || "";
+      auxiliaryTextEl.textContent =
+        (functionDescriptions[type.auxiliary] || "") +
+        " 它往往为你的主导功能提供现实支持或情绪平衡。";
+      inferiorTextEl.textContent =
+        (functionDescriptions[type.inferior] || "") +
+        " 这一维度通常容易被忽视，但在压力或成长过程中会逐渐浮现其重要性。";
+
+      scoreGridEl.innerHTML = "";
+      Object.keys(scores)
+        .sort((a, b) => scores[b] - scores[a])
+        .forEach((fn) => {
+          const item = document.createElement("div");
+          item.className = "score-item";
+          const label = document.createElement("span");
+          label.className = "score-label";
+          label.textContent = functionLabels[fn];
+          const value = document.createElement("span");
+          value.className = "score-value";
+          value.textContent = scores[fn].toString();
+          item.appendChild(label);
+          item.appendChild(value);
+          scoreGridEl.appendChild(item);
+        });
+
+      const ctx = document.getElementById("function-chart").getContext("2d");
+      if (radarChart) {
+        radarChart.destroy();
+      }
+
+      const labels = ["Se", "Si", "Ne", "Ni", "Te", "Ti", "Fe", "Fi"].map(
+        (fn) => functionLabels[fn]
+      );
+      const dataValues = ["Se", "Si", "Ne", "Ni", "Te", "Ti", "Fe", "Fi"].map(
+        (fn) => scores[fn]
+      );
+
+      radarChart = new Chart(ctx, {
+        type: "radar",
+        data: {
+          labels,
+          datasets: [
+            {
+              label: "认知功能强度",
+              data: dataValues,
+              backgroundColor: "rgba(56, 189, 248, 0.25)",
+              borderColor: "rgba(56, 189, 248, 0.95)",
+              borderWidth: 2,
+              pointBackgroundColor: "#38bdf8",
+              pointBorderColor: "#0f172a",
+              pointRadius: 3,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              angleLines: {
+                color: "rgba(148, 163, 184, 0.4)"
+              },
+              grid: {
+                color: "rgba(55, 65, 81, 0.7)"
+              },
+              suggestedMin: 0,
+              // 每个功能最高 5 题 * 5 分 = 25
+              suggestedMax: 25,
+              ticks: {
+                display: true,
+                color: "rgba(148, 163, 184, 0.9)",
+                backdropColor: "transparent",
+                stepSize: 5,
+                showLabelBackdrop: false,
+                font: {
+                  size: 9
+                }
+              },
+              pointLabels: {
+                color: "rgba(226, 232, 240, 0.95)",
+                font: {
+                  size: 10
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              titleColor: "#e5e7eb",
+              bodyColor: "#e5e7eb",
+              backgroundColor: "rgba(15, 23, 42, 0.95)",
+              borderColor: "rgba(56, 189, 248, 0.5)",
+              borderWidth: 1,
+              padding: 10,
+              callbacks: {
+                /**
+                 * 自定义提示文本。
+                 * @param {import('chart.js').TooltipItem<'radar'>} context
+                 */
+                label(context) {
+                  const raw = context.raw;
+                  return ` 得分：${raw}`;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      showScreen("result");
+    }
+
+    /**
+     * 重置测试状态，返回引导页。
+     */
+    function resetQuiz() {
+      for (let i = 0; i < answers.length; i++) {
+        answers[i] = null;
+      }
+      currentIndex = 0;
+      if (radarChart) {
+        radarChart.destroy();
+        radarChart = null;
+      }
+      renderQuestion();
+      showScreen("intro");
+    }
+
+    /**
+     * 初始化事件监听与默认视图。
+     */
+    function initQuiz() {
+      startBtn.addEventListener("click", () => {
+        showScreen("quiz");
+        renderQuestion();
+      });
+
+      backToIntroBtn.addEventListener("click", () => {
+        showScreen("intro");
+      });
+
+      prevBtn.addEventListener("click", () => {
+        goToPrev();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        goToNext();
+      });
+
+      retakeBtn.addEventListener("click", () => {
+        resetQuiz();
+      });
+
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      renderQuestion();
+    }
+
+    document.addEventListener("DOMContentLoaded", initQuiz);
+  </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"dd24dfe90b62498cbfbb93a1cffbbd44","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

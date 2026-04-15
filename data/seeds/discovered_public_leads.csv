@@ -1,0 +1,16 @@
+source_id,platform,title,url,category,question_count_hint,discovered_from,notes
+xmcs_mbti_28,xmcs,MBTI职业性格测试 28题体验版,https://www.xmcs.cn/x/mbti,mbti,28,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_mbti_48,xmcs,MBTI职业性格测试 48题通用版,https://www.xmcs.cn/x/mbti48,mbti,48,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_disc_40,xmcs,DISC个性测验 40题,https://www.xmcs.cn/x/disc,personality,40,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_scmp_40,xmcs,SCMP性格轮廓测试 40题,https://www.xmcs.cn/x/scmp,personality,40,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_jxrg36,xmcs,九型人格测试 36题简洁版,https://www.xmcs.cn/x/jxrg36,enneagram,36,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_jxrg144,xmcs,九型人格测试 144题完整版,https://www.xmcs.cn/x/jxrg144,enneagram,144,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_jxrg180,xmcs,九型人格测试 180题探索版,https://www.xmcs.cn/x/jxrg180,enneagram,180,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_gatb_54,xmcs,GATB职业能力倾向测试 54题,https://www.xmcs.cn/x/gatb,ability,54,xmcs_mbti_93,从 93 题完整版页面的相关推荐区发现
+xmcs_hld_free,xmcs,霍兰德职业兴趣测试（免费版）,https://www.xmcs.cn/x/hld,career,60,xmcs_mbti_93,用于职业兴趣和专业选择补充题库
+xmcs_hld_120,xmcs,霍兰德职业兴趣测试 120题,https://www.xmcs.cn/x/hld120,career,120,xmcs_mbti_93,用于职业兴趣和专业选择补充题库
+xmcs_ysnl,xmcs,个人优势能力测评,https://www.xmcs.cn/x/ysnl,ability,unknown,xmcs_mbti_93,用于优势和能力倾向题目补充
+xmcs_rznl,xmcs,认知能力测验（训练题库）,https://www.xmcs.cn/x/rznl,ability,unknown,xmcs_mbti_93,页面明确标注为大学生求职和测评训练相关
+xmcs_dwrg240,xmcs,大五人格（完整版）,https://www.xmcs.cn/x/dwrg240,big_five,240,xmcs_mbti_93,用于维度化人格题干补充
+xmcs_cpi,xmcs,青年人格测验,https://www.xmcs.cn/x/cpi,personality,unknown,xmcs_mbti_93,用于青年群体人格题干补充
+xmcs_16pf,xmcs,卡特尔16PF,https://www.xmcs.cn/x/16pf,personality,unknown,xmcs_mbti_93,用于 trait 风格题库补充

@@ -1,0 +1,13 @@
+﻿source_id,platform,url,fetch_mode,status,question_count,fetched_at,detail
+official_mbti_basics,myersbriggs,https://www.myersbriggs.org/my-mbti-personality-type/mbti-basics/,public_html,ok,0,2026-04-14T14:09:34+00:00,Myers Briggs Type Preferences Perception Judgment
+official_16p_test,16personalities,https://www.16personalities.com/free-personality-test,public_html,ok,0,2026-04-14T14:09:47+00:00,Free Personality Test | 16Personalities
+mymbti_jung8_40,mymbti,https://mymbti.xyz/,public_html,ok,40,2026-04-14T14:09:54+00:00,荣格八维 MBTI 深度测试 - 探索你的真实人格 (纯前端安全版)
+xmcs_mbti_93,xmcs,https://www.xmcs.cn/x/mbti93,public_html,ok,0,2026-04-14T14:10:24+00:00,MBTI职业性格测试 93题完整版 - 小猫测试(xmcs.cn) - 小猫测评 - 专业严肃的心理测评！
+wjx_mbti_93,wjx,https://www.wjx.cn/vm/t9b4RQe.aspx,public_html,ok,93,2026-04-14T14:10:55+00:00,ＭBTI性格测试（93题）
+sohu_campus_mbti,sohu,https://www.sohu.com/a/679266432_121124029,public_html,ok,0,2026-04-14T14:11:10+00:00,MBTI图鉴（校园版）_类型_测试_场景
+weibo_search_mbti,weibo,https://s.weibo.com/weibo/MBTI,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically
+weibo_search_sti,weibo,https://s.weibo.com/weibo/STi,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically
+xhs_search_mbti,xiaohongshu,https://www.xiaohongshu.com/search_result?keyword=MBTI,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically
+xhs_search_sti,xiaohongshu,https://www.xiaohongshu.com/search_result?keyword=STi,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically
+wechat_search_mbti,wechat_search,https://weixin.sogou.com/weixin?type=2&query=MBTI,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically
+wechat_search_campus_mbti,wechat_search,https://weixin.sogou.com/weixin?type=2&query=%E6%A0%A1%E5%9B%AD%E7%89%88%20MBTI,manual_search,skipped,0,2026-04-14T14:11:10+00:00,manual_search seed; not fetched automatically

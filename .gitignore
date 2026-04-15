@@ -1,0 +1,6 @@
+.edge-tmp/
+.vercel/
+__generated_*
+临时数据存储/
+__pycache__/
+*.pyc

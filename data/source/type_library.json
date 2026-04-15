@@ -1,0 +1,82 @@
+{
+  "ISTJ": {
+    "title": "敬文的灯火",
+    "landmark": "敬文图书馆自修室",
+    "traits": "秩序、坚毅、高度专注"
+  },
+  "ISFJ": {
+    "title": "随园的红墙",
+    "landmark": "随园 100 号楼",
+    "traits": "温婉、可靠、情感守护"
+  },
+  "INFJ": {
+    "title": "德风园的思索",
+    "landmark": "德风园孔子像",
+    "traits": "深邃、理想、精神领袖"
+  },
+  "INTJ": {
+    "title": "逐日塔的俯瞰",
+    "landmark": "逐日塔塔尖",
+    "traits": "独立、战略、逻辑之巅"
+  },
+  "ISTP": {
+    "title": "校车的轨迹",
+    "landmark": "小白与大黄校车",
+    "traits": "务实、冷静、精准行动"
+  },
+  "ISFP": {
+    "title": "月亮湾的晚风",
+    "landmark": "月亮湾湖畔",
+    "traits": "浪漫、随性、感官审美"
+  },
+  "INFP": {
+    "title": "校园的小猫咪",
+    "landmark": "校园小角落",
+    "traits": "治愈、梦想、纯净内心"
+  },
+  "INTP": {
+    "title": "实验室的脉冲",
+    "landmark": "学海楼物理实验室",
+    "traits": "钻研、纯粹、逻辑建构"
+  },
+  "ESTP": {
+    "title": "学则路的烟火气",
+    "landmark": "学则路夜市",
+    "traits": "热血、真实、社交中心"
+  },
+  "ESFP": {
+    "title": "起步价的 2 号线",
+    "landmark": "仙林中心站",
+    "traits": "活力、当下、快乐喷泉"
+  },
+  "ENFP": {
+    "title": "起霞坡的落日",
+    "landmark": "起霞坡坡顶",
+    "traits": "灵感、自由、无限可能"
+  },
+  "ENTP": {
+    "title": "敬文广场的辩论",
+    "landmark": "敬文广场中心",
+    "traits": "机智、挑战、思维破局"
+  },
+  "ESTJ": {
+    "title": "南门的石狮",
+    "landmark": "南大门入口",
+    "traits": "原则、管理、稳重基石"
+  },
+  "ESFJ": {
+    "title": "西区的沏茗城",
+    "landmark": "西区沏茗城",
+    "traits": "热情、体贴、社交链接"
+  },
+  "ENFJ": {
+    "title": "图书馆的小图钉",
+    "landmark": "敬文图书馆服务台",
+    "traits": "奉献、感召、温暖引路"
+  },
+  "ENTJ": {
+    "title": "正德的丰碑",
+    "landmark": "正德厚生碑",
+    "traits": "统筹、远见、卓越领导"
+  }
+}
