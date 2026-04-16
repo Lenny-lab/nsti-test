@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>关于随园</title>
+    <link rel="stylesheet" href="./docs-ui.css" />
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      window._AMapSecurityConfig = { securityJsCode: "1a32ae6c45a8d6e7468edc11982ddd90" };
+      window.SUIYUAN_AMAP_KEY = "57ce121e184c010bcd0d6b10c37fe30c";
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="https://webapi.amap.com/loader.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__eyebrow">NNU Student Type Indicator</div>
+          <div class="brand__title">关于随园</div>
+        </div>
+        <a class="back" href="../index.html">返回首页</a>
+      </header>
+
+      <section class="card hero">
+        <div class="eyebrow">About Suiyuan</div>
+        <h1 class="hero__title">随园大概是南师大赠与我们的一份礼物</h1>
+        <p class="hero__lead">
+          第一次走进随园，很难立刻把它说清。你会先记住树影、老楼、走廊里的安静，
+          还有人在其中经过时留下的一点回声。所以这页不想写得太满，只把一些真正会被记住的地方和时间留在这里。
+        </p>
+        <div class="hero__meta">
+          <span class="chip">时间回声</span>
+          <span class="chip">南京市鼓楼区宁海路 122 号</span>
+        </div>
+      </section>
+
+      <section class="grid suiyuanEssayGrid">
+        <article class="card section">
+          <div class="section__eyebrow">初印象</div>
+          <h2 class="section__title">第一次来，先记住的是安静</h2>
+          <div class="section__body">
+            随园不像那种一眼就很热闹的校园。它更慢一点，也更安静一点，
+            常常要走进去一段路，才会慢慢意识到它的好。
+          </div>
+        </article>
+
+        <article class="card section">
+          <div class="section__eyebrow">步调</div>
+          <h2 class="section__title">这里适合慢慢走，不适合赶着看完</h2>
+          <div class="section__body">
+            真正让人留恋的，往往不是某一个“必打卡”点，而是树下、坡道边、
+            教学楼之间那些会让人自然放慢脚步的地方。
+          </div>
+        </article>
+
+        <article class="card section">
+          <div class="section__eyebrow">现在</div>
+          <h2 class="section__title">它有历史感，也还是一座在使用中的校园</h2>
+          <div class="section__body">
+            图书馆、教室、路口、草地都还在被日常使用。它不是被封存起来的旧校园，
+            而是很多人每天真实经过和停留的地方。
+          </div>
+        </article>
+      </section>
+
+      <section class="card section suiyuanMapSection">
+        <div class="section__eyebrow">Map</div>
+        <h2 class="section__title">随园在地图上的位置</h2>
+        <div class="section__body">
+          地图里保留了几个更容易被记住的点位。天气信息也放在这里，方便一起查看。
+        </div>
+        <div class="suiyuanWeatherBar" id="suiyuanWeather">
+          <div class="metric">
+            <div class="metric__label">当前天气</div>
+            <div class="metric__value" id="weatherText">加载中</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">气温</div>
+            <div class="metric__value" id="weatherTemp">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">风向风力</div>
+            <div class="metric__value" id="weatherWind">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">更新时间</div>
+            <div class="metric__value" id="weatherTime">等待数据</div>
+          </div>
+        </div>
+        <div class="grid suiyuanMapLayout">
+          <div>
+            <div id="amap-container" class="suiyuanMap"></div>
+            <div class="callout suiyuanInlineCallout" id="weatherNote">
+              正在加载当前天气信息
+            </div>
+            <div class="callout suiyuanInlineCallout" id="mapTips">
+              地图加载中。即使地图没有成功显示，你仍然可以继续浏览右侧的地标文字。
+            </div>
+          </div>
+
+          <div class="suiyuanPointPanels">
+            <article class="card section suiyuanSubcard">
+              <div class="section__eyebrow">Landmarks</div>
+              <h3 class="section__title">几个仍然会被记住的点</h3>
+              <div class="suiyuanPlaceList" id="suiyuanPlaceList"></div>
+            </article>
+
+            <article class="card section suiyuanSubcard" id="pointDetail"></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section" id="suiyuanTimelineSection">
+        <div class="section__eyebrow">Time</div>
+        <h2 class="section__title">随园的几个时间节点</h2>
+        <div class="suiyuanTimeline" id="suiyuanTimeline"></div>
+      </section>
+
+      <div class="callout">
+        这页没有把随园做成一份很满的导览，只是把一些常会被想起的地方、时间和位置放在一起，
+        方便第一次来的人先有一个印象。
+      </div>
+
+      <footer class="footer">
+        <a href="./question-bank.html">题库</a>
+        <span class="footer__sep">·</span>
+        <a href="./evaluation-system.html">评价体系</a>
+        <span class="footer__sep">·</span>
+        <a href="./type-gallery.html">结果图鉴</a>
+        <span class="footer__sep">·</span>
+        <a href="./suiyuan.html">关于随园</a>
+        <span class="footer__sep">·</span>
+        <a href="./privacy.html">隐私与免责声明</a>
+      </footer>
+    </main>
+
+    <script src="./suiyuan.js"></script>
+  </body>
+</html>

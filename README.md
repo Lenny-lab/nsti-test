@@ -3,6 +3,7 @@
 NSTI（NNU Student Type Indicator）是一个面向南京师范大学校园场景的静态测评网站。
 
 它用南师大的学习、通勤、协作与社交场景组织题面，输出 4 组偏好、16 类校园结果卡与对应的场景化建议。项目定位是“校园偏好画像工具”，适合自我理解、社团破冰和协作讨论，不用于心理诊断、能力评定或筛选。
+目前站点还整合了一页“关于随园”，用统一的视觉语言收纳路线、地标、天气与地图信息。
 
 ## 当前版本
 
@@ -51,6 +52,7 @@ python -m http.server 5173
 - 正式题库源：[data/source/nsti_question_bank.csv](data/source/nsti_question_bank.csv)
 - 正式结果类型源：[data/source/type_library.json](data/source/type_library.json)
 - 主页面逻辑：[app/nsti-v2.js](app/nsti-v2.js)
+- 随园页面逻辑：[app/suiyuan.js](app/suiyuan.js)
 - 首页与题目页样式：[app/styles.css](app/styles.css)
 - 说明页与图鉴页样式：[app/docs-ui.css](app/docs-ui.css)
 

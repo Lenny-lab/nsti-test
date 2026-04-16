@@ -184,6 +184,14 @@ a:hover {
   line-height: 1.82;
 }
 
+.section__body p {
+  margin: 0 0 10px;
+}
+
+.section__body p:last-child {
+  margin-bottom: 0;
+}
+
 .list {
   margin: 0;
   padding-left: 20px;
@@ -327,6 +335,123 @@ a:hover {
   opacity: 0.5;
 }
 
+.suiyuanEssayGrid {
+  margin-top: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.suiyuanWeatherBar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.suiyuanMapLayout {
+  margin-top: 14px;
+}
+
+.suiyuanWeather__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.suiyuanInlineCallout {
+  margin-top: 16px;
+}
+
+.suiyuanPlaceList,
+.suiyuanPointPanels,
+.suiyuanTimeline {
+  display: grid;
+  gap: 12px;
+}
+
+.suiyuanPlaceLink {
+  font: inherit;
+  cursor: pointer;
+}
+
+.suiyuanPlaceLink strong {
+  display: block;
+  color: var(--ink);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.suiyuanPlaceLink span {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.suiyuanPlaceLink.is-active {
+  border-color: var(--line-strong);
+  background: linear-gradient(180deg, rgba(30, 108, 86, 0.1), rgba(255, 255, 255, 0.92));
+}
+
+.suiyuanMapSection {
+  margin-top: 18px;
+}
+
+.suiyuanMapLayout > * {
+  min-width: 0;
+}
+
+.suiyuanMap {
+  width: 100%;
+  height: 560px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.suiyuanSubcard {
+  height: 100%;
+  min-width: 0;
+}
+
+.suiyuanPlaceLink {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 0 0 12px;
+}
+
+.suiyuanPlaceLink:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.suiyuanTimelineItem {
+  padding: 10px 0 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.suiyuanTimelineItem:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.suiyuanInfoWindow strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.suiyuanInfoWindow p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.68;
+}
+
+.metric__value {
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 980px) {
   .grid,
   .typeGrid {
@@ -335,6 +460,18 @@ a:hover {
 
   .mini-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .suiyuanEssayGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .suiyuanWeatherBar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .suiyuanMap {
+    height: 440px;
   }
 }
 
@@ -375,6 +512,14 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .suiyuanWeather__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .suiyuanWeatherBar {
+    grid-template-columns: 1fr;
+  }
+
   .typeCard__top {
     flex-direction: column;
     align-items: flex-start;
@@ -383,6 +528,10 @@ a:hover {
   .back {
     width: 100%;
     justify-content: center;
+  }
+
+  .suiyuanMap {
+    height: 340px;
   }
 
   .table {

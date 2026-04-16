@@ -53,8 +53,10 @@ python -m http.server 5173
 - [app/evaluation-system.html](../app/evaluation-system.html)：评价体系页
 - [app/privacy.html](../app/privacy.html)：隐私与免责声明页
 - [app/type-gallery.html](../app/type-gallery.html)：16 类结果图鉴页
+- [app/suiyuan.html](../app/suiyuan.html)：关于随园页面，含路线、地图与天气模块
 - [app/question-bank.js](../app/question-bank.js)：当前网页实际使用的题库与结果类型库
 - [app/nsti-v2.js](../app/nsti-v2.js)：答题、计分、结果生成逻辑
+- [app/suiyuan.js](../app/suiyuan.js)：随园页面的数据渲染、地图与天气逻辑
 - [app/styles.css](../app/styles.css)：首页、测评页、结果页样式
 - [app/docs-ui.css](../app/docs-ui.css)：说明页与图鉴页通用样式
 
