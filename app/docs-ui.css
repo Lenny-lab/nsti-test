@@ -400,6 +400,8 @@ a:hover {
 
 .suiyuanMapSection {
   margin-top: 18px;
+  padding-bottom: 24px;
+  overflow: hidden;
 }
 
 .suiyuanMapLayout > * {
@@ -495,7 +497,7 @@ a:hover {
 }
 
 .suiyuanDetailCard {
-  margin-top: 12px;
+  margin-top: 16px;
   padding: 18px 22px 20px;
 }
 
@@ -510,6 +512,10 @@ a:hover {
 
 .suiyuanDetailCard .typeChipWrap {
   margin-top: 12px;
+}
+
+#suiyuanTimelineSection {
+  margin-top: 20px;
 }
 
 @media (max-width: 980px) {
