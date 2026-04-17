@@ -150,7 +150,6 @@
       </div>
       <div class="typeChipWrap">
         ${point.tags.map((tag) => `<span class="typeChip">${tag}</span>`).join("")}
-        <span class="typeChip">坐标 · ${point.position[0].toFixed(6)}, ${point.position[1].toFixed(6)}</span>
       </div>
     `;
   }
@@ -200,22 +199,36 @@
     infoWindow.open(map, point.position);
   }
 
-  function setWeatherValues({ weather, temperature, wind, time, note }) {
+  function setWeatherValues({ weather, temperature }) {
     $("weatherText").textContent = weather;
     $("weatherTemp").textContent = temperature;
-    $("weatherWind").textContent = wind;
-    $("weatherTime").textContent = time;
-    $("weatherNote").textContent = note;
   }
 
-  function setWeatherFallback(note) {
+  function setWeatherFallback() {
     setWeatherValues({
-      weather: "天气未获取",
-      temperature: "请稍后",
-      wind: "暂不可用",
-      time: "等待刷新",
-      note,
+      weather: "--",
+      temperature: "--",
     });
+  }
+
+  async function tryServerWeather() {
+    const response = await fetch(`/api/suiyuan-weather?city=${encodeURIComponent(DATA.campus.adcode)}`, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const data = await response.json();
+    const live = data && data.live;
+
+    if (!response.ok || !data || data.status !== "1" || !live) {
+      throw new Error((data && data.info) || "站内天气接口没有返回数据");
+    }
+
+    return {
+      weather: live.weather || "天气正常",
+      temperature: live.temperature ? `${live.temperature}°C` : "--",
+    };
   }
 
   async function tryPluginWeather(AMap) {
@@ -241,9 +254,6 @@
         return {
           weather: live.weather || "天气正常",
           temperature: live.temperature ? `${live.temperature}°C` : "--",
-          wind: `${live.windDirection || live.winddirection || "风向"} ${live.windPower || live.windpower || "--"} 级`,
-          time: live.reportTime || live.reporttime || "刚刚更新",
-          note: `天气按 ${live.city || DATA.campus.district} 区域展示`,
         };
       } catch (error) {
         continue;
@@ -267,34 +277,34 @@
     return {
       weather: live.weather || "天气正常",
       temperature: live.temperature ? `${live.temperature}°C` : "--",
-      wind: `${live.winddirection || "风向"} ${live.windpower || "--"} 级`,
-      time: live.reporttime || "刚刚更新",
-      note: `天气按 ${live.city || DATA.campus.district} 区域展示`,
     };
   }
 
   async function loadWeather(AMap) {
     try {
-      const values = await tryPluginWeather(AMap);
+      const values = await tryServerWeather();
       setWeatherValues(values);
       return;
-    } catch (pluginError) {
+    } catch (serverError) {
       try {
-        const values = await tryWebServiceWeather();
+        const values = await tryPluginWeather(AMap);
         setWeatherValues(values);
         return;
-      } catch (serviceError) {
-        setWeatherFallback("天气暂时没有取到，可能是当前 key、域名白名单或网络权限还没有完全生效");
+      } catch (pluginError) {
+        try {
+          const values = await tryWebServiceWeather();
+          setWeatherValues(values);
+          return;
+        } catch (serviceError) {
+          setWeatherFallback();
+        }
       }
     }
   }
 
   async function initMap() {
-    const tips = $("mapTips");
-
     if (!window.AMapLoader) {
-      tips.textContent = "高德地图加载器没有成功引入，右侧地标文字仍然可以正常浏览";
-      setWeatherFallback("天气接口没有成功加载，但不影响继续浏览随园页面");
+      await loadWeather(null);
       return;
     }
 
@@ -335,11 +345,9 @@
       });
 
       focusPoint(state.pointId);
-      tips.textContent = "地图已加载。你可以点地图上的圆点，也可以从右侧列表切换地标";
       await loadWeather(AMap);
     } catch (error) {
-      tips.textContent = "地图暂时没有成功加载，常见原因是 key、securityJsCode、域名白名单或当前网络权限限制";
-      setWeatherFallback("天气暂时没有取到，可能是当前 key 还没有完成对应服务权限的配置");
+      await loadWeather(null);
     }
   }
 

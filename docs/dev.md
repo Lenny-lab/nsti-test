@@ -2,14 +2,14 @@
 
 ## 1. 项目形态
 
-NSTI 当前是一个纯静态网站：
+NSTI 当前以静态页面为主，另带一个轻量天气接口：
 
-- 没有后端服务
 - 没有数据库
 - 没有账号系统
 - 所有结果都在浏览器端即时计算
+- 随园天气通过 Vercel `api` 目录下的函数获取
 
-线上运行时真正需要的只有 [app](../app) 目录和根目录的 [index.html](../index.html)
+线上运行时真正需要的是 [app](../app)、[api](../api) 和根目录的 [index.html](../index.html)
 
 ## 2. 本地运行
 
@@ -53,12 +53,13 @@ python -m http.server 5173
 - [app/evaluation-system.html](../app/evaluation-system.html)：评价体系页
 - [app/privacy.html](../app/privacy.html)：隐私与免责声明页
 - [app/type-gallery.html](../app/type-gallery.html)：16 类结果图鉴页
-- [app/suiyuan.html](../app/suiyuan.html)：关于随园页面，含路线、地图与天气模块
+- [app/suiyuan.html](../app/suiyuan.html)：关于随园页面，含地图、天气与地标模块
 - [app/question-bank.js](../app/question-bank.js)：当前网页实际使用的题库与结果类型库
 - [app/nsti-v2.js](../app/nsti-v2.js)：答题、计分、结果生成逻辑
 - [app/suiyuan.js](../app/suiyuan.js)：随园页面的数据渲染、地图与天气逻辑
 - [app/styles.css](../app/styles.css)：首页、测评页、结果页样式
 - [app/docs-ui.css](../app/docs-ui.css)：说明页与图鉴页通用样式
+- [api/suiyuan-weather.js](../api/suiyuan-weather.js)：随园页天气查询接口
 
 ## 5. 内容维护
 

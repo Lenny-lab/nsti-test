@@ -342,13 +342,15 @@ a:hover {
 
 .suiyuanWeatherBar {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 168px));
+  justify-content: start;
+  gap: 10px;
   margin-top: 14px;
 }
 
 .suiyuanMapLayout {
   margin-top: 14px;
+  align-items: start;
 }
 
 .suiyuanWeather__grid {
@@ -367,6 +369,10 @@ a:hover {
 .suiyuanTimeline {
   display: grid;
   gap: 12px;
+}
+
+.suiyuanPlaceList {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .suiyuanPlaceLink {
@@ -409,22 +415,22 @@ a:hover {
 }
 
 .suiyuanSubcard {
-  height: 100%;
+  height: auto;
   min-width: 0;
 }
 
 .suiyuanPlaceLink {
   width: 100%;
   text-align: left;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  padding: 0 0 12px;
+  min-height: 92px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 14px 16px;
 }
 
 .suiyuanPlaceLink:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 14px;
 }
 
 .suiyuanTimelineItem {
@@ -452,6 +458,27 @@ a:hover {
   overflow-wrap: anywhere;
 }
 
+.suiyuanWeatherBar .metric {
+  padding: 12px 14px;
+  border-radius: 16px;
+}
+
+.suiyuanWeatherBar .metric__value {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.suiyuanMapHint {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.suiyuanPointDetail .section__body {
+  margin-top: 10px;
+}
+
 @media (max-width: 980px) {
   .grid,
   .typeGrid {
@@ -467,7 +494,7 @@ a:hover {
   }
 
   .suiyuanWeatherBar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 150px));
   }
 
   .suiyuanMap {
@@ -517,6 +544,10 @@ a:hover {
   }
 
   .suiyuanWeatherBar {
+    grid-template-columns: 1fr;
+  }
+
+  .suiyuanPlaceList {
     grid-template-columns: 1fr;
   }
 

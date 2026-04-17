@@ -68,9 +68,6 @@
       <section class="card section suiyuanMapSection">
         <div class="section__eyebrow">Map</div>
         <h2 class="section__title">随园在地图上的位置</h2>
-        <div class="section__body">
-          地图里保留了几个更容易被记住的点位。天气信息也放在这里，方便一起查看。
-        </div>
         <div class="suiyuanWeatherBar" id="suiyuanWeather">
           <div class="metric">
             <div class="metric__label">当前天气</div>
@@ -80,24 +77,11 @@
             <div class="metric__label">气温</div>
             <div class="metric__value" id="weatherTemp">--</div>
           </div>
-          <div class="metric">
-            <div class="metric__label">风向风力</div>
-            <div class="metric__value" id="weatherWind">--</div>
-          </div>
-          <div class="metric">
-            <div class="metric__label">更新时间</div>
-            <div class="metric__value" id="weatherTime">等待数据</div>
-          </div>
         </div>
         <div class="grid suiyuanMapLayout">
           <div>
             <div id="amap-container" class="suiyuanMap"></div>
-            <div class="callout suiyuanInlineCallout" id="weatherNote">
-              正在加载当前天气信息
-            </div>
-            <div class="callout suiyuanInlineCallout" id="mapTips">
-              地图加载中。即使地图没有成功显示，你仍然可以继续浏览右侧的地标文字。
-            </div>
+            <div class="suiyuanMapHint" id="mapTips">点击地图圆点或右侧地标，可查看对应位置</div>
           </div>
 
           <div class="suiyuanPointPanels">
@@ -107,7 +91,7 @@
               <div class="suiyuanPlaceList" id="suiyuanPlaceList"></div>
             </article>
 
-            <article class="card section suiyuanSubcard" id="pointDetail"></article>
+            <article class="card section suiyuanSubcard suiyuanPointDetail" id="pointDetail"></article>
           </div>
         </div>
       </section>

@@ -9,3 +9,4 @@ scripts
 *.csv
 !index.html
 !app/**
+!api/**
