@@ -67,7 +67,7 @@
 
       <section class="card section suiyuanMapSection">
         <div class="section__eyebrow">Map</div>
-        <h2 class="section__title">随园在地图上的位置</h2>
+        <h2 class="section__title">在地图上发现</h2>
         <div class="suiyuanWeatherBar" id="suiyuanWeather">
           <div class="metric">
             <div class="metric__label">当前天气</div>
@@ -79,21 +79,17 @@
           </div>
         </div>
         <div class="grid suiyuanMapLayout">
-          <div>
+          <div class="suiyuanMapColumn">
             <div id="amap-container" class="suiyuanMap"></div>
             <div class="suiyuanMapHint" id="mapTips">点击地图圆点或右侧地标，可查看对应位置</div>
           </div>
-
-          <div class="suiyuanPointPanels">
-            <article class="card section suiyuanSubcard">
-              <div class="section__eyebrow">Landmarks</div>
-              <h3 class="section__title">几个仍然会被记住的点</h3>
-              <div class="suiyuanPlaceList" id="suiyuanPlaceList"></div>
-            </article>
-
-            <article class="card section suiyuanSubcard suiyuanPointDetail" id="pointDetail"></article>
-          </div>
+          <article class="card section suiyuanSubcard suiyuanLandmarksCard">
+            <div class="section__eyebrow">Landmarks</div>
+            <h3 class="section__title">几个仍然会被记住的点</h3>
+            <div class="suiyuanPlaceList" id="suiyuanPlaceList"></div>
+          </article>
         </div>
+        <article class="card section suiyuanDetailCard" id="pointDetail"></article>
       </section>
 
       <section class="card section" id="suiyuanTimelineSection">
