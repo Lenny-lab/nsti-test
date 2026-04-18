@@ -103,6 +103,30 @@
         方便第一次来的人先有一个印象。
       </div>
 
+      <section class="suiyuanNextEntry" aria-label="下一页入口">
+        <button class="suiyuanNextButton" id="nextPageTrigger" type="button">下一页这样展开</button>
+        <div class="card section suiyuanNextPanel" id="nextPagePanel" hidden>
+          <div class="section__eyebrow">Next Page</div>
+          <h2 class="section__title">输入密码，继续往下</h2>
+          <div class="section__body">
+            <label class="suiyuanNextLabel" for="nextPagePassword">访问密码</label>
+            <div class="suiyuanNextForm">
+              <input
+                class="suiyuanNextInput"
+                id="nextPagePassword"
+                name="nextPagePassword"
+                type="password"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="请输入密码"
+              />
+              <button class="suiyuanNextSubmit" id="nextPageSubmit" type="button">进入</button>
+            </div>
+            <p class="suiyuanNextHint" id="nextPageHint">提示：你的生日</p>
+          </div>
+        </div>
+      </section>
+
       <footer class="footer">
         <a href="./question-bank.html">题库</a>
         <span class="footer__sep">·</span>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>下一页</title>
+    <link rel="stylesheet" href="./docs-ui.css" />
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+
+      .next-page-shell {
+        width: min(760px, calc(100% - 32px));
+      }
+
+      .next-page-card {
+        padding: 34px 32px;
+        text-align: center;
+      }
+
+      .next-page-title {
+        margin: 8px 0 0;
+        font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.4;
+      }
+
+      .next-page-copy {
+        margin: 18px 0 0;
+        color: var(--ink-soft);
+        font-size: 17px;
+        line-height: 1.95;
+      }
+
+      .next-page-copy p {
+        margin: 0;
+      }
+
+      .next-page-copy p + p {
+        margin-top: 10px;
+      }
+
+      @media (max-width: 720px) {
+        .next-page-card {
+          padding: 26px 22px;
+        }
+
+        .next-page-copy {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page next-page-shell">
+      <section class="card next-page-card">
+        <div class="eyebrow">Next Page</div>
+        <h1 class="next-page-title">永远相信美好的事情会发生</h1>
+        <div class="next-page-copy">
+          <p>我们做的所有选择都是对的，因为结果自己承担</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
