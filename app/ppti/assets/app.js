@@ -158,6 +158,13 @@ function saveState() {
   );
 }
 
+function clearState() {
+  state.answers = {};
+  state.questionIndex = 0;
+  state.result = null;
+  localStorage.removeItem(STORAGE_KEY);
+}
+
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -415,6 +422,7 @@ function renderResult() {
 
   els.resultLinks.innerHTML = `
     <div class="docLinks">
+      <a href="./index.html?reset=1">返回 PPTI 首页</a>
       <a href="./type-gallery.html">浏览角色图鉴</a>
       <a href="./question-bank.html">查看题库</a>
       <a href="./evaluation-system.html">查看评价体系</a>
@@ -424,9 +432,7 @@ function renderResult() {
 }
 
 function startQuiz() {
-  state.answers = {};
-  state.questionIndex = 0;
-  state.result = null;
+  clearState();
   saveState();
   renderQuestion();
   showScreen("test");
@@ -488,7 +494,13 @@ function bindEvents() {
 }
 
 function init() {
-  loadState();
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("reset") === "1") {
+    clearState();
+    window.history.replaceState({}, document.title, window.location.pathname);
+  } else {
+    loadState();
+  }
   renderIntroAxes();
   bindEvents();
 
