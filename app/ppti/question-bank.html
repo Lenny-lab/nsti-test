@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>题库</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand__eyebrow">佩奇宇宙互动测评</div>
+        <div class="brand__title">题库</div>
+      </div>
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--link" href="../../index.html">返回 NSTI 首页</a>
+      </div>
+    </header>
+
+    <section class="card pageHero">
+      <div class="eyebrow">正式题库</div>
+      <h1 class="pageHero__title">题库</h1>
+      <p class="pageHero__subtitle">这里展示当前正式用于网站的 24 道维度题。</p>
+      <div class="actions">
+        <a class="btn btn--primary btn--link" href="./index.html">返回 PPTI 首页</a>
+        <a class="btn btn--ghost btn--link" href="./evaluation-system.html">查看评价体系</a>
+        <a class="btn btn--ghost btn--link" href="../../index.html">回到 NSTI</a>
+      </div>
+    </section>
+
+    <section class="card" id="questionList"></section>
+  </main>
+
+  <script src="./assets/ppti-data.js"></script>
+  <script>
+    const DIMENSION_META = {
+      spark: "泥坑活力",
+      heart: "朋友相处感",
+      craft: "日常安排感",
+      moxie: "带头劲头",
+    };
+    const isBrokenText = (value) => !value || /[�锟]/.test(value);
+    const pickText = (...values) => values.find((value) => typeof value === "string" && value.trim() && !isBrokenText(value)) || values.find((value) => typeof value === "string") || "";
+    const host = document.getElementById("questionList");
+    const dimMap = Object.fromEntries(window.PPTI_DATA.framework.dimensions.map((item) => [item.id, pickText(item.name, DIMENSION_META[item.id], item.id)]));
+    host.innerHTML = window.PPTI_DATA.framework.questions.map((question, index) => `
+      <article class="pagePanel">
+        <div class="pagePanel__title">第 ${index + 1} 题 · ${dimMap[question.dimension] || question.dimension}</div>
+        <div class="pagePanel__body">
+          <p>${question.prompt}</p>
+          <ul class="stackList stackList--muted">
+            ${question.options.map((option) => `<li>${option.label}</li>`).join("")}
+          </ul>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>

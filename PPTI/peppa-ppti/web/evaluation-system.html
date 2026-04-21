@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评价体系</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand__eyebrow">佩奇宇宙互动测评</div>
+        <div class="brand__title">评价体系</div>
+      </div>
+    </header>
+
+    <section class="card pageHero">
+      <div class="eyebrow">维度说明</div>
+      <h1 class="pageHero__title">评价体系</h1>
+      <p class="pageHero__subtitle">当前测试使用四个维度来描述“你如何出现、互动、推进和主导”。</p>
+      <p class="pageHero__text">这四轴不是心理学诊断模型，而是为了把角色数据和用户作答统一到同一套可解释的匹配框架里。</p>
+      <div class="actions">
+        <a class="btn btn--primary btn--link" href="./index.html">返回首页</a>
+        <a class="btn btn--ghost btn--link" href="./question-bank.html">查看题库</a>
+      </div>
+    </section>
+
+    <section class="axisGrid" id="systemGrid"></section>
+  </main>
+
+  <script src="../data/processed/ppti_dataset.js"></script>
+  <script>
+    const grid = document.getElementById("systemGrid");
+    grid.innerHTML = window.PPTI_DATA.framework.dimensions.map((dimension) => `
+      <section class="card">
+        <div class="eyebrow">${dimension.name}</div>
+        <h2 class="sectionHead__title">${dimension.left_label} / ${dimension.right_label}</h2>
+        <p class="bodyText">${dimension.summary}</p>
+      </section>
+    `).join("");
+  </script>
+</body>
+</html>

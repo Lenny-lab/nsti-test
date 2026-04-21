@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>角色图鉴</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand__eyebrow">佩奇宇宙互动测评</div>
+        <div class="brand__title">角色图鉴</div>
+      </div>
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--link" href="../../index.html">返回 NSTI 首页</a>
+      </div>
+    </header>
+
+    <section class="card pageHero">
+      <div class="eyebrow">角色资料库</div>
+      <h1 class="pageHero__title">角色图鉴</h1>
+      <p class="pageHero__subtitle">浏览角色资料、性格标签和结果候选角色，看看这套测试在拿什么做匹配。</p>
+      <p class="pageHero__text">这里展示的是用于测试匹配的角色资料层，包括角色简介、标签、物种和是否为主结果候选。</p>
+      <div class="actions">
+        <a class="btn btn--primary btn--link" href="./index.html">返回 PPTI 首页</a>
+        <a class="btn btn--ghost btn--link" href="./evaluation-system.html">查看评价体系</a>
+        <a class="btn btn--ghost btn--link" href="../../index.html">回到 NSTI</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="filterBar">
+        <label class="field">
+          <span class="field__label">搜索角色</span>
+          <input id="gallerySearch" type="search" placeholder="例如：佩奇 / 乔治 / 猪妈妈">
+        </label>
+        <label class="field">
+          <span class="field__label">筛选标签</span>
+          <select id="galleryTrait">
+            <option value="">全部标签</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">角色范围</span>
+          <select id="galleryScope">
+            <option value="all">全部角色</option>
+            <option value="featured">仅结果候选</option>
+          </select>
+        </label>
+      </div>
+      <div class="sectionHead">
+        <div>
+          <div class="sectionHead__eyebrow">角色列表</div>
+          <h2 class="sectionHead__title">角色档案</h2>
+        </div>
+        <div class="metaText" id="galleryCount"></div>
+      </div>
+      <div class="galleryGrid" id="galleryGrid"></div>
+    </section>
+  </main>
+
+  <script src="./assets/ppti-data.js"></script>
+  <script>
+    const data = window.PPTI_DATA;
+    const state = { query: "", trait: "", scope: "all" };
+    const CHARACTER_NAME_MAP = {
+      "Peppa Pig": "佩奇",
+      "George Pig": "乔治",
+      "Daddy Pig": "猪爸爸",
+      "Mummy Pig": "猪妈妈",
+      "Suzy Sheep": "苏西羊",
+      "Rebecca Rabbit": "瑞贝卡兔",
+      "Pedro Pony": "佩德罗小马",
+      "Danny Dog": "丹尼狗",
+      "Candy Cat": "坎迪猫",
+      "Emily Elephant": "艾米丽象",
+      "Edmond Elephant": "埃德蒙象",
+      "Gerald Giraffe": "杰拉德长颈鹿",
+      "Madame Gazelle": "羚羊老师",
+      "Chloé Pig": "克洛伊猪",
+      "Chloe Pig": "克洛伊猪",
+      "Grandpa Pig": "猪爷爷",
+      "Granny Pig": "猪奶奶",
+      "Grampy Rabbit": "兔爷爷",
+      "Mummy Rabbit": "兔妈妈",
+      "Daddy Rabbit": "兔爸爸",
+      "Mandy Mouse": "曼迪鼠",
+      "The Queen": "女王",
+      "Freddy Fox": "弗雷迪狐狸",
+      "Zoe Zebra": "斑马佐伊",
+      "Richard Rabbit": "理查德兔",
+      "Polly Parrot": "鹦鹉波莉",
+    };
+    const isBrokenText = (value) => !value || /[�锟]/.test(value);
+    const pickText = (...values) => values.find((value) => typeof value === "string" && value.trim() && !isBrokenText(value)) || values.find((value) => typeof value === "string") || "";
+    const pickList = (...lists) => lists.find((list) => Array.isArray(list) && list.length && list.every((item) => !isBrokenText(item))) || lists.find(Array.isArray) || [];
+    const els = {
+      search: document.getElementById("gallerySearch"),
+      trait: document.getElementById("galleryTrait"),
+      scope: document.getElementById("galleryScope"),
+      count: document.getElementById("galleryCount"),
+      grid: document.getElementById("galleryGrid"),
+    };
+
+    function collectTraits() {
+      const set = new Set();
+      data.characters.forEach((item) => (item.combined_traits || []).forEach((trait) => set.add(trait)));
+      return [...set].sort((a, b) => a.localeCompare(b));
+    }
+
+    function renderTraitOptions() {
+      els.trait.insertAdjacentHTML(
+        "beforeend",
+        collectTraits().map((trait) => `<option value="${trait}">${trait}</option>`).join(""),
+      );
+    }
+
+    function matches(item) {
+      const haystack = [
+        pickText(item.name_zh, item.name, ""),
+        pickText(item.summary_zh, item.summary, ""),
+        pickText(item.species_zh, item.species, ""),
+        pickList(item.combined_traits_zh, item.combined_traits).join(" "),
+      ].join(" ").toLowerCase();
+      const queryOk = !state.query || haystack.includes(state.query.toLowerCase());
+      const traitOk = !state.trait || pickList(item.combined_traits_zh, item.combined_traits).includes(state.trait);
+      const scopeOk = state.scope === "all" || item.featured;
+      return queryOk && traitOk && scopeOk;
+    }
+
+    function render() {
+      const rows = data.characters.filter(matches);
+      els.count.textContent = `当前显示 ${rows.length} / ${data.characters.length} 个角色`;
+      if (!rows.length) {
+        els.grid.innerHTML = '<div class="galleryCard emptyState">没有匹配结果</div>';
+        return;
+      }
+      els.grid.innerHTML = rows.map((item) => `
+        <article class="galleryCard">
+          <div class="galleryCard__head">
+            <div>
+              <div class="eyebrow">${item.featured ? "结果候选" : "角色资料"}</div>
+              <div class="galleryCard__title">${pickText(item.name_zh, CHARACTER_NAME_MAP[item.name], item.name, "未命名角色")}</div>
+            </div>
+            <a href="${item.url}" target="_blank" rel="noreferrer">来源</a>
+          </div>
+          <p class="metaText">${pickText(item.species_zh, item.species, "未知物种")}${pickText(item.gender_zh, item.gender, "") ? ` · ${pickText(item.gender_zh, item.gender, "")}` : ""}</p>
+          <p class="galleryCard__body">${pickText(item.summary_zh, `这是关于${pickText(item.name_zh, CHARACTER_NAME_MAP[item.name], item.name, "这个角色")}的一条角色资料，当前页面保留了更适合快速浏览的简介内容。`)}</p>
+          <div class="chipWrap">${pickList(item.combined_traits_zh, item.combined_traits).map((trait) => `<span class="chip">${trait}</span>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+
+    els.search.addEventListener("input", (event) => { state.query = event.target.value; render(); });
+    els.trait.addEventListener("change", (event) => { state.trait = event.target.value; render(); });
+    els.scope.addEventListener("change", (event) => { state.scope = event.target.value; render(); });
+
+    renderTraitOptions();
+    render();
+  </script>
+</body>
+</html>

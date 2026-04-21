@@ -1,0 +1,10 @@
+{
+  "name": "peppa-ppti",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Deployable static Peppa Pig Ti quiz site",
+  "scripts": {
+    "build": "python scripts\\build_dataset.py",
+    "start": "python -m http.server 4173 -d dist"
+  }
+}

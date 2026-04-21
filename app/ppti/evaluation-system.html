@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评价体系</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand__eyebrow">佩奇宇宙互动测评</div>
+        <div class="brand__title">评价体系</div>
+      </div>
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--link" href="../../index.html">返回 NSTI 首页</a>
+      </div>
+    </header>
+
+    <section class="card pageHero">
+      <div class="eyebrow">维度说明</div>
+      <h1 class="pageHero__title">评价体系</h1>
+      <p class="pageHero__subtitle">当前测试使用四个维度来描述“你如何出现、互动、推进和主导”。</p>
+      <p class="pageHero__text">这四轴不是心理学诊断模型，而是为了把角色数据和用户作答统一到同一套更容易理解的匹配框架里。</p>
+      <div class="actions">
+        <a class="btn btn--primary btn--link" href="./index.html">返回 PPTI 首页</a>
+        <a class="btn btn--ghost btn--link" href="./question-bank.html">查看题库</a>
+        <a class="btn btn--ghost btn--link" href="../../index.html">回到 NSTI</a>
+      </div>
+    </section>
+
+    <section class="axisGrid" id="systemGrid"></section>
+  </main>
+
+  <script src="./assets/ppti-data.js"></script>
+  <script>
+    const DIMENSION_META = {
+      spark: { name: "泥坑活力", left_label: "慢热观察派", right_label: "一踩就跳派", summary: "看你更像先看看情况，还是一见到好玩的事就立刻冲上去。" },
+      heart: { name: "朋友相处感", left_label: "自己节奏派", right_label: "贴心陪伴派", summary: "看你在和朋友、家人相处时，更偏自己的节奏还是更会照顾别人。" },
+      craft: { name: "日常安排感", left_label: "想到就做派", right_label: "稳稳安排派", summary: "看你更像边玩边想，还是会先把事情安排得明明白白。" },
+      moxie: { name: "带头劲头", left_label: "先跟着看派", right_label: "自然带队派", summary: "看你在一群人里更喜欢先跟着大家，还是会自然地把节奏带起来。" },
+    };
+    const isBrokenText = (value) => !value || /[�锟]/.test(value);
+    const pickText = (...values) => values.find((value) => typeof value === "string" && value.trim() && !isBrokenText(value)) || values.find((value) => typeof value === "string") || "";
+    const grid = document.getElementById("systemGrid");
+    grid.innerHTML = window.PPTI_DATA.framework.dimensions.map((dimension) => {
+      const fallback = DIMENSION_META[dimension.id] || {};
+      const name = pickText(dimension.name, fallback.name, dimension.id);
+      const leftLabel = pickText(dimension.left_label, fallback.left_label, "左侧偏好");
+      const rightLabel = pickText(dimension.right_label, fallback.right_label, "右侧偏好");
+      const summary = pickText(dimension.summary, fallback.summary, "");
+      return `
+      <section class="card">
+        <div class="eyebrow">${name}</div>
+        <h2 class="sectionHead__title">${leftLabel} / ${rightLabel}</h2>
+        <p class="bodyText">${summary}</p>
+      </section>
+    `;
+    }).join("");
+  </script>
+</body>
+</html>

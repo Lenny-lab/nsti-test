@@ -357,51 +357,6 @@
       if (!target) return;
       focusPoint(target.dataset.pointId);
     });
-
-    const trigger = $("nextPageTrigger");
-    const panel = $("nextPagePanel");
-    const input = $("nextPagePassword");
-    const submit = $("nextPageSubmit");
-    const hint = $("nextPageHint");
-
-    if (trigger && panel && input && submit && hint) {
-      const defaultHint = "提示：你的生日";
-
-      const togglePanel = () => {
-        const willOpen = panel.hasAttribute("hidden");
-        if (willOpen) {
-          panel.removeAttribute("hidden");
-          hint.textContent = defaultHint;
-          window.setTimeout(() => input.focus(), 30);
-        } else {
-          panel.setAttribute("hidden", "");
-          input.value = "";
-          hint.textContent = defaultHint;
-        }
-      };
-
-      const tryEnterNextPage = () => {
-        const password = input.value.trim();
-        if (password === "0725") {
-          hint.textContent = "验证通过，正在进入下一页";
-          window.location.href = "./next-page.html";
-          return;
-        }
-
-        hint.textContent = "密码不对，再试一次";
-        input.focus();
-        input.select();
-      };
-
-      trigger.addEventListener("click", togglePanel);
-      submit.addEventListener("click", tryEnterNextPage);
-      input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          tryEnterNextPage();
-        }
-      });
-    }
   }
 
   renderPoints();
