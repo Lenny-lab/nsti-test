@@ -533,6 +533,62 @@ a:hover {
   line-height: 1.9;
 }
 
+.resultHero__main {
+  flex: 1 1 420px;
+}
+
+.resultHero__art {
+  flex: 0 0 220px;
+}
+
+.portraitFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.34), transparent 58%),
+    rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 36px rgba(255, 110, 168, 0.16);
+}
+
+.portraitFrame--hero,
+.portraitFrame--detail,
+.galleryCard__media {
+  aspect-ratio: 1;
+}
+
+.portraitFrame--mini {
+  width: 74px;
+  height: 74px;
+  border-radius: 22px;
+  flex: 0 0 74px;
+}
+
+.galleryCard__media {
+  margin-bottom: 14px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.34), transparent 58%),
+    rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 28px rgba(255, 110, 168, 0.14);
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portraitImage--hero,
+.portraitImage--detail,
+.portraitImage--gallery {
+  aspect-ratio: 1;
+}
+
 .axes {
   display: grid;
   gap: 14px;
@@ -635,6 +691,37 @@ select {
   font-size: 13px;
 }
 
+.matchRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.matchRow + .matchRow {
+  border-top: 1px solid rgba(255, 137, 181, 0.16);
+}
+
+.matchRow__body {
+  min-width: 0;
+}
+
+.matchRow__title,
+.matchRow__meta {
+  margin: 0;
+}
+
+.matchRow__title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.matchRow__meta {
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
 .emptyState {
   padding: 28px;
   text-align: center;
@@ -731,6 +818,10 @@ select {
 
   .card {
     padding: 22px 16px;
+  }
+
+  .resultHero__art {
+    flex-basis: auto;
   }
 
   .actions,

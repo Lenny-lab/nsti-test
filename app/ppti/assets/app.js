@@ -87,6 +87,7 @@ const els = {
   resultType: document.getElementById("resultType"),
   resultTitle: document.getElementById("resultTitle"),
   resultOneLiner: document.getElementById("resultOneLiner"),
+  resultHeroPortrait: document.getElementById("resultHeroPortrait"),
   resultBadges: document.getElementById("resultBadges"),
   resultSummary: document.getElementById("resultSummary"),
   axes: document.getElementById("axes"),
@@ -111,6 +112,15 @@ function pickText(...values) {
     }
   }
   return typeof values[0] === "string" ? values[0].trim() : "";
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function getDimensionMeta(dimension) {
@@ -145,6 +155,22 @@ function displayCharacterTraits(item) {
   const rawTraits = Array.isArray(item.traits) ? item.traits : [];
   const rawCombined = Array.isArray(item.combined_traits) ? item.combined_traits : [];
   return zhTraits.length ? zhTraits : zhCombined.length ? zhCombined : rawTraits.length ? rawTraits : rawCombined;
+}
+
+function renderCharacterPortrait(item, variant = "card") {
+  const portraits = window.PPTI_PORTRAITS;
+  if (!item || !portraits?.getPortraitSrc) return "";
+  return `
+    <div class="portraitFrame portraitFrame--${variant}">
+      <img
+        class="portraitImage portraitImage--${variant}"
+        src="${portraits.getPortraitSrc(item)}"
+        alt="${escapeHtml(`${displayCharacterName(item)} portrait`)}"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+  `;
 }
 
 function saveState() {
@@ -345,6 +371,9 @@ function renderResult() {
   els.resultType.textContent = result.type;
   els.resultTitle.textContent = result.title;
   els.resultOneLiner.textContent = result.oneLiner;
+  if (els.resultHeroPortrait) {
+    els.resultHeroPortrait.innerHTML = renderCharacterPortrait(result.top, "hero");
+  }
 
   els.resultBadges.innerHTML = [
     `最像角色 · ${displayCharacterName(result.top)}`,
@@ -394,6 +423,7 @@ function renderResult() {
   `;
 
   els.resultCharacter.innerHTML = `
+    ${renderCharacterPortrait(result.top, "detail")}
     <p><strong>${displayCharacterName(result.top)}</strong>${displayCharacterSpecies(result.top) ? ` · ${displayCharacterSpecies(result.top)}` : ""}</p>
     <p>${displayCharacterSummary(result.top)}</p>
     <div class="chipWrap">${displayCharacterTraits(result.top).map((trait) => `<span class="chip">${trait}</span>`).join("")}</div>
@@ -418,6 +448,18 @@ function renderResult() {
 
   els.resultTopMatches.innerHTML = result.ranking
     .map((item, index) => `<p>${index + 1}. ${displayCharacterName(item)} · ${item.similarity}%</p>`)
+    .join("");
+
+  els.resultTopMatches.innerHTML = result.ranking
+    .map((item, index) => `
+      <article class="matchRow">
+        ${renderCharacterPortrait(item, "mini")}
+        <div class="matchRow__body">
+          <p class="matchRow__title">${index + 1}. ${displayCharacterName(item)}</p>
+          <p class="matchRow__meta">${item.similarity}%</p>
+        </div>
+      </article>
+    `)
     .join("");
 
   els.resultLinks.innerHTML = `
