@@ -69,21 +69,21 @@
   }
 
   function inferSpeciesKey(item) {
-    const raw = `${item?.species || ""} ${item?.species_zh || ""} ${item?.name || ""}`.toLowerCase();
-    if (raw.includes("pig") || raw.includes("猪")) return "pig";
-    if (raw.includes("rabbit") || raw.includes("兔")) return "rabbit";
-    if (raw.includes("dog") || raw.includes("狗")) return "dog";
-    if (raw.includes("cat") || raw.includes("猫")) return "cat";
-    if (raw.includes("elephant") || raw.includes("象")) return "elephant";
-    if (raw.includes("giraffe") || raw.includes("长颈鹿")) return "giraffe";
-    if (raw.includes("sheep") || raw.includes("羊")) return "sheep";
-    if (raw.includes("goat") || raw.includes("山羊")) return "goat";
-    if (raw.includes("fox") || raw.includes("狐")) return "fox";
-    if (raw.includes("zebra") || raw.includes("斑马")) return "zebra";
-    if (raw.includes("bear") || raw.includes("熊")) return "bear";
-    if (raw.includes("mouse") || raw.includes("鼠")) return "mouse";
-    if (raw.includes("panda") || raw.includes("熊猫")) return "panda";
-    if (raw.includes("human") || raw.includes("人")) return "human";
+    const raw = `${item?.slug || ""} ${item?.species || ""} ${item?.name || ""}`.toLowerCase();
+    if (raw.includes("pig")) return "pig";
+    if (raw.includes("rabbit")) return "rabbit";
+    if (raw.includes("dog")) return "dog";
+    if (raw.includes("cat")) return "cat";
+    if (raw.includes("elephant")) return "elephant";
+    if (raw.includes("giraffe")) return "giraffe";
+    if (raw.includes("sheep")) return "sheep";
+    if (raw.includes("goat")) return "goat";
+    if (raw.includes("fox")) return "fox";
+    if (raw.includes("zebra")) return "zebra";
+    if (raw.includes("bear")) return "bear";
+    if (raw.includes("mouse")) return "mouse";
+    if (raw.includes("panda")) return "panda";
+    if (raw.includes("queen") || raw.includes("human")) return "human";
     return "generic";
   }
 
@@ -104,44 +104,44 @@
     switch (kind) {
       case "pig":
         return `
-          <path d="M110 120 L138 84 L156 132 Z" fill="${style.face}" />
-          <path d="M290 120 L262 84 L244 132 Z" fill="${style.face}" />
-          <path d="M121 117 L138 96 L148 124 Z" fill="${style.inner}" />
-          <path d="M279 117 L262 96 L252 124 Z" fill="${style.inner}" />
+          <path d="M118 132 L142 94 L160 142 Z" fill="${style.face}" />
+          <path d="M282 132 L258 94 L240 142 Z" fill="${style.face}" />
+          <path d="M128 128 L142 106 L152 136 Z" fill="${style.inner}" />
+          <path d="M272 128 L258 106 L248 136 Z" fill="${style.inner}" />
         `;
       case "rabbit":
         return `
-          <rect x="126" y="36" width="26" height="108" rx="14" fill="${style.face}" />
-          <rect x="248" y="36" width="26" height="108" rx="14" fill="${style.face}" />
-          <rect x="132" y="52" width="14" height="78" rx="10" fill="${style.inner}" />
-          <rect x="254" y="52" width="14" height="78" rx="10" fill="${style.inner}" />
+          <rect x="132" y="34" width="24" height="108" rx="14" fill="${style.face}" />
+          <rect x="244" y="34" width="24" height="108" rx="14" fill="${style.face}" />
+          <rect x="138" y="50" width="12" height="78" rx="10" fill="${style.inner}" />
+          <rect x="250" y="50" width="12" height="78" rx="10" fill="${style.inner}" />
         `;
       case "dog":
         return `
-          <path d="M116 128 C90 110 76 154 112 180 C116 168 118 150 116 128 Z" fill="${style.accent}" opacity="0.82" />
-          <path d="M284 128 C310 110 324 154 288 180 C284 168 282 150 284 128 Z" fill="${style.accent}" opacity="0.82" />
+          <path d="M120 136 C94 120 84 158 116 184 C120 172 122 152 120 136 Z" fill="${style.accent}" opacity="0.82" />
+          <path d="M280 136 C306 120 316 158 284 184 C280 172 278 152 280 136 Z" fill="${style.accent}" opacity="0.82" />
         `;
       case "cat":
       case "fox":
         return `
-          <path d="M114 138 L148 80 L174 144 Z" fill="${style.face}" />
-          <path d="M286 138 L252 80 L226 144 Z" fill="${style.face}" />
-          <path d="M127 132 L148 98 L161 138 Z" fill="${style.inner}" />
-          <path d="M273 132 L252 98 L239 138 Z" fill="${style.inner}" />
+          <path d="M120 144 L150 88 L176 148 Z" fill="${style.face}" />
+          <path d="M280 144 L250 88 L224 148 Z" fill="${style.face}" />
+          <path d="M132 138 L150 104 L163 142 Z" fill="${style.inner}" />
+          <path d="M268 138 L250 104 L237 142 Z" fill="${style.inner}" />
         `;
       case "elephant":
         return `
-          <circle cx="122" cy="176" r="48" fill="${style.face}" opacity="0.92" />
-          <circle cx="278" cy="176" r="48" fill="${style.face}" opacity="0.92" />
-          <circle cx="122" cy="176" r="26" fill="${style.inner}" opacity="0.9" />
-          <circle cx="278" cy="176" r="26" fill="${style.inner}" opacity="0.9" />
+          <circle cx="124" cy="178" r="48" fill="${style.face}" opacity="0.92" />
+          <circle cx="276" cy="178" r="48" fill="${style.face}" opacity="0.92" />
+          <circle cx="124" cy="178" r="26" fill="${style.inner}" opacity="0.9" />
+          <circle cx="276" cy="178" r="26" fill="${style.inner}" opacity="0.9" />
         `;
       case "giraffe":
         return `
-          <rect x="134" y="92" width="16" height="48" rx="8" fill="${style.face}" />
-          <rect x="250" y="92" width="16" height="48" rx="8" fill="${style.face}" />
-          <circle cx="142" cy="88" r="12" fill="${style.accent}" />
-          <circle cx="258" cy="88" r="12" fill="${style.accent}" />
+          <rect x="138" y="94" width="14" height="46" rx="8" fill="${style.face}" />
+          <rect x="248" y="94" width="14" height="46" rx="8" fill="${style.face}" />
+          <circle cx="145" cy="90" r="11" fill="${style.accent}" />
+          <circle cx="255" cy="90" r="11" fill="${style.accent}" />
         `;
       case "sheep":
       case "goat":
@@ -149,106 +149,106 @@
       case "mouse":
       case "panda":
         return `
-          <circle cx="132" cy="132" r="26" fill="${style.face}" />
-          <circle cx="268" cy="132" r="26" fill="${style.face}" />
-          <circle cx="132" cy="132" r="12" fill="${style.inner}" />
-          <circle cx="268" cy="132" r="12" fill="${style.inner}" />
+          <circle cx="132" cy="136" r="24" fill="${style.face}" />
+          <circle cx="268" cy="136" r="24" fill="${style.face}" />
+          <circle cx="132" cy="136" r="11" fill="${style.inner}" />
+          <circle cx="268" cy="136" r="11" fill="${style.inner}" />
         `;
       case "human":
         return `
-          <path d="M126 124 C132 96 154 82 176 88" stroke="${style.accent}" stroke-width="10" stroke-linecap="round" fill="none" />
-          <path d="M274 124 C268 96 246 82 224 88" stroke="${style.accent}" stroke-width="10" stroke-linecap="round" fill="none" />
+          <path d="M132 132 C138 100 156 88 176 92" stroke="${style.accent}" stroke-width="10" stroke-linecap="round" fill="none" />
+          <path d="M268 132 C262 100 244 88 224 92" stroke="${style.accent}" stroke-width="10" stroke-linecap="round" fill="none" />
         `;
       default:
         return `
-          <circle cx="132" cy="132" r="22" fill="${style.face}" />
-          <circle cx="268" cy="132" r="22" fill="${style.face}" />
+          <circle cx="132" cy="136" r="20" fill="${style.face}" />
+          <circle cx="268" cy="136" r="20" fill="${style.face}" />
         `;
     }
   }
 
   function buildFace(kind, style, mood) {
     const mouth = mood === "calm"
-      ? '<path d="M178 286 C193 296 207 296 222 286" stroke="#6a2846" stroke-width="7" stroke-linecap="round" fill="none" />'
-      : '<path d="M168 278 C188 304 212 304 232 278" stroke="#6a2846" stroke-width="7" stroke-linecap="round" fill="none" />';
+      ? '<path d="M180 286 C194 294 206 294 220 286" stroke="#6a2846" stroke-width="7" stroke-linecap="round" fill="none" />'
+      : '<path d="M170 278 C188 302 212 302 230 278" stroke="#6a2846" stroke-width="7" stroke-linecap="round" fill="none" />';
     const eyes = kind === "panda"
       ? `
-        <ellipse cx="156" cy="218" rx="26" ry="30" fill="#20252f" opacity="0.88" />
-        <ellipse cx="244" cy="218" rx="26" ry="30" fill="#20252f" opacity="0.88" />
-        <circle cx="160" cy="218" r="12" fill="#fff" />
-        <circle cx="240" cy="218" r="12" fill="#fff" />
-        <circle cx="160" cy="218" r="5" fill="#3a2331" />
-        <circle cx="240" cy="218" r="5" fill="#3a2331" />
+        <ellipse cx="160" cy="220" rx="24" ry="28" fill="#20252f" opacity="0.88" />
+        <ellipse cx="240" cy="220" rx="24" ry="28" fill="#20252f" opacity="0.88" />
+        <circle cx="162" cy="220" r="10" fill="#fff" />
+        <circle cx="238" cy="220" r="10" fill="#fff" />
+        <circle cx="162" cy="220" r="5" fill="#3a2331" />
+        <circle cx="238" cy="220" r="5" fill="#3a2331" />
       `
       : `
-        <circle cx="160" cy="220" r="13" fill="#fff" />
-        <circle cx="240" cy="220" r="13" fill="#fff" />
-        <circle cx="160" cy="220" r="5" fill="#3a2331" />
-        <circle cx="240" cy="220" r="5" fill="#3a2331" />
+        <circle cx="164" cy="222" r="12" fill="#fff" />
+        <circle cx="236" cy="222" r="12" fill="#fff" />
+        <circle cx="164" cy="222" r="5" fill="#3a2331" />
+        <circle cx="236" cy="222" r="5" fill="#3a2331" />
       `;
 
     const cheeks = mood === "energetic"
       ? `
-        <circle cx="126" cy="248" r="16" fill="#ff8fb2" opacity="0.28" />
-        <circle cx="274" cy="248" r="16" fill="#ff8fb2" opacity="0.28" />
+        <circle cx="132" cy="248" r="14" fill="#ff8fb2" opacity="0.24" />
+        <circle cx="268" cy="248" r="14" fill="#ff8fb2" opacity="0.24" />
       `
       : "";
 
     const muzzle = {
       pig: `
-        <ellipse cx="200" cy="256" rx="54" ry="38" fill="${style.inner}" />
-        <ellipse cx="200" cy="256" rx="34" ry="22" fill="#f7b7cc" />
-        <circle cx="188" cy="256" r="5" fill="#c96a8b" />
-        <circle cx="212" cy="256" r="5" fill="#c96a8b" />
+        <ellipse cx="200" cy="258" rx="52" ry="36" fill="${style.inner}" />
+        <ellipse cx="200" cy="258" rx="32" ry="20" fill="#f7b7cc" />
+        <circle cx="188" cy="258" r="5" fill="#c96a8b" />
+        <circle cx="212" cy="258" r="5" fill="#c96a8b" />
       `,
       elephant: `
-        <path d="M185 244 C178 292 184 330 200 330 C216 330 222 292 215 244 Z" fill="${style.inner}" />
+        <path d="M186 246 C180 292 186 326 200 326 C214 326 220 292 214 246 Z" fill="${style.inner}" />
       `,
-      rabbit: `<ellipse cx="200" cy="258" rx="36" ry="26" fill="${style.inner}" />`,
-      dog: `<ellipse cx="200" cy="260" rx="46" ry="32" fill="${style.inner}" />`,
-      cat: `<ellipse cx="200" cy="258" rx="40" ry="28" fill="${style.inner}" />`,
-      fox: `<path d="M156 246 L244 246 L200 298 Z" fill="${style.inner}" />`,
-      giraffe: `<ellipse cx="200" cy="266" rx="44" ry="34" fill="${style.inner}" />`,
+      rabbit: `<ellipse cx="200" cy="258" rx="34" ry="24" fill="${style.inner}" />`,
+      dog: `<ellipse cx="200" cy="260" rx="44" ry="30" fill="${style.inner}" />`,
+      cat: `<ellipse cx="200" cy="258" rx="38" ry="26" fill="${style.inner}" />`,
+      fox: `<path d="M160 246 L240 246 L200 294 Z" fill="${style.inner}" />`,
+      giraffe: `<ellipse cx="200" cy="264" rx="42" ry="32" fill="${style.inner}" />`,
       sheep: `<ellipse cx="200" cy="258" rx="38" ry="26" fill="${style.inner}" />`,
       goat: `<ellipse cx="200" cy="258" rx="38" ry="26" fill="${style.inner}" />`,
-      bear: `<ellipse cx="200" cy="260" rx="42" ry="30" fill="${style.inner}" />`,
-      mouse: `<ellipse cx="200" cy="262" rx="34" ry="24" fill="${style.inner}" />`,
-      panda: `<ellipse cx="200" cy="260" rx="40" ry="30" fill="${style.inner}" />`,
-      human: `<path d="M188 252 C194 266 206 266 212 252" stroke="${style.accent}" stroke-width="6" stroke-linecap="round" fill="none" />`,
+      bear: `<ellipse cx="200" cy="260" rx="40" ry="28" fill="${style.inner}" />`,
+      mouse: `<ellipse cx="200" cy="262" rx="34" ry="22" fill="${style.inner}" />`,
+      panda: `<ellipse cx="200" cy="260" rx="38" ry="28" fill="${style.inner}" />`,
+      human: `<path d="M190 252 C194 264 206 264 210 252" stroke="${style.accent}" stroke-width="6" stroke-linecap="round" fill="none" />`,
       generic: `<ellipse cx="200" cy="258" rx="40" ry="28" fill="${style.inner}" />`,
     }[kind] || `<ellipse cx="200" cy="258" rx="40" ry="28" fill="${style.inner}" />`;
 
     const horns = kind === "goat"
       ? `
-        <path d="M126 124 C106 102 112 78 132 68" stroke="${style.accent}" stroke-width="9" stroke-linecap="round" fill="none" />
-        <path d="M274 124 C294 102 288 78 268 68" stroke="${style.accent}" stroke-width="9" stroke-linecap="round" fill="none" />
+        <path d="M128 126 C108 104 112 82 130 72" stroke="${style.accent}" stroke-width="8" stroke-linecap="round" fill="none" />
+        <path d="M272 126 C292 104 288 82 270 72" stroke="${style.accent}" stroke-width="8" stroke-linecap="round" fill="none" />
       `
       : "";
 
     const stripes = kind === "zebra"
       ? `
-        <path d="M150 152 L132 302" stroke="${style.accent}" stroke-width="10" opacity="0.9" />
-        <path d="M190 146 L176 306" stroke="${style.accent}" stroke-width="8" opacity="0.82" />
-        <path d="M230 146 L220 304" stroke="${style.accent}" stroke-width="8" opacity="0.82" />
-        <path d="M270 152 L268 290" stroke="${style.accent}" stroke-width="10" opacity="0.9" />
+        <path d="M150 154 L136 300" stroke="${style.accent}" stroke-width="10" opacity="0.9" />
+        <path d="M188 148 L178 302" stroke="${style.accent}" stroke-width="8" opacity="0.82" />
+        <path d="M226 148 L220 300" stroke="${style.accent}" stroke-width="8" opacity="0.82" />
+        <path d="M264 154 L264 292" stroke="${style.accent}" stroke-width="10" opacity="0.9" />
       `
       : "";
 
     const spots = kind === "giraffe"
       ? `
-        <circle cx="158" cy="178" r="14" fill="${style.accent}" opacity="0.36" />
-        <circle cx="238" cy="160" r="12" fill="${style.accent}" opacity="0.36" />
-        <circle cx="232" cy="232" r="14" fill="${style.accent}" opacity="0.36" />
-        <circle cx="168" cy="260" r="10" fill="${style.accent}" opacity="0.36" />
+        <circle cx="162" cy="180" r="12" fill="${style.accent}" opacity="0.34" />
+        <circle cx="236" cy="162" r="11" fill="${style.accent}" opacity="0.34" />
+        <circle cx="232" cy="232" r="12" fill="${style.accent}" opacity="0.34" />
+        <circle cx="170" cy="258" r="9" fill="${style.accent}" opacity="0.34" />
       `
       : "";
 
     const fluff = kind === "sheep"
       ? `
-        <circle cx="150" cy="130" r="26" fill="#fff" />
-        <circle cx="180" cy="112" r="30" fill="#fff" />
-        <circle cx="220" cy="112" r="30" fill="#fff" />
-        <circle cx="250" cy="130" r="26" fill="#fff" />
+        <circle cx="150" cy="134" r="24" fill="#fff" />
+        <circle cx="180" cy="114" r="28" fill="#fff" />
+        <circle cx="220" cy="114" r="28" fill="#fff" />
+        <circle cx="250" cy="134" r="24" fill="#fff" />
       `
       : "";
 
@@ -256,7 +256,7 @@
       ${horns}
       ${buildEars(kind, style)}
       ${fluff}
-      <ellipse cx="200" cy="214" rx="102" ry="118" fill="${style.face}" />
+      <ellipse cx="200" cy="214" rx="98" ry="112" fill="${style.face}" />
       ${stripes}
       ${spots}
       ${eyes}
@@ -267,60 +267,45 @@
     `;
   }
 
-  function buildBackground(item, palette) {
-    const seed = hash(item?.slug || item?.name || displayName(item));
-    const dots = Array.from({ length: 7 }, (_, index) => {
-      const x = 42 + ((seed >> (index % 8)) % 310);
-      const y = 52 + ((seed >> ((index + 3) % 8)) % 286);
-      const r = 10 + ((seed >> ((index + 5) % 8)) % 18);
-      return `<circle cx="${x}" cy="${y}" r="${r}" fill="rgba(255,255,255,0.22)" />`;
-    }).join("");
-    return `
-      <defs>
-        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="${palette.from}" />
-          <stop offset="100%" stop-color="${palette.to}" />
-        </linearGradient>
-        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="${palette.shadow}" flood-opacity="0.28" />
-        </filter>
-      </defs>
-      <rect width="400" height="400" rx="44" fill="url(#bg)" />
-      <rect x="22" y="22" width="356" height="356" rx="34" fill="rgba(255,255,255,0.14)" />
-      ${dots}
-    `;
-  }
-
   function buildPortraitSvg(item) {
+    const seed = hash(item?.slug || item?.name || displayName(item));
+    const bgId = `bg-${seed}`;
+    const shadowId = `shadow-${seed}`;
+    const clipId = `clip-${seed}`;
     const style = SPECIES_STYLES[inferSpeciesKey(item)] || SPECIES_STYLES.generic;
     const palette = pickPalette(item);
     const traits = []
-      .concat(Array.isArray(item?.combined_traits_zh) ? item.combined_traits_zh : [])
-      .concat(Array.isArray(item?.combined_traits) ? item.combined_traits : []);
-    const mood = traits.some((trait) => /calm|冷静|稳/.test(String(trait))) ? "calm" : "energetic";
+      .concat(Array.isArray(item?.combined_traits) ? item.combined_traits : [])
+      .concat(Array.isArray(item?.traits) ? item.traits : []);
+    const mood = traits.some((trait) => String(trait || "").toLowerCase().includes("calm")) ? "calm" : "energetic";
     const title = escapeHtml(displayName(item));
-    const subtitle = escapeHtml(displaySpecies(item));
-    const chips = traits.slice(0, 2).map((trait, index) => {
-      const x = 72 + index * 132;
-      return `
-        <rect x="${x}" y="338" width="120" height="28" rx="14" fill="rgba(255,255,255,0.28)" />
-        <text x="${x + 60}" y="357" text-anchor="middle" font-size="13" fill="#ffffff">${escapeHtml(String(trait))}</text>
-      `;
-    }).join("");
 
     return `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
         <title id="title">${title}</title>
         <desc id="desc">${title} portrait</desc>
-        ${buildBackground(item, palette)}
-        <g filter="url(#shadow)">
-          <circle cx="200" cy="192" r="118" fill="rgba(255,255,255,0.26)" />
-          ${buildFace(style.kind, style, mood)}
+        <defs>
+          <linearGradient id="${bgId}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${palette.from}" />
+            <stop offset="100%" stop-color="${palette.to}" />
+          </linearGradient>
+          <filter id="${shadowId}" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="${palette.shadow}" flood-opacity="0.26" />
+          </filter>
+          <clipPath id="${clipId}">
+            <rect x="32" y="32" width="336" height="336" rx="34" />
+          </clipPath>
+        </defs>
+        <rect width="400" height="400" rx="44" fill="url(#${bgId})" />
+        <rect x="22" y="22" width="356" height="356" rx="34" fill="rgba(255,255,255,0.12)" />
+        <circle cx="318" cy="82" r="24" fill="rgba(255,255,255,0.18)" />
+        <circle cx="86" cy="308" r="16" fill="rgba(255,255,255,0.16)" />
+        <g filter="url(#${shadowId})" clip-path="url(#${clipId})">
+          <circle cx="200" cy="170" r="126" fill="rgba(255,255,255,0.2)" />
+          <g transform="translate(200 178) scale(0.92) translate(-200 -178)">
+            ${buildFace(style.kind, style, mood)}
+          </g>
         </g>
-        <rect x="54" y="292" width="292" height="58" rx="20" fill="rgba(255,255,255,0.9)" />
-        <text x="200" y="318" text-anchor="middle" font-size="24" font-weight="700" fill="#6a2846">${title}</text>
-        <text x="200" y="340" text-anchor="middle" font-size="13" fill="#9b627d">${subtitle}</text>
-        ${chips}
       </svg>
     `.trim();
   }
