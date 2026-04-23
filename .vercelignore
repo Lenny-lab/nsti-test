@@ -5,6 +5,7 @@ data/seeds
 docs
 scripts
 临时数据存储
+项目资料归档/
 *.py
 *.csv
 !index.html

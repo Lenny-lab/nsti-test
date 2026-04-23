@@ -1,0 +1,88 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fcfa"/>
+      <stop offset="100%" stop-color="#eef7f4"/>
+    </linearGradient>
+    <filter id="shadow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#bfd7cd" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 42px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #14352f; }
+      .subtitle { font: 400 22px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #41675e; }
+      .panelTitle { font: 700 30px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #17463d; }
+      .cardTitle { font: 700 24px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1c4c42; }
+      .body { font: 400 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #486d63; }
+      .small { font: 400 18px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #55776e; }
+      .badge { font: 700 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="960" fill="url(#bg2)"/>
+  <text x="90" y="108" class="title">NSTI 项目系统结构示意</text>
+  <text x="90" y="148" class="subtitle">围绕“校园偏好画像”构建题库、评价体系、结果输出与网页展示</text>
+
+  <g filter="url(#shadow2)">
+    <rect x="90" y="210" width="420" height="620" rx="32" fill="#ffffff" stroke="#d9e9e2"/>
+    <circle cx="150" cy="274" r="26" fill="#2b7a67"/>
+    <text x="141" y="281" class="badge">A</text>
+    <text x="190" y="284" class="panelTitle">题库结构</text>
+    <text x="130" y="350" class="cardTitle">正式题库：24 题</text>
+    <text x="130" y="392" class="body">按“这学期的我”作答</text>
+    <text x="130" y="428" class="body">单题 4 选 1</text>
+    <text x="130" y="464" class="body">校园化真实情境表达</text>
+
+    <text x="130" y="540" class="cardTitle">题面来源</text>
+    <text x="130" y="580" class="small">公开题库逻辑参考</text>
+    <text x="130" y="612" class="small">南师大校园语境重写</text>
+    <text x="130" y="644" class="small">多轮人工复核与校正</text>
+
+    <text x="130" y="720" class="cardTitle">典型场景</text>
+    <text x="130" y="760" class="small">随园、仙林、图书馆、起霞坡、月亮湾</text>
+    <text x="130" y="792" class="small">小白与大黄校车、社团招新、小组协作</text>
+  </g>
+
+  <g filter="url(#shadow2)">
+    <rect x="590" y="210" width="420" height="620" rx="32" fill="#ffffff" stroke="#d9e9e2"/>
+    <circle cx="650" cy="274" r="26" fill="#2b7a67"/>
+    <text x="641" y="281" class="badge">B</text>
+    <text x="690" y="284" class="panelTitle">评价体系</text>
+    <text x="630" y="350" class="cardTitle">四组偏好维度</text>
+    <text x="630" y="392" class="body">能量补给</text>
+    <text x="630" y="428" class="body">观察视角</text>
+    <text x="630" y="464" class="body">逻辑基准</text>
+    <text x="630" y="500" class="body">生活步调</text>
+
+    <text x="630" y="580" class="cardTitle">结果形式</text>
+    <text x="630" y="620" class="small">16 类校园结果卡</text>
+    <text x="630" y="652" class="small">地标命名 + 场景化解释</text>
+    <text x="630" y="684" class="small">适配场景 + 协作提醒 + 学习建议</text>
+
+    <text x="630" y="760" class="cardTitle">使用边界</text>
+    <text x="630" y="800" class="small">非诊断工具</text>
+  </g>
+
+  <g filter="url(#shadow2)">
+    <rect x="1090" y="210" width="420" height="620" rx="32" fill="#ffffff" stroke="#d9e9e2"/>
+    <circle cx="1150" cy="274" r="26" fill="#2b7a67"/>
+    <text x="1141" y="281" class="badge">C</text>
+    <text x="1190" y="284" class="panelTitle">网页成果</text>
+    <text x="1130" y="350" class="cardTitle">核心页面</text>
+    <text x="1130" y="392" class="body">首页</text>
+    <text x="1130" y="428" class="body">题目页</text>
+    <text x="1130" y="464" class="body">结果页</text>
+    <text x="1130" y="500" class="body">结果图鉴页</text>
+
+    <text x="1130" y="580" class="cardTitle">说明页面</text>
+    <text x="1130" y="620" class="small">题库说明</text>
+    <text x="1130" y="652" class="small">评价体系</text>
+    <text x="1130" y="684" class="small">隐私与免责声明</text>
+    <text x="1130" y="716" class="small">关于随园</text>
+
+    <text x="1130" y="792" class="cardTitle">上线交付</text>
+    <text x="1130" y="832" class="small">GitHub + Vercel + 自定义域名</text>
+  </g>
+
+  <path d="M510 520 C550 520, 550 520, 590 520" fill="none" stroke="#2b7a67" stroke-width="6"/>
+  <path d="M1010 520 C1050 520, 1050 520, 1090 520" fill="none" stroke="#2b7a67" stroke-width="6"/>
+</svg>

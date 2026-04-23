@@ -1,0 +1,115 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6fbf8"/>
+      <stop offset="100%" stop-color="#eef7f3"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f7fbf8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#b8d2c8" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#2b7a67"/>
+    </marker>
+    <style>
+      .title { font: 700 42px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #14352f; }
+      .subtitle { font: 400 22px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #3d665c; }
+      .section { font: 700 26px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f5e4f; }
+      .stepTitle { font: 700 28px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #173a33; }
+      .stepBody { font: 400 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #46695f; }
+      .badge { font: 700 22px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="60" y="56" width="1480" height="788" rx="34" fill="none" stroke="#d7e8df"/>
+
+  <text x="100" y="118" class="title">NSTI 项目中 AI 工具的全过程应用</text>
+  <text x="100" y="160" class="subtitle">从问题提出、题库构建到网页实现与部署交付，形成完整学习实践闭环</text>
+
+  <g filter="url(#shadow)">
+    <rect x="100" y="230" width="260" height="190" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="150" cy="280" r="28" fill="#2b7a67"/>
+    <text x="140" y="288" class="badge">1</text>
+    <text x="100" y="470" visibility="hidden">.</text>
+    <text x="140" y="338" class="stepTitle">问题提出</text>
+    <text x="140" y="378" class="stepBody">明确项目主题</text>
+    <text x="140" y="408" class="stepBody">界定任务边界</text>
+    <text x="140" y="438" class="stepBody">确定校园化方向</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="410" y="230" width="260" height="190" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="460" cy="280" r="28" fill="#2b7a67"/>
+    <text x="450" y="288" class="badge">2</text>
+    <text x="450" y="338" class="stepTitle">前期调研</text>
+    <text x="450" y="378" class="stepBody">梳理 MBTI / STI 逻辑</text>
+    <text x="450" y="408" class="stepBody">提炼可借鉴结构</text>
+    <text x="450" y="438" class="stepBody">形成 NSTI 框架</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="720" y="230" width="260" height="190" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="770" cy="280" r="28" fill="#2b7a67"/>
+    <text x="760" y="288" class="badge">3</text>
+    <text x="760" y="338" class="stepTitle">题库设计</text>
+    <text x="760" y="378" class="stepBody">搜集公开题目样本</text>
+    <text x="760" y="408" class="stepBody">改写为南师大场景</text>
+    <text x="760" y="438" class="stepBody">人工多轮复核定稿</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1030" y="230" width="260" height="190" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="1080" cy="280" r="28" fill="#2b7a67"/>
+    <text x="1070" y="288" class="badge">4</text>
+    <text x="1070" y="338" class="stepTitle">评价体系</text>
+    <text x="1070" y="378" class="stepBody">提炼四组偏好维度</text>
+    <text x="1070" y="408" class="stepBody">构建 16 类结果卡</text>
+    <text x="1070" y="438" class="stepBody">生成场景化说明</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="255" y="520" width="300" height="200" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="310" cy="574" r="28" fill="#2b7a67"/>
+    <text x="300" y="582" class="badge">5</text>
+    <text x="350" y="632" class="stepTitle">前端实现</text>
+    <text x="350" y="672" class="stepBody">首页、题目页、结果页</text>
+    <text x="350" y="702" class="stepBody">说明页、图鉴页、随园页</text>
+    <text x="350" y="732" class="stepBody">桌面端与移动端适配</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="650" y="520" width="300" height="200" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="705" cy="574" r="28" fill="#2b7a67"/>
+    <text x="695" y="582" class="badge">6</text>
+    <text x="745" y="632" class="stepTitle">功能迭代</text>
+    <text x="745" y="672" class="stepBody">地图与天气接入</text>
+    <text x="745" y="702" class="stepBody">访问统计与结构整理</text>
+    <text x="745" y="732" class="stepBody">风格统一与文案打磨</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1045" y="520" width="300" height="200" rx="28" fill="url(#card)" stroke="#dbe9e1"/>
+    <circle cx="1100" cy="574" r="28" fill="#2b7a67"/>
+    <text x="1090" y="582" class="badge">7</text>
+    <text x="1140" y="632" class="stepTitle">部署交付</text>
+    <text x="1140" y="672" class="stepBody">GitHub 仓库整理</text>
+    <text x="1140" y="702" class="stepBody">Vercel 部署与域名接入</text>
+    <text x="1140" y="732" class="stepBody">提交材料生成</text>
+  </g>
+
+  <line x1="360" y1="325" x2="410" y2="325" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="670" y1="325" x2="720" y2="325" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="980" y1="325" x2="1030" y2="325" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <path d="M1160 420 C1160 470, 1160 490, 1195 520" fill="none" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M1030 620 C1000 620, 980 620, 950 620" fill="none" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M650 620 C620 620, 595 620, 555 620" fill="none" stroke="#2b7a67" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M255 620 C175 620, 145 590, 145 430 C145 390, 145 365, 100 355" fill="none" stroke="#97b8aa" stroke-width="4"/>
+
+  <text x="1180" y="120" class="section">AI 在各阶段的主要作用</text>
+  <text x="1180" y="160" class="subtitle">需求拆解、资料整理、题目改写、代码实现、风格优化、部署辅助、材料整理</text>
+</svg>
