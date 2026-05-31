@@ -721,6 +721,42 @@ a:hover {
   opacity: 0.5;
 }
 
+.footer__contact {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.footer__contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__contactLabel {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.footer__contactLink {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: none;
+  transition: opacity 140ms ease;
+}
+
+.footer__contactLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.footer__contactText {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
 @media (max-width: 1040px) {
   .summaryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
