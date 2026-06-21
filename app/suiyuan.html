@@ -50,7 +50,7 @@
           <div class="section__eyebrow">步调</div>
           <h2 class="section__title">这里适合慢慢走，不适合赶着看完</h2>
           <div class="section__body">
-            真正让人留恋的，往往不是某一个“必打卡”点，而是树下、坡道边、
+            真正让人留恋的，往往不是某一个"必打卡"点，而是树下、坡道边、
             教学楼之间那些会让人自然放慢脚步的地方。
           </div>
         </article>
@@ -65,31 +65,52 @@
         </article>
       </section>
 
+      <section class="card section" id="suiyuanBuildingsSection">
+        <div class="section__eyebrow">Buildings</div>
+        <h2 class="section__title">值得多看一眼的几栋楼</h2>
+        <div class="section__body">
+          随园最早的一批校舍建于 1923 年，是金陵女子大学的旧址。
+          后来陆续添了音乐楼、图书馆和宿舍楼，几乎每一栋都带着一段来由，
+          走在路上随手就能撞到一百年。
+        </div>
+        <div class="suiyuanBuildingGrid" id="suiyuanBuildingGrid"></div>
+      </section>
+
       <section class="card section suiyuanMapSection">
-        <div class="section__eyebrow">Map</div>
-        <h2 class="section__title">在地图上发现</h2>
-        <div class="suiyuanWeatherBar" id="suiyuanWeather">
-          <div class="metric">
-            <div class="metric__label">当前天气</div>
-            <div class="metric__value" id="weatherText">加载中</div>
+        <div class="suiyuanMapSection__head">
+          <div>
+            <div class="section__eyebrow">Map</div>
+            <h2 class="section__title">在地图上发现</h2>
           </div>
-          <div class="metric">
-            <div class="metric__label">气温</div>
-            <div class="metric__value" id="weatherTemp">--</div>
+          <div class="suiyuanWeatherInline" id="suiyuanWeather">
+            <div class="suiyuanWeatherInline__row">
+              <span class="suiyuanWeatherInline__icon" id="weatherIcon">⛅</span>
+              <span class="suiyuanWeatherInline__text" id="weatherText">加载中</span>
+            </div>
+            <div class="suiyuanWeatherInline__temp" id="weatherTemp">--</div>
           </div>
         </div>
-        <div class="grid suiyuanMapLayout">
+        <div class="suiyuanMapLayout">
           <div class="suiyuanMapColumn">
-            <div id="amap-container" class="suiyuanMap"></div>
-            <div class="suiyuanMapHint" id="mapTips">点击地图圆点或右侧地标，可查看对应位置</div>
+            <div class="suiyuanMapFrame">
+              <div id="amap-container" class="suiyuanMap"></div>
+              <div class="suiyuanMapOverlay" aria-hidden="true">
+                <div class="suiyuanMapOverlay__compass">N</div>
+                <div class="suiyuanMapOverlay__scale" id="mapScale">200m</div>
+              </div>
+            </div>
+            <div class="suiyuanMapHint" id="mapTips">地图上每个圆点对应随园里一处具体的地方，点击即可展开介绍。</div>
           </div>
-          <article class="card section suiyuanSubcard suiyuanLandmarksCard">
-            <div class="section__eyebrow">Landmarks</div>
-            <h3 class="section__title">几个仍然会被记住的点</h3>
+          <div class="suiyuanSidePanel">
+            <div class="suiyuanSidePanel__head">
+              <div class="suiyuanSidePanel__eyebrow">Landmarks</div>
+              <div class="suiyuanSidePanel__count" id="suiyuanPlaceCount"></div>
+            </div>
+            <div class="suiyuanCategoryBar" id="suiyuanCategoryBar"></div>
+            <article class="suiyuanDetailCard" id="pointDetail"></article>
             <div class="suiyuanPlaceList" id="suiyuanPlaceList"></div>
-          </article>
+          </div>
         </div>
-        <article class="card section suiyuanDetailCard" id="pointDetail"></article>
       </section>
 
       <section class="card section" id="suiyuanTimelineSection">

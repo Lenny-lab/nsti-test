@@ -4,3 +4,14 @@ __generated_*
 临时数据存储/
 __pycache__/
 *.pyc
+suiyuan-data/
+xqpmt-raw.html
+xqpmt-index.html
+main-constant.js
+index.js
+screenshot.js
+write-building.js
+screenshot-*.png
+node_modules/
+package.json
+package-lock.json

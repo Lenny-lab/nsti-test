@@ -6,6 +6,16 @@ docs
 scripts
 临时数据存储
 项目资料归档/
+njnu-skill/
+njnu-skill.skill/
+suiyuan-data/
+xqpmt-raw.html
+xqpmt-index.html
+main-constant.js
+index.js
+screenshot.js
+write-building.js
+screenshot-*.png
 *.py
 *.csv
 !index.html

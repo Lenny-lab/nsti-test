@@ -159,7 +159,7 @@ a:hover {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 22px;
   margin-top: 14px;
 }
 
@@ -340,119 +340,7 @@ a:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.suiyuanWeatherBar {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 168px));
-  justify-content: start;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.suiyuanMapLayout {
-  margin-top: 14px;
-  align-items: start;
-  grid-template-columns: minmax(0, 1.58fr) minmax(300px, 0.92fr);
-}
-
-.suiyuanWeather__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.suiyuanInlineCallout {
-  margin-top: 16px;
-}
-
-.suiyuanPlaceList,
-.suiyuanTimeline {
-  display: grid;
-  gap: 12px;
-}
-
-.suiyuanPlaceList {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.suiyuanPlaceLink {
-  font: inherit;
-  cursor: pointer;
-}
-
-.suiyuanPlaceLink strong {
-  display: block;
-  color: var(--ink);
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-.suiyuanPlaceLink span {
-  color: var(--accent);
-  font-size: 13px;
-}
-
-.suiyuanPlaceLink.is-active {
-  border-color: var(--line-strong);
-  background: linear-gradient(180deg, rgba(30, 108, 86, 0.1), rgba(255, 255, 255, 0.92));
-  box-shadow: 0 10px 24px rgba(24, 73, 60, 0.08);
-}
-
-.suiyuanMapSection {
-  margin-top: 18px;
-  padding-bottom: 24px;
-  overflow: hidden;
-}
-
-.suiyuanMapLayout > * {
-  min-width: 0;
-}
-
-.suiyuanMapColumn {
-  min-width: 0;
-}
-
-.suiyuanMap {
-  width: 100%;
-  height: 560px;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.suiyuanSubcard {
-  height: auto;
-  min-width: 0;
-}
-
-.suiyuanLandmarksCard {
-  padding: 18px 18px 16px;
-}
-
-.suiyuanPlaceLink {
-  width: 100%;
-  text-align: left;
-  min-height: 92px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.76);
-  padding: 14px 16px;
-  transition:
-    border-color 0.18s ease,
-    background 0.18s ease,
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
-}
-
-.suiyuanPlaceLink:last-child {
-  padding-bottom: 14px;
-}
-
-.suiyuanPlaceLink:hover {
-  border-color: var(--line-strong);
-  transform: translateY(-1px);
-}
+/* old map layout rules removed – replaced by suiyuanMapLayout block below */
 
 .suiyuanTimelineItem {
   padding: 10px 0 16px;
@@ -464,29 +352,8 @@ a:hover {
   padding-bottom: 0;
 }
 
-.suiyuanInfoWindow strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.suiyuanInfoWindow p {
-  margin: 0;
-  color: var(--ink-soft);
-  line-height: 1.68;
-}
-
 .metric__value {
   overflow-wrap: anywhere;
-}
-
-.suiyuanWeatherBar .metric {
-  padding: 12px 14px;
-  border-radius: 16px;
-}
-
-.suiyuanWeatherBar .metric__value {
-  margin-top: 6px;
-  font-size: 18px;
 }
 
 .suiyuanMapHint {
@@ -496,22 +363,839 @@ a:hover {
   line-height: 1.7;
 }
 
+/* Building detail page */
+
+.buildingHero {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(30, 108, 86, 0.06), rgba(255, 255, 255, 0.7));
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 50px rgba(24, 73, 60, 0.12);
+  margin-top: 18px;
+  min-height: 420px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+}
+
+.buildingHero__media {
+  position: relative;
+  min-height: 320px;
+  background: linear-gradient(180deg, rgba(30, 108, 86, 0.18), rgba(0, 0, 0, 0.18));
+  overflow: hidden;
+}
+
+.buildingHero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.02) saturate(0.94);
+}
+
+.buildingHero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(255, 255, 255, 0.7));
+  pointer-events: none;
+}
+
+.buildingHeroMedia__corner {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+}
+
+.buildingHero__content {
+  padding: 32px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  min-width: 0;
+}
+
+.buildingHero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.buildingHero__title {
+  margin: 0;
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 40px;
+  line-height: 1.2;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.buildingHero__lead {
+  margin: 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.85;
+  font-weight: 500;
+}
+
+.buildingHero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.buildingMetaChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(30, 108, 86, 0.1);
+  color: var(--ink);
+  font-size: 13px;
+  border: 1px solid var(--line);
+}
+
+.buildingMetaChip__label {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.buildingMetaChip__value {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.buildingTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+
+.buildingSummary {
+  margin-top: 18px;
+}
+
+.buildingSummary .section__title {
+  font-size: 24px;
+}
+
+.buildingGallerySection {
+  margin-top: 22px;
+}
+
+.buildingGalleryHead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.buildingGallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.buildingGallery__item {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+  position: relative;
+  cursor: zoom-in;
+  aspect-ratio: 4 / 3;
+}
+
+.buildingGallery__item.is-feature {
+  grid-column: span 2;
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+.buildingGallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.buildingGallery__item:hover img {
+  transform: scale(1.04);
+}
+
+.buildingGallery__item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.buildingArticle {
+  margin-top: 18px;
+}
+
+.buildingArticle .section__title {
+  font-size: 24px;
+}
+
+.buildingArticle .section__body p {
+  margin: 0 0 12px;
+}
+
+.buildingArticle .section__body p:last-child {
+  margin-bottom: 0;
+}
+
+.buildingSource {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(30, 108, 86, 0.05);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.buildingSource strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.buildingSource a {
+  margin-left: auto;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.buildingNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.buildingNav__btn {
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.buildingNav__btn:hover {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.96);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.buildingNav__btn--right {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.buildingNav__label {
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.buildingNav__title {
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.buildingLightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  cursor: zoom-out;
+}
+
+.buildingLightbox img {
+  max-width: min(1100px, 100%);
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.buildingLightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+@media (max-width: 980px) {
+  .buildingHero {
+    grid-template-columns: 1fr;
+  }
+  .buildingHero__content {
+    padding: 24px 24px 28px;
+  }
+  .buildingHero__title {
+    font-size: 30px;
+  }
+  .buildingGallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .buildingGallery__item.is-feature {
+    grid-column: span 2;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+  .buildingNav {
+    grid-template-columns: 1fr;
+  }
+  .buildingNav__btn--right {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.suiyuanMapSection__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.suiyuanWeatherInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  min-height: 44px;
+}
+
+.suiyuanWeatherInline__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suiyuanWeatherInline__icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.suiyuanWeatherInline__text {
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.suiyuanWeatherInline__temp {
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+
+.suiyuanMapLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(340px, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+  align-items: stretch;
+}
+
+.suiyuanMapColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.suiyuanMapFrame {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(30, 108, 86, 0.04), rgba(255, 255, 255, 0.6));
+  box-shadow: 0 18px 38px rgba(24, 73, 60, 0.08);
+  flex: 1 1 auto;
+  min-height: 540px;
+}
+
+.suiyuanMap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.suiyuanMapOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 14px 16px;
+  z-index: 5;
+}
+
+.suiyuanMapOverlay__compass {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 14px rgba(24, 73, 60, 0.08);
+}
+
+.suiyuanMapOverlay__scale {
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  letter-spacing: 0.04em;
+}
+
+.suiyuanSidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.suiyuanSidePanel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 2px;
+}
+
+.suiyuanSidePanel__eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.suiyuanSidePanel__count {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.suiyuanSidePanel__count strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.suiyuanCategoryBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.suiyuanCategoryChip {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 12.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.suiyuanCategoryChip:hover {
+  background: rgba(30, 108, 86, 0.06);
+  color: var(--ink);
+}
+
+.suiyuanCategoryChip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(30, 108, 86, 0.22);
+}
+
+.suiyuanCategoryChip__icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.suiyuanCategoryChip__count {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.suiyuanCategoryChip.is-active .suiyuanCategoryChip__count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
 .suiyuanDetailCard {
-  margin-top: 16px;
-  padding: 18px 22px 20px;
+  position: relative;
+  padding: 20px 22px 22px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, rgba(30, 108, 86, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 253, 250, 0.92));
+  box-shadow: 0 14px 32px rgba(24, 73, 60, 0.08);
+  overflow: hidden;
 }
 
-.suiyuanDetailCard .section__title {
-  font-size: 28px;
+.suiyuanDetailCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 0 4px 4px 0;
 }
 
-.suiyuanDetailCard .section__body {
-  margin-top: 10px;
-  max-width: 100%;
+.suiyuanDetailCard__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
-.suiyuanDetailCard .typeChipWrap {
+.suiyuanDetailCard__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(30, 108, 86, 0.16);
+}
+
+.suiyuanDetailCard__title {
+  margin: 8px 0 0;
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 26px;
+  line-height: 1.32;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.suiyuanDetailCard__short {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.suiyuanDetailCard__text {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.suiyuanDetailCard__note {
+  margin: 10px 0 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--line-strong);
+  background: rgba(30, 108, 86, 0.05);
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: 0 10px 10px 0;
+}
+
+.suiyuanDetailCard__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-top: 12px;
+}
+
+.suiyuanDetailCard__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.suiyuanPlaceList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 6px 4px 4px 6px;
+  margin: -6px -4px -4px -6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.suiyuanPlaceList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suiyuanPlaceList::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
+
+.suiyuanPlaceLink {
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  min-height: 60px;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.suiyuanPlaceLink:hover {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.94);
+  transform: translateX(2px);
+}
+
+.suiyuanPlaceLink.is-active {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(30, 108, 86, 0.12), rgba(255, 255, 255, 0.96));
+  box-shadow: 0 6px 16px rgba(30, 108, 86, 0.12);
+}
+
+.suiyuanPlaceLink__index {
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(30, 108, 86, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.suiyuanPlaceLink.is-active .suiyuanPlaceLink__index {
+  background: var(--accent);
+  color: #fff;
+}
+
+.suiyuanPlaceLink__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.suiyuanPlaceLink__title {
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suiyuanPlaceLink__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.suiyuanPlaceLink__cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.suiyuanPlaceLink__arrow {
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.suiyuanPlaceLink:hover .suiyuanPlaceLink__arrow,
+.suiyuanPlaceLink.is-active .suiyuanPlaceLink__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.suiyuanInfoWindow strong {
+  display: block;
+  margin: 4px 0 2px;
+  font-size: 15px;
+}
+
+.suiyuanInfoWindow p {
+  margin: 0;
+  color: #555;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.suiyuanInfoWindow__cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #1e6c56;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.suiyuanInfoWindow {
+  padding: 10px 12px;
+  min-width: 200px;
+  max-width: 240px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 720px) {
+  .suiyuanBuildingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .suiyuanMapLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .suiyuanMapFrame {
+    min-height: 420px;
+  }
+
+  .suiyuanPlaceList {
+    max-height: none;
+  }
+}
+
+.suiyuanDetailCard {
+  /* kept for backward compatibility – main styles defined earlier */
 }
 
 #suiyuanTimelineSection {
@@ -616,17 +1300,154 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .suiyuanWeatherBar {
-    grid-template-columns: repeat(2, minmax(0, 150px));
+  .suiyuanBuildingGrid {
+    grid-template-columns: 1fr;
   }
 
   .suiyuanMapLayout {
     grid-template-columns: 1fr;
   }
+}
 
-  .suiyuanMap {
-    height: 440px;
-  }
+/* Building cards (suiyuan.html) */
+
+.suiyuanBuildingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.suiyuanBuildingCard {
+  font: inherit;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+  min-height: 320px;
+  position: relative;
+}
+
+.suiyuanBuildingCard:hover {
+  text-decoration: none;
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(24, 73, 60, 0.14);
+}
+
+.suiyuanBuildingCard__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(30, 108, 86, 0.18), rgba(255, 255, 255, 0.5));
+}
+
+.suiyuanBuildingCard__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.suiyuanBuildingCard:hover .suiyuanBuildingCard__cover img {
+  transform: scale(1.06);
+}
+
+.suiyuanBuildingCard__coverMark {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.suiyuanBuildingCard__coverMarkText {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--line);
+}
+
+.suiyuanBuildingCard__cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.32));
+  pointer-events: none;
+}
+
+.suiyuanBuildingCard__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 18px;
+}
+
+.suiyuanBuildingCard__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.suiyuanBuildingCard__title {
+  margin: 0;
+  font-family: "STSong", "Noto Serif SC", "Songti SC", serif;
+  font-size: 19px;
+  line-height: 1.32;
+  color: var(--ink);
+}
+
+.suiyuanBuildingCard__feature {
+  margin: 2px 0 0;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.7;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.suiyuanBuildingCard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.suiyuanBuildingCard__arrow {
+  display: inline-block;
+  transition: transform 0.22s ease;
+}
+
+.suiyuanBuildingCard:hover .suiyuanBuildingCard__arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 720px) {
@@ -670,15 +1491,10 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .suiyuanWeatherBar {
-    grid-template-columns: 1fr;
-  }
-
   .suiyuanPlaceList {
-    grid-template-columns: 1fr;
+    max-height: none;
   }
 
-  .suiyuanLandmarksCard,
   .suiyuanDetailCard {
     padding: 18px;
   }
@@ -702,8 +1518,8 @@ a:hover {
     justify-content: center;
   }
 
-  .suiyuanMap {
-    height: 340px;
+  .suiyuanMapFrame {
+    min-height: 360px;
   }
 
   .table {
