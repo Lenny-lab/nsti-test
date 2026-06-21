@@ -62,7 +62,7 @@ a:hover {
 
 .screen {
   display: grid;
-  gap: 18px;
+  gap: 36px;
 }
 
 .hidden {
