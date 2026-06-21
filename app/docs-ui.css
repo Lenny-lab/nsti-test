@@ -1179,6 +1179,7 @@ a:hover {
 @media (max-width: 720px) {
   .suiyuanBuildingGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .suiyuanMapLayout {
@@ -1191,6 +1192,64 @@ a:hover {
 
   .suiyuanPlaceList {
     max-height: none;
+  }
+
+  .suiyuanBuildingCard {
+    min-height: 0;
+    flex-direction: row;
+    border-radius: 18px;
+  }
+
+  .suiyuanBuildingCard__cover {
+    flex: 0 0 38%;
+    aspect-ratio: 4 / 3;
+    border-right: 1px solid var(--line);
+  }
+
+  .suiyuanBuildingCard__cover::after {
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.28));
+  }
+
+  .suiyuanBuildingCard__body {
+    flex: 1;
+    padding: 14px 16px 16px;
+    gap: 4px;
+  }
+
+  .suiyuanBuildingCard__body h3 {
+    font-size: 16px;
+  }
+
+  .suiyuanBuildingCard__body p {
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .suiyuanBuildingCard__coverMarkText {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .suiyuanBuildingCard {
+    border-radius: 16px;
+  }
+
+  .suiyuanBuildingCard__cover {
+    flex: 0 0 42%;
+  }
+
+  .suiyuanBuildingCard__body {
+    padding: 12px 14px 14px;
+  }
+
+  .suiyuanBuildingCard__body h3 {
+    font-size: 15px;
+  }
+
+  .suiyuanBuildingCard__body p {
+    font-size: 12px;
   }
 }
 
@@ -1306,6 +1365,10 @@ a:hover {
 
   .suiyuanMapLayout {
     grid-template-columns: 1fr;
+  }
+
+  .suiyuanBuildingCard__body h3 {
+    font-size: 17px;
   }
 }
 
