@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="随园 logo">
+  <title>随园</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e6c56"/>
+      <stop offset="100%" stop-color="#217050"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f3f7f1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 圆角徽章底 -->
+  <rect x="0" y="0" width="120" height="120" rx="26" fill="url(#bg)"/>
+
+  <!-- 远山轮廓（移到台基之下、圆角之内，opacity 0.07） -->
+  <path d="M 8 100
+           L 22 90
+           L 38 96
+           L 56 88
+           L 76 96
+           L 92 90
+           L 112 98
+           L 112 112
+           L 8 112 Z"
+        fill="#ffffff" opacity="0.07"/>
+
+  <!-- 100 号楼轮廓 -->
+  <g fill="url(#mark)">
+    <!-- 屋檐主面：中间平 + 两端上翘的弧线（弧度加大） -->
+    <path d="M 26 50
+             L 94 50
+             L 98 46.5
+             Q 96 39, 87 41
+             L 87 43.5
+             L 33 43.5
+             L 33 41
+             Q 24 39, 22 46.5
+             Z"/>
+
+    <!-- 瓦当点（5 个，与屋檐同色对比） -->
+    <g fill="#1e6c56">
+      <circle cx="35" cy="50" r="1.2"/>
+      <circle cx="46" cy="50" r="1.2"/>
+      <circle cx="60" cy="50" r="1.2"/>
+      <circle cx="74" cy="50" r="1.2"/>
+      <circle cx="85" cy="50" r="1.2"/>
+    </g>
+
+    <!-- 立柱 ×4（细一点，4 根均分） -->
+    <rect x="30" y="56" width="2.8" height="22" rx="0.5"/>
+    <rect x="47" y="56" width="2.8" height="22" rx="0.5"/>
+    <rect x="70.2" y="56" width="2.8" height="22" rx="0.5"/>
+    <rect x="87.2" y="56" width="2.8" height="22" rx="0.5"/>
+
+    <!-- 月台横梁 -->
+    <rect x="24" y="54" width="72" height="3" rx="1"/>
+    <rect x="24" y="77" width="72" height="3" rx="1"/>
+
+    <!-- 台阶（两级） -->
+    <rect x="20" y="82" width="80" height="3.4" rx="1.2"/>
+    <rect x="14" y="88" width="92" height="3.4" rx="1.2" opacity="0.9"/>
+  </g>
+</svg>

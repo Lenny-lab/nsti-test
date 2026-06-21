@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>随园 · Logo 预览</title>
+  <style>
+    :root {
+      --ink: #173730;
+      --ink-soft: #5b716a;
+      --line: rgba(30, 108, 86, 0.18);
+      --accent: #1e6c56;
+      --accent-2: #268d79;
+      --accent-3: #217050;
+      --bg: #f5f3eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, "PingFang SC", "Noto Serif SC", "Songti SC", "STSong", serif;
+      color: var(--ink);
+      background: var(--bg);
+      padding: 40px 24px 64px;
+    }
+    h1 { font-weight: 500; font-size: 22px; margin: 0 0 6px; letter-spacing: 0.04em; }
+    .lead { color: var(--ink-soft); font-size: 13.5px; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      background: #f7f5ee;
+      border-radius: 12px;
+    }
+    .stage.dark { background: #173730; }
+    .stage.tile {
+      background-image:
+        linear-gradient(45deg, #e7e2cf 25%, transparent 25%),
+        linear-gradient(-45deg, #e7e2cf 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e7e2cf 75%),
+        linear-gradient(-45deg, transparent 75%, #e7e2cf 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    .sizes {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line);
+    }
+    .sizes span { color: var(--ink-soft); font-size: 12px; }
+    .mark-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; background: #f7f5ee; border-radius: 12px;
+    }
+    .mark-row .title { font-size: 20px; letter-spacing: 0.08em; }
+    .mark-row .sub { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.16em; }
+    .swatch {
+      display: inline-block; width: 14px; height: 14px; border-radius: 3px;
+      vertical-align: middle; margin-right: 6px;
+    }
+    .note { color: var(--ink-soft); font-size: 12.5px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <div style="max-width:1180px; margin:0 auto;">
+    <h1>随园 · Logo 方案一稿</h1>
+    <p class="lead">主元素：100 号楼宫殿式屋顶 + 立柱 + 台基的简化轮廓；左上一片银杏叶暗示百年银杏。背景用品牌深绿渐变。</p>
+    <div class="grid">
+
+      <div class="card">
+        <h3>主标志（浅底）</h3>
+        <div class="stage"><img src="./assets/logo.svg" width="160" height="160" alt="logo" /></div>
+        <div class="sizes">
+          <img src="./assets/logo.svg" width="64"  height="64"  alt="64"  />
+          <img src="./assets/logo.svg" width="40"  height="40"  alt="40"  />
+          <img src="./assets/logo.svg" width="24"  height="24"  alt="24"  />
+          <img src="./assets/logo.svg" width="16"  height="16"  alt="16"  />
+          <span>64 / 40 / 24 / 16</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>主标志（深底）</h3>
+        <div class="stage dark"><img src="./assets/logo.svg" width="160" height="160" alt="logo" /></div>
+        <p class="note" style="margin-top:14px;">深底上直接用即可，无需反色。</p>
+      </div>
+
+      <div class="card">
+        <h3>主标志（透明底）</h3>
+        <div class="stage tile"><img src="./assets/logo.svg" width="160" height="160" alt="logo" /></div>
+      </div>
+
+      <div class="card">
+        <h3>横版标头</h3>
+        <div class="mark-row">
+          <img src="./assets/logo.svg" width="48" height="48" alt="logo" />
+          <div>
+            <div class="title">随园</div>
+            <div class="sub">NNU · SUIYUAN</div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:14px;">用于顶栏 / 浏览器标签页 / 页脚品牌区。</p>
+      </div>
+
+      <div class="card">
+        <h3>品牌色</h3>
+        <p class="note">
+          <span class="swatch" style="background:#1e6c56"></span><b>--accent</b> #1E6C56<br/>
+          <span class="swatch" style="background:#268d79"></span><b>--accent-2</b> #268D79<br/>
+          <span class="swatch" style="background:#217050"></span><b>--accent-3</b> #217050<br/>
+          <span class="swatch" style="background:#173730"></span><b>--ink</b> #173730<br/>
+          <span class="swatch" style="background:#f5f3eb;border:1px solid #ddd"></span><b>--bg</b> #F5F3EB
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>说明</h3>
+        <p class="note">
+          ① 屋顶用「中段平 + 两端上翘的弧线」还原 100 号楼宫殿式屋檐，5 个圆点暗示瓦当；<br/>
+          ② 4 根立柱 + 月台双横梁 + 两级台阶，对应建筑正立面的"檐—廊—台"三段；<br/>
+          ③ 背景淡淡远山轮廓用极低透明度，模拟 100 号楼前的小山；<br/>
+          ④ 圆角徽章底 26px，接近 iOS app icon 的视觉规范。
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
