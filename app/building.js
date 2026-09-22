@@ -178,7 +178,7 @@
       `<div class="buildingMetaChip"><span class="buildingMetaChip__label">时期</span><span class="buildingMetaChip__value">${building.yearRange}</span></div>`,
       ...building.tags.map((tag) => `<span class="buildingTag">${tag}</span>`),
     ].join("");
-    $("buildingHeroMedia").innerHTML = `<img src="${PHOTOS}${building.hero}" alt="${building.name}原创建筑插画" loading="eager" /><div class="buildingHeroMedia__corner"><span>${building.yearRange}</span></div>`;
+    $("buildingHeroMedia").innerHTML = `<img src="${PHOTOS}${building.hero}" alt="AI 辅助生成的${building.name}原创建筑插画，非实景照片" loading="eager" /><div class="buildingHeroMedia__corner"><span>${building.yearRange}</span></div><div class="buildingHeroMedia__aiNotice">AI 辅助生成插画 · 非实景照片</div>`;
   }
 
   function renderSummary(building) {
@@ -194,6 +194,7 @@
       <div class="section__eyebrow">资料边界</div>
       <h2 class="section__title">本页如何核对信息</h2>
       <div class="section__body">
+        <p><strong>图像来源：</strong>本页头图由本站使用 OpenAI 内置图像生成工具辅助创作并人工筛选、裁切，仅作建筑导览示意，不是实景照片、历史照片或校方提供的素材。</p>
         <p>页面优先保留能够由学校、政府或文保机构公开资料支持的内容。建筑用途与开放状态可能变化，请以学校现场管理和最新通知为准。</p>
         <ul>${links}</ul>
       </div>`;

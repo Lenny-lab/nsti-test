@@ -384,7 +384,8 @@
         (item) => `
           <a class="suiyuanBuildingCard" href="./building.html?id=${item.id}">
             <div class="suiyuanBuildingCard__cover">
-              <img src="${item.cover}" alt="${item.name}" loading="lazy" />
+              <img src="${item.cover}" alt="AI 辅助生成的${item.name}原创建筑插画，非实景照片" loading="lazy" />
+              <span class="suiyuanBuildingCard__aiLabel">AI 辅助生成插画</span>
             </div>
             <div class="suiyuanBuildingCard__body">
               <div class="suiyuanBuildingCard__meta">

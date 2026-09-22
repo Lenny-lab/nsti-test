@@ -434,6 +434,22 @@ a:hover {
   border: 1px solid var(--line);
 }
 
+.buildingHeroMedia__aiNotice {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  z-index: 2;
+  max-width: calc(100% - 32px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(20, 35, 31, 0.78);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(5px);
+}
+
 .buildingHero__content {
   padding: 32px 36px 36px;
   display: flex;
@@ -1389,6 +1405,25 @@ a:hover {
 
 /* Building cards (suiyuan.html) */
 
+.illustrationNotice {
+  display: grid;
+  gap: 5px;
+  margin-top: 18px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: rgba(30, 108, 86, 0.055);
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.illustrationNotice strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
 .suiyuanBuildingGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1435,6 +1470,20 @@ a:hover {
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
+}
+
+.suiyuanBuildingCard__aiLabel {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  z-index: 2;
+  padding: 4px 8px;
+  border-radius: 7px;
+  background: rgba(20, 35, 31, 0.78);
+  color: #fff;
+  font-size: 10.5px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
 }
 
 .suiyuanBuildingCard:hover .suiyuanBuildingCard__cover img {
@@ -1555,6 +1604,19 @@ a:hover {
 
   .hero__lead {
     font-size: 16px;
+  }
+
+  .illustrationNotice {
+    margin-top: 14px;
+    padding: 12px 13px;
+    font-size: 12.5px;
+  }
+
+  .buildingHeroMedia__aiNotice {
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    font-size: 10px;
   }
 
   .section__title {

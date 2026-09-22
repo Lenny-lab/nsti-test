@@ -85,6 +85,18 @@ for (const imageName of ["l100", "l200", "l300", "music", "hua", "zhongda", "yis
 }
 if (!failures.some((item) => item.includes("原创插画"))) pass("9 幅原创建筑插画均存在");
 
+const suiyuanHtml = read("app/suiyuan.html");
+const suiyuanJs = read("app/suiyuan.js");
+const buildingJs = read("app/building.js");
+if (
+  suiyuanHtml.includes("图像来源说明") &&
+  suiyuanHtml.includes("OpenAI 内置图像生成工具") &&
+  suiyuanJs.includes("AI 辅助生成插画") &&
+  buildingJs.includes("AI 辅助生成插画 · 非实景照片") &&
+  buildingJs.includes("图像来源：")
+) pass("导览和建筑详情均明确标注 AI 插画来源及非照片属性");
+else fail("AI 插画来源标注不完整");
+
 const clientFiles = ["index.html", ...fs.readdirSync(path.join(root, "app")).filter((name) => /\.(?:html|js)$/.test(name)).map((name) => `app/${name}`)];
 const forbidden = [
   [/0725/, "生日密码"],
