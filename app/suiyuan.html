@@ -9,7 +9,7 @@
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
       window._AMapSecurityConfig = { securityJsCode: "1a32ae6c45a8d6e7468edc11982ddd90" };
-      window.SUIYUAN_AMAP_KEY = "57ce121e184c010bcd0d6b10c37fe30c";
+      window.SUIYUAN_AMAP_MAP_KEY = "57ce121e184c010bcd0d6b10c37fe30c";
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script src="https://webapi.amap.com/loader.js"></script>
@@ -18,7 +18,7 @@
     <main class="page">
       <header class="topbar">
         <div class="brand">
-          <img class="brand__logo" src="./assets/logo.svg" alt="随园" />
+          <img class="brand__logo" src="./assets/logo.svg" alt="NSTI 独立项目标志" />
           <div class="brand__eyebrow">NNU Student Type Indicator</div>
           <div class="brand__title">关于随园</div>
         </div>
@@ -27,10 +27,10 @@
 
       <section class="card hero">
         <div class="eyebrow">About Suiyuan</div>
-        <h1 class="hero__title">随园大概是南师大赠与我们的一份礼物</h1>
+        <h1 class="hero__title">从几处建筑与时间节点，认识仍在使用中的随园校园</h1>
         <p class="hero__lead">
-          第一次走进随园，很难立刻把它说清。你会先记住树影、老楼、走廊里的安静，
-          还有人在其中经过时留下的一点回声。所以这页不想写得太满，只把一些真正会被记住的地方和时间留在这里。
+          这是一份独立学生项目制作的简要导览，不是学校官方地图。页面将可核验的历史资料与现场空间放在一起，
+          方便第一次来的人建立基本印象。
         </p>
         <div class="hero__meta">
           <span class="chip">时间回声</span>
@@ -71,7 +71,7 @@
         <div class="section__eyebrow">Buildings</div>
         <h2 class="section__title">值得多看一眼的几栋楼</h2>
         <div class="section__body">
-          随园最早的一批校舍建于 1923 年，是金陵女子大学的旧址。
+          随园保存着金陵女子大学时期及南京师范学院时期形成的多处校园建筑。
           后来陆续添了音乐楼、图书馆和宿舍楼，几乎每一栋都带着一段来由，
           走在路上随手就能撞到一百年。
         </div>
@@ -125,30 +125,6 @@
         这页没有把随园做成一份很满的导览，只是把一些常会被想起的地方、时间和位置放在一起，
         方便第一次来的人先有一个印象。
       </div>
-
-      <section class="suiyuanNextEntry" aria-label="下一页入口">
-        <button class="suiyuanNextButton" id="nextPageTrigger" type="button">下一页这样展开</button>
-        <div class="card section suiyuanNextPanel" id="nextPagePanel" hidden>
-          <div class="section__eyebrow">Next Page</div>
-          <h2 class="section__title">输入密码，继续往下</h2>
-          <div class="section__body">
-            <label class="suiyuanNextLabel" for="nextPagePassword">访问密码</label>
-            <div class="suiyuanNextForm">
-              <input
-                class="suiyuanNextInput"
-                id="nextPagePassword"
-                name="nextPagePassword"
-                type="password"
-                inputmode="numeric"
-                autocomplete="off"
-                placeholder="请输入密码"
-              />
-              <button class="suiyuanNextSubmit" id="nextPageSubmit" type="button">进入</button>
-            </div>
-            <p class="suiyuanNextHint" id="nextPageHint">提示：你的生日</p>
-          </div>
-        </div>
-      </section>
 
       <footer class="footer">
         <a href="./question-bank.html">题库</a>

@@ -17,14 +17,14 @@ const TYPE_LIBRARY = {
     title: "德风园的思索",
     landmark: "德风园孔子像",
     scene: "安静沉思后的体察",
-    traits: "深邃、理想、精神领袖",
+    traits: "体察、理想、意义感",
     galleryCopy: "你习惯先把感受和意义想透，再决定怎么投入行动，做事不喧哗，却常带着清晰而持久的理想感"
   },
   "INTJ": {
     title: "逐日塔的俯瞰",
     landmark: "逐日塔塔尖",
     scene: "提前布局的项目推进",
-    traits: "独立、战略、逻辑之巅",
+    traits: "独立、前瞻、结构意识",
     galleryCopy: "你更擅长站远一点看全局，先把路径和结构想明白，再用克制而精准的方式把计划落下去"
   },
   "ISTP": {
@@ -45,7 +45,7 @@ const TYPE_LIBRARY = {
     title: "校园的小猫咪",
     landmark: "校园小角落",
     scene: "在安静角落独自回血",
-    traits: "治愈、梦想、纯净内心",
+    traits: "柔软、想象、自我探索",
     galleryCopy: "你会在不被打扰的小角落里慢慢整理心绪，对人和世界保留柔软想象，也珍惜那些微小却真实的温暖"
   },
   "INTP": {
@@ -59,56 +59,56 @@ const TYPE_LIBRARY = {
     title: "学则路的烟火气",
     landmark: "学则路夜市",
     scene: "在人群中迅速点燃气氛",
-    traits: "热血、真实、社交中心",
+    traits: "行动、现场感、快速回应",
     galleryCopy: "你很会捕捉现场的节奏和机会，既敢靠近热闹，也能在变化里快速反应，让事情往前推得更有劲头"
   },
   "ESFP": {
     title: "起步价的 2 号线",
     landmark: "从学则路地铁站出发",
     scene: "说走就走的校园即兴",
-    traits: "活力、当下、快乐喷泉",
+    traits: "活力、当下、开放体验",
     galleryCopy: "你喜欢带着轻快的心情投入当下，哪里有新鲜感和互动感，哪里就更容易成为你释放活力的舞台"
   },
   "ENFP": {
     title: "起霞坡的落日",
     landmark: "起霞坡坡顶",
     scene: "灵感冒出来的傍晚时分",
-    traits: "灵感、自由、无限可能",
+    traits: "灵感、自由、可能意识",
     galleryCopy: "你很容易被情绪、想象和可能性点亮，总能把一件平常小事延展成更有故事感、更有生命力的体验"
   },
   "ENTP": {
     title: "敬文广场的辩论",
     landmark: "敬文广场中心",
     scene: "观点碰撞最热的时候",
-    traits: "机智、挑战、思维破局",
+    traits: "机敏、质疑、视角转换",
     galleryCopy: "你享受思维交锋带来的兴奋感，越是需要打开新角度、打破旧框架的场合，越能看见你的锋利和机敏"
   },
   "ESTJ": {
     title: "学明楼的教室",
     landmark: "学明楼教室",
     scene: "按节点推进任务的课堂与事务",
-    traits: "原则、管理、稳重基石",
+    traits: "原则、组织、稳定推进",
     galleryCopy: "你做事讲秩序、讲责任，也很会把散乱的人和任务重新拉回正轨，让整体节奏重新变得清楚而可控"
   },
   "ESFJ": {
-    title: "西区的沏茗城",
-    landmark: "西区沏茗城",
+    title: "西区的会客角",
+    landmark: "西区休憩空间",
     scene: "边聊天边照顾大家的聚会",
-    traits: "热情、体贴、社交链接",
+    traits: "热情、体贴、关系连接",
     galleryCopy: "你很懂得照顾现场的情绪和关系，常常一边推进事情，一边也让每个人都觉得自己被看见、被接住"
   },
   "ENFJ": {
     title: "图书馆的小图钉",
     landmark: "敬文图书馆服务台",
     scene: "主动回应他人需要的时刻",
-    traits: "奉献、感召、温暖引路",
+    traits: "连接、鼓励、主动回应",
     galleryCopy: "你很自然地会走到人群前面去组织、鼓励和连接别人，温柔之外也带着一种让人愿意跟上的号召力"
   },
   "ENTJ": {
     title: "正德的丰碑",
     landmark: "正德厚生碑",
     scene: "把目标落成现实的推进现场",
-    traits: "统筹、远见、卓越领导",
+    traits: "统筹、远见、目标意识",
     galleryCopy: "你关注方向、效率和结果，也擅长在复杂局面里重新立起主线，让事情不只是被讨论，而是真的被推动"
   },
 };
@@ -122,7 +122,7 @@ const QUESTIONS = [
       { label: "A", text: "兴致勃勃地加入外围人群，甚至想跟着旋律轻轻打拍子", pole: "E", weight: 1 },
       { label: "B", text: "远远看一眼，觉得画面很美，但还是按照原计划去往更安静的地方", pole: "I", weight: 1 },
       { label: "C", text: "拿出手机记录这瞬间，发给好友感慨一下校园的青春氛围", pole: "E", weight: 1 },
-      { label: "D", text: "这种热闹属于别人，我只想快点回宿舍", pole: "I", weight: 1 },
+      { label: "D", text: "听一会儿后继续自己的安排，把更完整的体验留给独处时间", pole: "I", weight: 1 },
     ]
   },
   {
@@ -133,7 +133,7 @@ const QUESTIONS = [
       { label: "A", text: "哪里热闹去哪里，每个感兴趣的摊位都想聊两句", pole: "E", weight: 1 },
       { label: "B", text: "提前看好路线，直奔心仪的目标，领完传单就走", pole: "I", weight: 1 },
       { label: "C", text: "被那种热火朝天的氛围感染，即使不加社团也觉得心情愉悦", pole: "E", weight: 1 },
-      { label: "D", text: "尽量绕开人群密集区，觉得那种高分贝环境有点消耗精力", pole: "I", weight: 1 },
+      { label: "D", text: "先在相对安静的地方观察，再选择少数真正感兴趣的摊位", pole: "I", weight: 1 },
     ]
   },
   {
@@ -143,8 +143,8 @@ const QUESTIONS = [
     options: [
       { label: "A", text: "宿舍全体出动，大家在摊位前热热闹闹地讨论吃什么", pole: "E", weight: 1 },
       { label: "B", text: "只约上一两个最好的朋友，边走边聊一些深层次的话题", pole: "I", weight: 1 },
-      { label: "C", text: "自己一个人去，享受那种在人海中寻找美食的“孤独感”", pole: "I", weight: 1 },
-      { label: "D", text: "如果可以，宁愿让室友帮带回来，在寝室里安稳地享受", pole: "I", weight: 1 },
+      { label: "C", text: "遇到认识的人就自然拼桌，边吃边交换最近的新鲜事", pole: "E", weight: 1 },
+      { label: "D", text: "更愿意自己安静地去一趟，按喜欢的节奏挑选再带回寝室", pole: "I", weight: 1 },
     ]
   },
   {
@@ -155,7 +155,7 @@ const QUESTIONS = [
       { label: "A", text: "偶尔遇到熟悉的同学打个招呼，交流一下近况", pole: "E", weight: 1 },
       { label: "B", text: "这种与世隔绝的清静，能让自己大脑彻底放空", pole: "I", weight: 1 },
       { label: "C", text: "思考这里的建筑布局和历史细节，并沉浸其中", pole: "I", weight: 1 },
-      { label: "D", text: "快速走过，思考待会儿要去办的具体事务", pole: "I", weight: 1 },
+      { label: "D", text: "如果碰见熟人，会主动招呼并邀请对方一起走一段", pole: "E", weight: 1 },
     ]
   },
   {
@@ -166,7 +166,7 @@ const QUESTIONS = [
       { label: "A", text: "不仅详细指路，甚至愿意走一段路带 TA 过去", pole: "E", weight: 1 },
       { label: "B", text: "礼貌清晰地指明方向，确定对方听懂后便重新回到自己的状态", pole: "I", weight: 1 },
       { label: "C", text: "有点局促，指个大概方向后赶紧结束这段临时的社交", pole: "I", weight: 1 },
-      { label: "D", text: "拿出手机帮对方查地图，用最精准的方式解决 TA 的问题", pole: "I", weight: 1 },
+      { label: "D", text: "一边帮对方查地图，一边自然地聊几句目的地附近的情况", pole: "E", weight: 1 },
     ]
   },
   {
@@ -174,10 +174,10 @@ const QUESTIONS = [
     axis: "E_I",
     text: "关于校园生活的“吐槽”或心得，你更倾向于：",
     options: [
-      { label: "A", text: "在朋友圈或者小红书公开分享，和校友们互动", pole: "E", weight: 1 },
+      { label: "A", text: "在公开动态里分享，和看到内容的同学交流", pole: "E", weight: 1 },
       { label: "B", text: "只在自己的小群或私密日记里表达最真实的感受", pole: "I", weight: 1 },
-      { label: "C", text: "默默点赞别人的动态，觉得自己被“嘴替”了就好", pole: "I", weight: 1 },
-      { label: "D", text: "完全不参与，觉得生活是自己的，没必要向外界展示", pole: "I", weight: 1 },
+      { label: "C", text: "会在校园话题下补充自己的经历，和陌生同学交换看法", pole: "E", weight: 1 },
+      { label: "D", text: "更习惯先在私人空间里整理感受，等想清楚后再决定是否表达", pole: "I", weight: 1 },
     ]
   },
   {
@@ -188,7 +188,7 @@ const QUESTIONS = [
       { label: "A", text: "这个塔的物理结构挺有意思，想知道它的具体建造高度", pole: "S", weight: 1 },
       { label: "B", text: "一种宏大的意境，觉得它像是一个注视着南师变迁的智者", pole: "N", weight: 1 },
       { label: "C", text: "它的光影非常适合拍一组艺术照", pole: "S", weight: 1 },
-      { label: "D", text: "这种地标对校园导航系统的重要性", pole: "N", weight: 1 },
+      { label: "D", text: "它像一个校园坐标，能把不同时期的故事连接起来", pole: "N", weight: 1 },
     ]
   },
   {
@@ -205,12 +205,12 @@ const QUESTIONS = [
   {
     id: "Q09",
     axis: "S_N",
-    text: "当你恰好经过起霞坡的时候，你的第一反应是：",
+    text: "当你经过起霞坡时，你更容易注意到：",
     options: [
-      { label: "A", text: "“又是这个坡！”：在无形中产生出对校园地形最直观、最深刻的实感", pole: "S", weight: 1 },
-      { label: "B", text: "沉浸电影感：感叹这里是全南师最适合与好友共赏落日、野餐晒太阳的圣地，自动匹配 BGM", pole: "N", weight: 1 },
-      { label: "C", text: "寻觅“校宠”：眼神自动锁定大傻鹅的出没地，试图开启一场充满童趣的校园偶遇", pole: "N", weight: 1 },
-      { label: "D", text: "释放本能：被柔软斜坡激发出瞬间的“出格”念头，想干脆躺下体验 321 滚动下坡的纯粹快乐", pole: "S", weight: 1 },
+      { label: "A", text: "坡度、路面和台阶的变化，以及哪条路线走起来更顺", pole: "S", weight: 1 },
+      { label: "B", text: "落日和树影构成的画面，脑中自然延伸出一段故事", pole: "N", weight: 1 },
+      { label: "C", text: "这段坡路怎样连接校园不同空间，并影响人在其中的感受", pole: "N", weight: 1 },
+      { label: "D", text: "当天的光线、风向和周围声音这些具体变化", pole: "S", weight: 1 },
     ]
   },
   {
@@ -219,7 +219,7 @@ const QUESTIONS = [
     text: "在德风园背书或休息时，你会注意到：",
     options: [
       { label: "A", text: "每一个石凳的分布位置，以及最适合避风的角落", pole: "S", weight: 1 },
-      { label: "B", text: "那种肃穆的学术氛围，以及历代先贤留下的精神压力", pole: "N", weight: 1 },
+      { label: "B", text: "空间传递出的学术氛围，以及它承载的文化意味", pole: "N", weight: 1 },
       { label: "C", text: "阳光透过树叶洒在孔子像上的光影变化", pole: "S", weight: 1 },
       { label: "D", text: "这里非常适合开展小组头脑风暴，是个绝佳的思维碰撞场", pole: "N", weight: 1 },
     ]
@@ -238,12 +238,12 @@ const QUESTIONS = [
   {
     id: "Q12",
     axis: "S_N",
-    text: "关于南师大的小猫咪，你的看法是：",
+    text: "偶然遇见校园里的猫时，你更容易：",
     options: [
-      { label: "A", text: "它们是校园生活的重要组成部分，是校园的点缀", pole: "S", weight: 1 },
-      { label: "B", text: "它们代表了一种校园里的温情，是学生情感的寄托", pole: "N", weight: 1 },
-      { label: "C", text: "应该有一种更科学的数据化管理方式来维持它们数量的平衡", pole: "N", weight: 1 },
-      { label: "D", text: "只是校园生活里的随机风景，看一眼觉得可爱就行", pole: "S", weight: 1 },
+      { label: "A", text: "留意它的毛色、动作和所在位置这些眼前细节", pole: "S", weight: 1 },
+      { label: "B", text: "想到它为校园生活带来的陪伴感和象征意味", pole: "N", weight: 1 },
+      { label: "C", text: "把这次偶遇联想到人与校园空间之间更长久的关系", pole: "N", weight: 1 },
+      { label: "D", text: "先观察周围环境是否安全，再决定要不要停留", pole: "S", weight: 1 },
     ]
   },
   {
@@ -252,9 +252,9 @@ const QUESTIONS = [
     text: "在小组协作完成一个跨学科课题时，如果进度受阻，你会：",
     options: [
       { label: "A", text: "拿出一份逻辑严密的 DDL 清单，按职责逐条排查问题所在", pole: "T", weight: 1 },
-      { label: "B", text: "先找个地方大家一起喝杯沏茗城奶茶，在轻松的氛围中解开心结", pole: "F", weight: 1 },
-      { label: "C", text: "提议大家重新构思，寻找一个更有趣、更跳跃的新切入点", pole: "F", weight: 1 },
-      { label: "D", text: "默默接手最难的部分，用自己的专业能力把进度硬生生拉回来", pole: "T", weight: 1 },
+      { label: "B", text: "先找个安静地方坐下来聊聊，在放松的氛围中梳理分歧", pole: "F", weight: 1 },
+      { label: "C", text: "先确认每个人的困难和顾虑，再协调一个大家愿意投入的推进方式", pole: "F", weight: 1 },
+      { label: "D", text: "先接手最关键的难点，用具体成果让整体进度重新稳定", pole: "T", weight: 1 },
     ]
   },
   {
@@ -263,8 +263,8 @@ const QUESTIONS = [
     text: "当你发现自己预约的图书馆座位被别人占了，你会：",
     options: [
       { label: "A", text: "礼貌但坚定地出示预约记录，按规则收回座位", pole: "T", weight: 1 },
-      { label: "B", text: "觉得没关系，只要旁边还有空位，不想因为这点小事产生冲突", pole: "F", weight: 1 },
-      { label: "C", text: "观察对方是否在忙，如果对方也很辛苦，就默默重新找位子", pole: "F", weight: 1 },
+      { label: "B", text: "先友好说明情况，尽量用让双方都不尴尬的方式解决", pole: "F", weight: 1 },
+      { label: "C", text: "先了解对方是否误会了座位信息，再一起确认合适的处理办法", pole: "F", weight: 1 },
       { label: "D", text: "思考为什么预约系统会出现这种冲突", pole: "T", weight: 1 },
     ]
   },
@@ -276,7 +276,7 @@ const QUESTIONS = [
       { label: "A", text: "帮 TA 仔细分析失败的技术原因，并寻找下次改进的方法", pole: "T", weight: 1 },
       { label: "B", text: "什么也不多说，陪 TA 去月亮湾吹吹风，静静听 TA 倾诉", pole: "F", weight: 1 },
       { label: "C", text: "告诉 TA 这种经历比结果更重要，这只是人生的一段插曲", pole: "F", weight: 1 },
-      { label: "D", text: "带 TA 去东城汇吃最爱吃最好吃的炸串，用实际行动转移 TA 的注意力", pole: "T", weight: 1 },
+      { label: "D", text: "等情绪缓和后，和 TA 一起列出下次可调整的具体步骤", pole: "T", weight: 1 },
     ]
   },
   {
@@ -284,21 +284,21 @@ const QUESTIONS = [
     axis: "T_F",
     text: "在处理繁琐的学分核对任务时，你最在意的是：",
     options: [
-      { label: "A", text: "每一个数字和课程名称都必须精准无误，不能有任何纰漏", pole: "T", weight: 1 },
+      { label: "A", text: "逐项核对数字和课程名称，确保记录准确一致", pole: "T", weight: 1 },
       { label: "B", text: "这个过程是否体现了对每位同学努力程度的公平对待", pole: "F", weight: 1 },
       { label: "C", text: "是否能找到一种更高效的算法或工具来自动化解决它", pole: "T", weight: 1 },
-      { label: "D", text: "尽快搞定它，好让自己从这种枯燥的事务中解脱出来", pole: "T", weight: 1 },
+      { label: "D", text: "先确认相关同学是否有特殊情况，避免核对过程给人造成额外压力", pole: "F", weight: 1 },
     ]
   },
   {
     id: "Q17",
     axis: "T_F",
-    text: "赶早八却遭遇 7MA 刹车随缘、电量虚标甚至 GPS 定位偏移还不上车，面对这种“战损级”骑行体验，你会：",
+    text: "赶早课时遇到共享单车故障、电量显示异常或定位偏移，你会：",
     options: [
-      { label: "A", text: "记录故障并联系客服申诉调度费，理性分析其晚间调度与系统逻辑的漏洞", pole: "T", weight: 1 },
-      { label: "B", text: "在寝室群同步“避雷”信息，感叹雨天抢车上课的生活不易，通过共鸣缓解焦虑", pole: "F", weight: 1 },
-      { label: "C", text: "不管是下雨天还是大晴天，无论多远的距离我都会用双脚去丈量，以此表达对 7MA 的彻底死心，再见 7MA", pole: "T", weight: 1 },
-      { label: "D", text: "哪怕再急也会把坏车的车头撇向一侧以示提醒，默默寻找下一辆更靠谱的代步工具", pole: "F", weight: 1 },
+      { label: "A", text: "记录故障现象和车辆信息，按平台规则提交反馈", pole: "T", weight: 1 },
+      { label: "B", text: "提醒可能受影响的同学，也留意大家是否需要互相帮忙", pole: "F", weight: 1 },
+      { label: "C", text: "记录车辆编号和故障现象，换一种通勤方式并在之后提交反馈", pole: "T", weight: 1 },
+      { label: "D", text: "先考虑怎样减少它给下一位使用者带来的麻烦，再寻找替代方式", pole: "F", weight: 1 },
     ]
   },
   {
@@ -306,9 +306,9 @@ const QUESTIONS = [
     axis: "T_F",
     text: "当你在实验室或自习室遇到一个难以攻克的难题时：",
     options: [
-      { label: "A", text: "查阅海量资料，运用严密的逻辑推理，不解决不罢休", pole: "T", weight: 1 },
-      { label: "B", text: "找同学交流，看看别人的思路是否能给自己一点情感支持和启发", pole: "F", weight: 1 },
-      { label: "C", text: "先去操场跑两圈，在运动中寻找那种突然闪现的灵感", pole: "F", weight: 1 },
+      { label: "A", text: "查阅资料并逐步验证推理，直到找到能够解释问题的方案", pole: "T", weight: 1 },
+      { label: "B", text: "找同学交流，先听听彼此卡住时的感受和顾虑", pole: "F", weight: 1 },
+      { label: "C", text: "邀请同伴一起梳理难点，照顾双方的节奏再继续尝试", pole: "F", weight: 1 },
       { label: "D", text: "将问题拆解成几个小步，一个一个稳扎稳打地克服", pole: "T", weight: 1 },
     ]
   },
@@ -317,7 +317,7 @@ const QUESTIONS = [
     axis: "J_P",
     text: "乘坐小白或大黄校车的时候，你的等车状态是：",
     options: [
-      { label: "A", text: "必须查好时刻表，提前两分钟站在站台，拒绝任何不确定", pole: "J", weight: 1 },
+      { label: "A", text: "提前查好时刻表并预留时间，让通勤尽量可控", pole: "J", weight: 1 },
       { label: "B", text: "随缘，走到站台看到有车就上，没车就当漫步校园", pole: "P", weight: 1 },
       { label: "C", text: "如果没赶上，会短暂地懊恼一下计划被打乱，但很快调整", pole: "P", weight: 1 },
       { label: "D", text: "宁愿自己骑车，把通勤的节奏牢牢掌握在自己手中", pole: "J", weight: 1 },
@@ -350,10 +350,10 @@ const QUESTIONS = [
     axis: "J_P",
     text: "住在西区却被告知快递投递到了东区驿站，面对这段“遥远”的取件路，你会：",
     options: [
-      { label: "A", text: "缜密规划动线：将其与东区的课程或约饭行程合并执行，拒绝任何低效且无意义的往返", pole: "J", weight: 1 },
-      { label: "B", text: "佛系多件合并：只要不是急用的物件，就让它在驿站先“吃灰”，直到哪天碰巧路过再顺手带回", pole: "P", weight: 1 },
-      { label: "C", text: "强迫症式即刻清空：无法忍受待办事项堆积，即便横跨半个仙林也要在当天取走，换取心理上的绝对爽利", pole: "J", weight: 1 },
-      { label: "D", text: "浪漫主义远征：把它当成一场听歌吹风的校园旅行，顺便在东区面包店买份甜品，把枯燥任务变成生活犒赏", pole: "P", weight: 1 },
+      { label: "A", text: "把取件和东区的课程或约饭排在一起，减少重复往返", pole: "J", weight: 1 },
+      { label: "B", text: "只要物件不急用，就等哪天刚好路过时顺手取回", pole: "P", weight: 1 },
+      { label: "C", text: "把它视为当天需要完成的待办，安排明确时间取回", pole: "J", weight: 1 },
+      { label: "D", text: "把取件当成一次随意的校园散步，沿途再决定是否去别处看看", pole: "P", weight: 1 },
     ]
   },
   {
@@ -363,19 +363,63 @@ const QUESTIONS = [
     options: [
       { label: "A", text: "制定周密的计划，每周固定跑三次，风雨无阻地完成任务", pole: "J", weight: 1 },
       { label: "B", text: "只要天气好心情好就去跑跑，顺便在操场看日落", pole: "P", weight: 1 },
-      { label: "C", text: "前期疯狂拖延，最后两周在操场上演“生死时速”补卡", pole: "P", weight: 1 },
-      { label: "D", text: "找一切可以利用的机会，比如去教学楼的路上顺便打个卡", pole: "P", weight: 1 },
+      { label: "C", text: "根据每周课程和身体状态灵活安排，及时调整次数", pole: "P", weight: 1 },
+      { label: "D", text: "把跑步固定接到某几天的课程之后，让它成为稳定日程的一部分", pole: "J", weight: 1 },
     ]
   },
   {
     id: "Q24",
     axis: "J_P",
-    text: "如果要在随园拍一张完美的银杏合照，你会：",
+    text: "如果要在随园拍一张满意的银杏合照，你会：",
     options: [
       { label: "A", text: "查好最佳光照时间，预设好所有构图和后期风格", pole: "J", weight: 1 },
       { label: "B", text: "穿上喜欢的衣服，看到哪片叶子美就站在哪里拍", pole: "P", weight: 1 },
-      { label: "C", text: "拍下很多张，回去再慢慢挑选自己最心动的那一张", pole: "P", weight: 1 },
+      { label: "C", text: "先列出想拍的场景和顺序，再按清单完成这次记录", pole: "J", weight: 1 },
       { label: "D", text: "觉得照片只是记录，当下的那种金色氛围才是最重要的", pole: "P", weight: 1 },
+    ]
+  },
+  {
+    id: "Q25",
+    axis: "E_I",
+    text: "一场课程讨论结束后，你通常更愿意：",
+    options: [
+      { label: "A", text: "继续和几位同学交换看法，让想法在对话里慢慢成形", pole: "E", weight: 1 },
+      { label: "B", text: "先独自整理笔记，等思路清楚后再选择是否分享", pole: "I", weight: 1 },
+      { label: "C", text: "主动询问不同小组的观点，从现场反馈中获得启发", pole: "E", weight: 1 },
+      { label: "D", text: "留出安静时间消化讨论，不急着继续社交", pole: "I", weight: 1 },
+    ]
+  },
+  {
+    id: "Q26",
+    axis: "S_N",
+    text: "接到一个开放式课程作业时，你通常先做什么？",
+    options: [
+      { label: "A", text: "确认要求、格式和已有材料，先把可验证的信息列清楚", pole: "S", weight: 1 },
+      { label: "B", text: "先想它可以讲成怎样的故事，再决定从哪里切入", pole: "N", weight: 1 },
+      { label: "C", text: "寻找一个具体案例，用它测试自己是否理解了任务", pole: "S", weight: 1 },
+      { label: "D", text: "画出概念之间的联系，看看能否延伸出新的方向", pole: "N", weight: 1 },
+    ]
+  },
+  {
+    id: "Q27",
+    axis: "T_F",
+    text: "当小组里出现两种都说得通的方案时，你更常依据什么决定？",
+    options: [
+      { label: "A", text: "比较目标、成本和证据，选择更经得起检验的一种", pole: "T", weight: 1 },
+      { label: "B", text: "关注两种方案会怎样影响成员的投入感和合作关系", pole: "F", weight: 1 },
+      { label: "C", text: "先约定统一标准，再按标准逐项判断", pole: "T", weight: 1 },
+      { label: "D", text: "先听清每个人真正担心的是什么，再寻找共同接受的方向", pole: "F", weight: 1 },
+    ]
+  },
+  {
+    id: "Q28",
+    axis: "J_P",
+    text: "面对一项持续数周的任务，你通常怎样保持推进？",
+    options: [
+      { label: "A", text: "提前设好阶段节点，按计划定期检查进度", pole: "J", weight: 1 },
+      { label: "B", text: "先开始做，再根据实际状态不断调整路径", pole: "P", weight: 1 },
+      { label: "C", text: "把关键截止时间写进日程，给每一阶段留出余量", pole: "J", weight: 1 },
+      { label: "D", text: "保留较大的机动空间，在灵感或条件成熟时集中推进", pole: "P", weight: 1 },
     ]
   },
 ];

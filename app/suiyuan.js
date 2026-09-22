@@ -13,41 +13,41 @@
         id: "l100",
         title: "100 号楼（中大楼）",
         category: "建筑",
-        short: "随园的中轴，宫殿式大屋顶，校徽上的那一栋",
+        short: "位于历史建筑群中轴线上的代表性建筑",
         position: [118.769319, 32.053742],
-        text: "金女大时期的“社会与体育专业教学楼”，1923 年建成。一楼是会客厅和办公室，二楼原本是带蜂窝式木格窗的室内体育馆。现在仍是学校重要的接待和会议场所，也是校徽上的主形象。",
-        note: "如果第一次来，先认这栋楼，再沿着中轴线慢慢走",
-        tags: ["1923", "中轴", "宫殿式"],
+        text: "金陵女子大学于 1923 年迁入随园校址。100 号楼处在旧址建筑群的主要轴线上，与大草坪共同构成最容易辨认的校园空间。",
+        note: "这里仍是校园使用空间，参观请以学校现场管理要求为准",
+        tags: ["20世纪20年代", "中轴", "历史建筑"],
       },
       {
         id: "l200",
         title: "200 号楼（科学楼）",
         category: "建筑",
-        short: "金女大时期培养女科学家的那栋",
+        short: "历史建筑群南侧的重要教学建筑",
         position: [118.769319, 32.05306],
-        text: "1923 年建成，钢筋混凝土宫殿式建筑，曾是生物、化学、物理的实验和教学场所。一楼有阶梯式科学报告厅，二楼是化学、物理教室。走出了刘恩兰、王明贞、吴懋仪等一批中外知名的女科学家。",
-        note: "现在一层是国际文化教育学院办公区，对外开放程度有限",
-        tags: ["1923", "理科", "阶梯厅"],
+        text: "200 号楼属于金陵女子大学旧址建筑群，是早期校园科学教育空间的一部分。它与中轴建筑共同构成大草坪周边的对称格局。",
+        note: "具体用途与开放状态可能变化，请以学校最新安排为准",
+        tags: ["20世纪20年代", "科学教育", "历史建筑"],
       },
       {
         id: "l300",
         title: "300 号楼（文学馆）",
         category: "建筑",
-        short: "金女大时期的文科楼，屋脊上有一道历史痕迹",
+        short: "与大草坪及中轴共同构成早期校园空间",
         position: [118.769319, 32.05439],
-        text: "1923 年建成，16 间房，藏过临时图书馆、办公室和文科教室。1943 年日军侵占随园期间在楼顶搭建了瞭望台，这一处凸起保留至今，成了那一段历史的实物见证。",
-        note: "现为校办、财务处等行政部门办公地，外部可远观",
-        tags: ["1923", "文科", "历史痕迹"],
+        text: "300 号楼属于金陵女子大学旧址建筑群，与大草坪和中轴共同构成早期校园空间。本页只保留公开机构资料能够稳定支持的整体信息。",
+        note: "建筑仍在校园环境中使用，适合从外部观察整体格局",
+        tags: ["20世纪20年代", "人文教育", "历史建筑"],
       },
       {
         id: "music",
         title: "音乐楼",
         category: "建筑",
-        short: "顶楼礼堂的窗外能直接看到草坪",
+        short: "承载音乐教育与公共活动的校园建筑",
         position: [118.770178, 32.05318],
-        text: "1934 年建成，金女大时期的音乐系楼。楼下有 22 间琴房和南北两个小音乐厅，二楼是能容纳 600 多人的礼堂。黄友葵、陈洪、喻宜萱等音乐家都曾在这里教学。",
-        note: "礼堂至今仍在举办重要演出，是音乐学院的主阵地",
-        tags: ["1934", "礼堂", "琴房"],
+        text: "音乐楼承载了校园音乐教育与公共活动。不同年代的房间数量、礼堂容量和使用安排会变化，本页不把容易过时的数字作为固定信息。",
+        note: "它仍是教学与活动空间，是否开放以学校安排为准",
+        tags: ["20世纪30年代", "音乐教育", "礼堂"],
       },
       {
         id: "hua",
@@ -55,9 +55,9 @@
         category: "阅读",
         short: "提醒人这里不只是“可参观”，也仍然在被日常使用",
         position: [118.770142, 32.054307],
-        text: "1932 年开工，由美国建筑师墨菲设计、墨菲和陈明记营造厂按 1:1 实物模型反复推敲后建成。一楼曾是吴贻芳校长的办公室。1988 年接受香港华夏教育基金会资助后改名为华夏图书馆，藏书约 9.7 万册。",
-        note: "85 岁的国保建筑，2025 年起首次闭馆大修，是近两年随园最大的事",
-        tags: ["1932", "国保", "在修"],
+        text: "华夏图书馆是随园历史建筑中的阅读空间。南京师范大学图书馆资料记载，该馆于 2022 年完成修缮、文献回迁和开放服务条件重建。",
+        note: "当前开放情况请以南京师范大学图书馆通知为准",
+        tags: ["20世纪30年代", "图书馆", "修缮利用"],
       },
       {
         id: "grass",
@@ -65,7 +65,7 @@
         category: "空间",
         short: "开阔，也让人自然放慢下来",
         position: [118.769795, 32.053858],
-        text: "金女大时期的中心草坪，东西轴线对称，100、200、300 号楼分别坐镇中、南、北。现在仍是开学典礼、社团活动、晒太阳和发呆的现场。",
+        text: "大草坪是旧址建筑群空间组织的重要部分，周边建筑共同形成容易辨认的校园格局。今天这里仍属于在使用中的校园公共空间。",
         note: "很多人对随园的第一层印象，往往都和这片草地有关",
         tags: ["中心", "开阔", "活动"],
       },
@@ -73,41 +73,41 @@
         id: "dorm40",
         title: "400-700 号楼（学生宿舍群）",
         category: "建筑",
-        short: "金女大时期 4 栋老宿舍，曾是 999 朵玫瑰的住处",
+        short: "金女大时期校园生活与住宿空间的一部分",
         position: [118.77005, 32.0528],
-        text: "1923 至 1924 年陆续建成，每栋约 1151 平米，每幢住 50 人、每间房 2 人。400 号现为数学与计算机科学学院，500 号是外国语学院，其余为办公区。",
-        note: "从外观看与 100、200、300 号楼同属宫殿式建筑群",
-        tags: ["1923-1924", "宿舍", "学院"],
+        text: "400—700 号楼让旧址历史不只停留在教学建筑，也包含学生生活空间。现用部门可能调整，本页不作长期不变的承诺。",
+        note: "从外部可观察它们与早期校园建筑群的整体关系",
+        tags: ["20世纪20年代", "宿舍建筑", "校园生活"],
       },
       {
         id: "zhongda",
         title: "文学院中大楼",
         category: "建筑",
-        short: "依山势建的“丁”字型阶梯教室",
+        short: "依校园地形展开的南师院时期教学建筑",
         position: [118.76843, 32.0536],
-        text: "1954 年建成的“丁”字型建筑，依山而建，教室顺坡势排成阶梯式。设计里能看到梁思成的巧思。2023 年完成两年修缮后重新投入使用，是文学院现址。",
-        note: "100 号楼背后那条刻着铭文的小路，就通往这里",
-        tags: ["1954", "丁字型", "文学院"],
+        text: "中大楼体现了校园在南京师范学院时期继续发展的轨迹。它依地形展开，是随园后续教学空间的重要组成部分。",
+        note: "导览只介绍外部空间关系，不承诺室内参观",
+        tags: ["20世纪50年代", "教学空间", "文学院"],
       },
       {
         id: "yishe",
         title: "一舍与二舍",
         category: "建筑",
-        short: "1955 年建成的青砖老宿舍，已入南京市历史建筑名录",
+        short: "随园后续建设阶段留下的宿舍建筑",
         position: [118.76805, 32.05254],
-        text: "随园最古老的宿舍建筑之一，1955 年与南大楼、北大楼同期建成。四层筒子楼结构，青砖黑顶，传承金女大“宫殿式”屋顶，也保留了建国初期“民族形式”风格。",
-        note: "2020 年入选南京市第二批历史建筑保护名录",
-        tags: ["1955", "宿舍", "历史建筑"],
+        text: "一舍与二舍记录了校园生活空间在 20 世纪 50 年代的继续扩展。旧版中缺少稳定一手来源的结构材料和编号信息已删除。",
+        note: "具体结构材料、保护编号和当前用途应以正式资料为准",
+        tags: ["20世纪50年代", "宿舍", "校园生活"],
       },
       {
         id: "southnorth",
         title: "南大楼与北大楼",
         category: "建筑",
-        short: "1954 年建成的两栋对称老楼",
+        short: "校园轴线周边的后续教学建筑",
         position: [118.76764, 32.0534],
-        text: "1954 年与文学院中大楼同期建成，是南京师范学院时期的重要教学楼。沿中轴线对称分布，大屋顶风格，2006 年随金女大旧址整体列入全国重点文物保护单位。",
-        note: "和 100、200、300 号楼同属“国保”建筑群",
-        tags: ["1954", "对称", "国保"],
+        text: "南大楼与北大楼属于校园后续建设。国务院 2006 年公布的全国重点文物保护单位名称是“金陵女子大学旧址”，具体单体范围应以正式文保资料为准。",
+        note: "从外部可观察它们与校园轴线及周边建筑的空间关系",
+        tags: ["20世纪50年代", "教学楼", "校园延续"],
       },
       {
         id: "defeng",
@@ -164,104 +164,90 @@
       {
         id: "l100",
         name: "100 号楼（中大楼）",
-        year: "1923",
+        year: "20世纪20年代",
         era: "金女大时期",
         category: "建筑",
-        cover: "./buildings/photos/l100.png",
-        feature: "金女大时期的「社会与体育专业教学楼」，随园中轴线最显眼的一栋。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/l100.webp",
+        feature: "位于历史建筑群中轴线上的代表性建筑。",
       },
       {
         id: "l200",
         name: "200 号楼（科学楼）",
-        year: "1923",
+        year: "20世纪20年代",
         era: "金女大时期",
         category: "建筑",
-        cover: "./buildings/photos/l200.png",
-        feature: "金女大时期理科教学主楼，从这里走出了多位中外知名女科学家。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/l200.webp",
+        feature: "历史建筑群南侧的重要教学建筑。",
       },
       {
         id: "l300",
         name: "300 号楼（文学馆）",
-        year: "1923",
+        year: "20世纪20年代",
         era: "金女大时期",
         category: "建筑",
-        cover: "./buildings/photos/l300.png",
-        feature: "金女大时期文科楼，楼顶保留着 1943 年日军搭建的瞭望台痕迹。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/l300.webp",
+        feature: "与大草坪及中轴共同构成早期校园空间。",
       },
       {
         id: "music",
         name: "音乐楼",
-        year: "1934",
+        year: "20世纪30年代",
         era: "金女大时期",
         category: "建筑",
-        cover: "./buildings/photos/music.png",
-        feature: "楼下 22 间琴房，楼上是 600 人的礼堂，是音乐学院的现址。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/music.webp",
+        feature: "承载音乐教育与公共活动的校园建筑。",
       },
       {
         id: "hua",
         name: "华夏图书馆",
-        year: "1932",
+        year: "20世纪30年代",
         era: "金女大时期",
         category: "阅读",
-        cover: "./buildings/photos/hua.png",
-        feature: "由墨菲设计、墨菲和陈明记营造厂按 1:1 模型反复推敲后建成，2025 年起首次大修。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/hua.webp",
+        feature: "2022 年完成修缮和开放服务条件重建的历史阅读空间。",
       },
       {
         id: "zhongda",
         name: "文学院中大楼",
-        year: "1954",
+        year: "20世纪50年代",
         era: "南师院时期",
         category: "建筑",
-        cover: "./buildings/photos/zhongda.jpg",
-        feature: "依山势建的「丁」字型阶梯教室，能看到梁思成式的设计巧思。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/zhongda.webp",
+        feature: "依校园地形展开的南师院时期教学建筑。",
       },
       {
         id: "yishe",
         name: "一舍与二舍",
-        year: "1955",
+        year: "20世纪50年代",
         era: "南师院时期",
         category: "建筑",
-        cover: "./buildings/photos/yishe.jpg",
-        feature: "随园最古老的宿舍之一，青砖黑顶，已列入南京市历史建筑保护名录。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/yishe.webp",
+        feature: "随园后续建设阶段留下的宿舍建筑。",
       },
       {
         id: "southnorth",
         name: "南大楼与北大楼",
-        year: "1954",
+        year: "20世纪50年代",
         era: "南师院时期",
         category: "建筑",
-        cover: "./buildings/photos/south.png",
-        feature: "和文学院中大楼同期建成，沿中轴对称分布，同属「国保」建筑群。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/south.webp",
+        feature: "位于校园轴线周边的后续教学建筑。",
       },
       {
         id: "dorm40",
         name: "400-700 号楼（学生宿舍群）",
-        year: "1923-1924",
+        year: "20世纪20年代",
         era: "金女大时期",
         category: "建筑",
-        cover: "./buildings/photos/dorm40.png",
-        feature: "金女大时期的 4 栋老宿舍，曾是 999 朵玫瑰的住处。",
-        source: "南师大随园校区官网",
+        cover: "./buildings/photos/dorm40.webp",
+        feature: "呈现早期校园生活与住宿功能的一组建筑。",
       },
     ],
     timeline: [
       {
-        year: "1748",
-        title: "“随园”这个名字被留下",
-        body: "袁枚在这里建园并留下“随园”之名，这也成为后来很多人认识这片空间的起点。",
-      },
-      {
-        year: "1913 - 1937",
+        year: "1923 - 1937",
         title: "近代校园格局逐渐形成",
-        body: "金陵女子大学办学时期，今天人们熟悉的很多校舍和空间秩序都在这一阶段慢慢建立。",
+        body: "金陵女子大学迁入随园校址后，今天人们熟悉的多处校舍和空间秩序在这一阶段逐渐形成。",
       },
       {
         year: "1937 - 1945",
@@ -271,7 +257,7 @@
       {
         year: "1952",
         title: "南京师范学院在随园成立",
-        body: "院系调整后，南京师范学院以金女大旧址为校址，1954 年的文学院中大楼、南大楼、北大楼和 1955 年的一舍二舍都是这一时期留下的。",
+        body: "院系调整后，南京师范学院以金女大旧址为校址；校园在 20 世纪 50 年代继续增加教学与生活建筑。",
       },
       {
         year: "今天",
@@ -494,7 +480,7 @@
 
   function setWeatherFallback() {
     setWeatherValues({
-      weather: "--",
+      weather: "暂不可用",
       temperature: "--",
     });
   }
@@ -519,88 +505,27 @@
     };
   }
 
-  async function tryPluginWeather(AMap) {
-    if (!AMap || typeof AMap.Weather !== "function") {
-      throw new Error("天气插件未加载");
-    }
-
-    const weather = new AMap.Weather();
-    const targets = [DATA.campus.adcode, DATA.campus.district, DATA.campus.city];
-
-    for (const target of targets) {
-      try {
-        const live = await new Promise((resolve, reject) => {
-          weather.getLive(target, (err, data) => {
-            if (err || !data) {
-              reject(err || new Error("天气数据为空"));
-              return;
-            }
-            resolve(data);
-          });
-        });
-
-        return {
-          weather: live.weather || "天气正常",
-          temperature: live.temperature ? `${live.temperature}°C` : "--",
-        };
-      } catch (error) {
-        continue;
-      }
-    }
-
-    throw new Error("天气插件没有返回有效数据");
-  }
-
-  async function tryWebServiceWeather() {
-    const key = window.SUIYUAN_AMAP_KEY;
-    const url = `https://restapi.amap.com/v3/weather/weatherInfo?key=${encodeURIComponent(key)}&city=${DATA.campus.adcode}&extensions=base`;
-    const response = await fetch(url);
-    const data = await response.json();
-    const live = data && data.lives && data.lives[0];
-
-    if (!response.ok || data.status !== "1" || !live) {
-      throw new Error(data.info || "天气接口没有返回数据");
-    }
-
-    return {
-      weather: live.weather || "天气正常",
-      temperature: live.temperature ? `${live.temperature}°C` : "--",
-    };
-  }
-
-  async function loadWeather(AMap) {
+  async function loadWeather() {
     try {
       const values = await tryServerWeather();
       setWeatherValues(values);
-      return;
-    } catch (serverError) {
-      try {
-        const values = await tryPluginWeather(AMap);
-        setWeatherValues(values);
-        return;
-      } catch (pluginError) {
-        try {
-          const values = await tryWebServiceWeather();
-          setWeatherValues(values);
-          return;
-        } catch (serviceError) {
-          setWeatherFallback();
-        }
-      }
+    } catch (error) {
+      setWeatherFallback();
     }
   }
 
   async function initMap() {
     if (!window.AMapLoader) {
-      await loadWeather(null);
+      $("mapTips").textContent = "地图服务暂时无法加载，你仍可使用右侧地点列表浏览导览。";
+      await loadWeather();
       return;
     }
 
     try {
       const AMap = await window.AMapLoader.load({
-        key: window.SUIYUAN_AMAP_KEY,
+        key: window.SUIYUAN_AMAP_MAP_KEY,
         version: "2.0",
-        plugins: ["AMap.Scale", "AMap.Weather"],
+        plugins: ["AMap.Scale"],
       });
 
       mapApi = AMap;
@@ -633,9 +558,10 @@
       });
 
       focusPoint(state.pointId);
-      await loadWeather(AMap);
+      await loadWeather();
     } catch (error) {
-      await loadWeather(null);
+      $("mapTips").textContent = "地图服务暂时无法加载，你仍可使用右侧地点列表浏览导览。";
+      await loadWeather();
     }
   }
 
@@ -646,50 +572,6 @@
       focusPoint(target.dataset.pointId);
     });
 
-    const trigger = $("nextPageTrigger");
-    const panel = $("nextPagePanel");
-    const input = $("nextPagePassword");
-    const submit = $("nextPageSubmit");
-    const hint = $("nextPageHint");
-
-    if (trigger && panel && input && submit && hint) {
-      const defaultHint = "提示：你的生日";
-
-      const togglePanel = () => {
-        const willOpen = panel.hasAttribute("hidden");
-        if (willOpen) {
-          panel.removeAttribute("hidden");
-          hint.textContent = defaultHint;
-          window.setTimeout(() => input.focus(), 30);
-        } else {
-          panel.setAttribute("hidden", "");
-          input.value = "";
-          hint.textContent = defaultHint;
-        }
-      };
-
-      const tryEnterNextPage = () => {
-        const password = input.value.trim();
-        if (password === "0725") {
-          hint.textContent = "验证通过，正在进入下一页";
-          window.location.href = "./next-page.html";
-          return;
-        }
-
-        hint.textContent = "密码不对，再试一次";
-        input.focus();
-        input.select();
-      };
-
-      trigger.addEventListener("click", togglePanel);
-      submit.addEventListener("click", tryEnterNextPage);
-      input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          tryEnterNextPage();
-        }
-      });
-    }
   }
 
   renderRightPanel();

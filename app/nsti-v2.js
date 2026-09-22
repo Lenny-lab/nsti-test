@@ -64,7 +64,7 @@
         name: "逻辑定标",
         summary: "你更依赖标准、结构和因果来做判断",
         portrait: "你习惯先看是否合理、是否公平、是否经得起推敲",
-        scene: "适合规则梳理、问题诊断、任务拆解和复杂决策把关",
+        scene: "适合规则梳理、问题分析、任务拆解和复杂决策把关",
         pitfall: "表达过直时，别人可能先感到被挑战，而不是被帮助",
         partner: "和“共感定标”型同伴协作时，对方能补足接受度与氛围感",
         stress: "讨论长期停在情绪层面、迟迟不能落到规则时，你会烦躁",
@@ -114,7 +114,10 @@
     },
   ];
 
-  const Q_BANK = typeof QUESTIONS !== "undefined" ? QUESTIONS : [];
+  const AXIS_ORDER = ["E_I", "S_N", "T_F", "J_P"];
+  const Q_BANK = (typeof QUESTIONS !== "undefined" ? QUESTIONS : [])
+    .slice()
+    .sort((a, b) => AXIS_ORDER.indexOf(a.axis) - AXIS_ORDER.indexOf(b.axis));
   const T_LIB = typeof TYPE_LIBRARY !== "undefined" ? TYPE_LIBRARY : {};
   const AXIS_INDEX = Object.fromEntries(AXES.map((axis, index) => [axis.id, index]));
 
@@ -157,11 +160,10 @@
 
   const axisById = (id) => AXES.find((axis) => axis.id === id);
 
-  const strengthBand = (pct) => {
-    if (pct < 20) return { label: "均衡切换", text: "这一组在你身上更像按情境切换，而不是固定站在某一侧" };
-    if (pct < 40) return { label: "轻度倾向", text: "你已经有偏好方向，但依旧保留不少切换空间" };
-    if (pct < 65) return { label: "明显倾向", text: "这一组已经形成比较稳定的做事惯性" };
-    return { label: "招牌偏好", text: "这是你身上非常鲜明的一组底色，别人也更容易感受到" };
+  const tendencyBand = (margin) => {
+    if (margin <= 1) return { label: "轻微倾向", text: "两边的选择很接近，当前结果更容易随情境变化" };
+    if (margin <= 3) return { label: "明显倾向", text: "这组选择呈现出较清楚的偏好方向" };
+    return { label: "鲜明倾向", text: "本次作答在这一组里呈现出较一致的方向" };
   };
 
   const listHTML = (items) => {
@@ -169,11 +171,9 @@
     return `<ul class="stackList">${clean.map((item) => `<li>${item}</li>`).join("")}</ul>`;
   };
 
-  const axisDisplayName = (axis, info) =>
-    info.strength < 20 ? `${axis.left.name} / ${axis.right.name}` : info.toward.name;
+  const axisDisplayName = (_axis, info) => info.toward.name;
 
-  const axisDisplaySummary = (axis, info) =>
-    info.strength < 20 ? `你在“${axis.group}”上保留了比较大的情境弹性` : info.toward.summary;
+  const axisDisplaySummary = (_axis, info) => info.toward.summary;
 
   const show = (name) => {
     screenIntro.classList.toggle("hidden", name !== "intro");
@@ -188,12 +188,12 @@
     const selected = state.answers.get(question.id);
 
     question.options.forEach((choice) => {
-      const node = document.createElement("div");
+      const node = document.createElement("button");
       const isSelected = selected && selected.label === choice.label;
+      node.type = "button";
       node.className = "choice" + (isSelected ? " choice--selected" : "");
-      node.tabIndex = 0;
-      node.setAttribute("role", "button");
       node.setAttribute("aria-pressed", isSelected ? "true" : "false");
+      node.setAttribute("aria-label", `${choice.label}：${choice.text}`);
       node.innerHTML = `<div class="choice__head"><span class="choice__label">${choice.label}</span></div><div class="choice__value">${choice.text}</div>`;
 
       const pick = () => {
@@ -202,13 +202,6 @@
       };
 
       node.addEventListener("click", pick);
-      node.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          pick();
-        }
-      });
-
       scaleEl.appendChild(node);
     });
   };
@@ -247,25 +240,27 @@
     const strengths = AXES.map((axis) => {
       const raw = score[axis.id];
       const maxScore = maxAbs[axis.id] || 1;
-      const strength = Math.round((Math.abs(raw) / maxScore) * 100);
+      const margin = Math.abs(raw);
+      const ratio = Math.round((margin / maxScore) * 100);
       return {
         axis: axis.id,
         raw,
         max: maxScore,
-        strength,
-        toward: raw >= 0 ? axis.left : axis.right,
-        away: raw >= 0 ? axis.right : axis.left,
-        band: strengthBand(strength),
+        margin,
+        ratio,
+        toward: raw > 0 ? axis.left : axis.right,
+        away: raw > 0 ? axis.right : axis.left,
+        band: tendencyBand(margin),
       };
     });
 
     const letters = strengths.map((item) => item.toward.k).join("");
-    const weakest = strengths.reduce((min, item) => (item.strength < min.strength ? item : min), strengths[0]);
+    const weakest = strengths.reduce((min, item) => (item.margin < min.margin ? item : min), strengths[0]);
     return { letters, strengths, weakest };
   };
 
   const axisCardHTML = (axis, info) => {
-    const width = Math.max(info.strength === 0 ? 2 : info.strength / 2, 2);
+    const width = Math.max(info.ratio / 2, 2);
     const left = info.raw >= 0 ? 50 : 50 - width;
 
     return `
@@ -279,7 +274,7 @@
         </div>
         <div class="axisCard__meta">
           <div>${axis.left.name}</div>
-          <div>当前更像 ${axisDisplayName(axis, info)}（${info.strength}%）</div>
+          <div>当前更像 ${axisDisplayName(axis, info)} · ${info.band.label}</div>
           <div>${axis.right.name}</div>
         </div>
         <div class="meter">
@@ -296,7 +291,7 @@
     <article class="summaryCard">
       <div class="summaryCard__title">${axis.group}</div>
       <div class="summaryCard__value">${axisDisplayName(axis, info)}</div>
-      <div class="summaryCard__text">${axisDisplaySummary(axis, info)} 当前强度 ${info.strength}%（${info.band.label}）</div>
+      <div class="summaryCard__text">${axisDisplaySummary(axis, info)} 本次作答为${info.band.label}</div>
     </article>
   `;
 
@@ -312,10 +307,9 @@
 
   const buildPressure = (res, directions) => {
     const weakAxis = axisById(res.weakest.axis);
-    const weakTip =
-      res.weakest.strength < 20
-      ? `你当前最容易随情境切换的是“${weakAxis.group}”，这不是短板，只是说明你在这一组保留了更大的弹性`
-        : `你当前最需要留意的是“${weakAxis.group}”：${res.weakest.band.text}`;
+    const weakTip = res.weakest.margin >= 5
+      ? "本次四组选择都呈现出较鲜明的方向；它们仍只是这次作答的概括，不是固定标签"
+      : `你本次区分度相对较低的是“${weakAxis.group}”：${res.weakest.band.text}`;
 
     return [weakTip, directions[0].stress, directions[3].stress];
   };
@@ -369,7 +363,7 @@
     const typeEntry = T_LIB[res.letters] || { title: "南师生活混合型", traits: "", landmark: "" };
     const axisLines = AXES.map((axis) => {
       const info = res.strengths.find((item) => item.axis === axis.id);
-      return `${axis.group}：${axisDisplayName(axis, info)}（${info.strength}%）`;
+      return `${axis.group}：${axisDisplayName(axis, info)}（${info.band.label}）`;
     }).join("\n");
 
     return `NSTI 结果：${typeEntry.title}
@@ -378,7 +372,7 @@
 
 ${axisLines}
 
-提醒：NSTI 是独立设计的校园偏好画像，仅供自我洞察与协作讨论，不代表学校官方立场，也不用于诊断与筛选`;
+提醒：NSTI 是独立学生创作的校园趣味画像，未经心理测量学验证，仅供自我观察与交流，不代表学校官方立场，也不用于诊断、筛选或重大决策`;
   };
 
   const copyResult = async () => {

@@ -469,12 +469,16 @@ a:hover {
 .choice {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 12px;
   min-height: 148px;
   padding: 18px 20px;
   border-radius: 20px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.68);
+  color: inherit;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
   transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
 }
@@ -487,6 +491,13 @@ a:hover {
 .choice:hover {
   transform: translateY(-2px);
   border-color: rgba(30, 108, 86, 0.22);
+}
+
+.choice:focus-visible,
+.btn:focus-visible,
+.footer a:focus-visible {
+  outline: 3px solid rgba(30, 108, 86, 0.34);
+  outline-offset: 3px;
 }
 
 .choice--selected {
