@@ -1,10 +1,5 @@
 module.exports = async function handler(req, res) {
-  const key =
-    process.env.AMAP_WEATHER_KEY ||
-    process.env.SUIYUAN_AMAP_SERVER_KEY ||
-    process.env.SUIYUAN_AMAP_KEY ||
-    process.env.AMAP_KEY ||
-    "57ce121e184c010bcd0d6b10c37fe30c";
+  const key = process.env.AMAP_WEATHER_KEY;
 
   const city = typeof req.query.city === "string" && req.query.city.trim() ? req.query.city.trim() : "320106";
 
